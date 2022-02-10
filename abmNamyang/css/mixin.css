@@ -1,0 +1,73 @@
+/*------------------------------------------------------------------------------------------------------------
+    File   : mixin.scss
+    Date   : 2021.08.29
+    Explain: mixin
+------------------------------------------------------------------------------------------------------------*/
+/********** common  **********/
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/********** layout **********/
+/********** table **********/
+/********** font **********/
+/********** animation **********/
+/********** text **********/
+::-moz-selection {
+  background: #85b74e;
+}
+::selection {
+  background: #85b74e;
+}
+
+.hidden {
+  position: fixed;
+  top: 0;
+  left: -999em;
+}
+
+.hide {
+  text-indent: -999999px;
+  font-size: 0;
+}
+
+.elHvrVsbl {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.elHvrVsbl2 {
+  display: -webkit-box;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.elHvrVsbl4 {
+  display: -webkit-box;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-all;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}

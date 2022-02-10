@@ -1,0 +1,2124 @@
+@charset 'utf-8';
+
+/*-------------------------------------------------------------------------------------------------------------
+    File   : modal.scss
+    Date   : 2021.12.17
+/*------------------------------------------------------------------------------------------------------------*/
+/* 팝업 최대 높이 값 800PX 넘어갈 경우 스크롤 */
+
+
+/********** common  **********/
+
+@mixin modalLayout {
+  position: absolute;
+  z-index: 999;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 0 rgba(21, 21, 21, 0.16);
+  background-color: #ffffff;
+}
+
+@mixin modalTitle {
+  height: 50px;
+  padding: 0px 10px 0 10px;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  box-sizing: border-box;
+  border: 12px solid transparent;
+  border-radius: 10px 10px 0 0;
+  background-color: $mainColor_abmNamyang;
+  font-family: "NotoSansM";
+}
+
+@mixin modalSubTitle {
+  @include ftMedium;
+  font-size: 16px;
+}
+
+@mixin modalContent {
+  position: relative;
+  width: calc(100% - 20px);
+  max-height: 650px;
+
+  margin: 10px 0 0 10px;
+  padding: 20px 20px 30px 20px;
+  overflow-y: scroll
+}
+
+@mixin tableScrollbar {
+  width: 5px;
+  padding: 0 10px;
+  height: 15px;
+  background: $scrollBgColor_abmNamyang;
+}
+
+@mixin tableScrollbar_thumb {
+  height: 15px;
+  background: #dedede;
+  border-radius: 10px;
+  background-color: $scrollThumbBGColor_abmNamyang;
+}
+
+
+/* modalDim */
+.modalDim {
+  //display: none;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  background: #000000;
+  opacity: 0.2;
+  border-radius: 0;
+  z-index: 998;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+/* modalWrap */
+.modalWrap {
+  @include modalLayout;
+
+  .modalTitle {
+    @include modalTitle;
+    display: flex;
+
+    p {
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    button {
+      &.close {
+        @include btnLayout;
+        @include ico_md_close_wht;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: 17px;
+        top: 10px;
+        padding: 15px;
+        font-size: 0;
+      }
+    }
+  }
+
+  .modalContent {
+    @include modalContent;
+
+    section {
+      .secTit {
+        min-height: 30px;
+
+        p {
+          font-size: 16px;
+          font-family: "NotoSansM";
+        }
+      }
+
+      .secCont {
+
+        // custom scroll
+        ::-webkit-scrollbar {
+          @include tableScrollbar;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          @include tableScrollbar_thumb;
+        }
+      }
+    }
+  }
+
+  .modalFooter {
+    margin: 20px 0px 0px 0px;
+    text-align: center;
+
+    button {
+      @include btnLayout;
+      @include dpLayout;
+      @include transition;
+      background: $mainColor_abmNamyang;
+      color: #fff;
+      min-width: 120px;
+      min-height: 40px;
+      line-height: 28px;
+      padding: 0 30px;
+      margin: 0 3px;
+
+      &:hover {
+        box-shadow: 0.8px 0.6px 5px 0 rgba(0, 0, 0, 0.15);
+      }
+
+      &.cancel {
+        @include btn_gray;
+      }
+    }
+  }
+}
+
+
+
+/********** modal each **********/
+.modalWrap {
+
+  // custom scroll
+  ::-webkit-scrollbar {
+    width: 5px;
+    padding: 0 10px;
+    height: 15px;
+    background: #fff;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    height: 15px;
+    background: #dedede;
+    border-radius: 10px;
+  }
+
+
+  /***** 공통 *****/
+  /* 확인 */
+  &.md_alert {
+    width: 380px;
+    height: 220px;
+
+    .modalContent {
+      height: 70px;
+      padding-bottom: 0;
+
+      section {
+        .box_txt {
+          margin-top: 10px;
+          text-align: center;
+          line-height: 26px;
+          color: #555;
+
+          strong {
+            @include ftMedium;
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      button {
+        @include btnLayoutM;
+
+        &.confirm {
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+  /* 계정 확인 */
+  &.md_confirm {
+    width: 380px;
+    height: 250px;
+
+    .modalContent {
+      height: 100px;
+      padding-bottom: 0;
+
+      section {
+        .box_txt {
+          margin-top: 10px;
+          text-align: center;
+          line-height: 26px;
+          color: #555;
+
+          strong {
+            @include ftMedium;
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      button {
+        @include btnLayoutM;
+
+        &.confirm {
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+
+
+  /***** 트래킹 메뉴 *****/
+  /* 트래킹 -  로그인 후 트래킹 정보가 없는 경우 */
+  &.md_trackingCheck {
+    width: 380px;
+    height: 260px;
+
+    .modalContent {
+      height: 110px;
+      padding-bottom: 0;
+
+      section {
+        .box_txt {
+          margin-top: 10px;
+          text-align: center;
+          line-height: 26px;
+          color: #555;
+
+          strong {
+            @include ftMedium;
+          }
+
+          p {
+            margin-top: 10px;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      button {
+        @include btnLayoutM;
+
+        &.setting {
+          @include btn_red;
+        }
+      }
+    }
+  }
+
+
+  /***** CDP메뉴 *****/
+  /* CDP - 회원 DB직접 업로드1 */
+  &.md_customerDbUpload {
+    width: 560px;
+    min-height: 320px;
+    max-height: 390px;
+
+    .modalContent {
+      min-height: 260px;
+      max-height: 340px;
+      padding-bottom: 0;
+
+      section {
+        &.sec_customerDbUpload {
+          .txtBox {
+            text-align: left;
+            line-height: 26px;
+            color: #555;
+            font-size: 14px;
+
+            p {
+              display: block;
+
+              &:before {
+                content: "";
+                position: relative;
+                display: inline-block;
+                width: 3px;
+                height: 3px;
+                top: -3px;
+                margin-right: 4px;
+                border-radius: 100%;
+                background-color: $mainFontColor_abmNamyang;
+              }
+
+              span {
+                @include ftMedium;
+                text-decoration: underline;
+
+                &.warning {
+                  color: $mainColor_abmNamyang;
+                }
+              }
+            }
+          }
+
+          .inputBox {
+            margin-top: 20px;
+
+            button {
+              &.download {
+                @include btnLayout;
+                @include btn_gray_t2;
+                width: 200px;
+                height: 35px;
+                margin-right: 10px;
+
+                &:before {
+                  @include iLayout;
+                  @include ico_excel_gy;
+                  margin-right: 4px;
+                  vertical-align: middle;
+                }
+              }
+
+              &.upload {
+                @include btn_white_t2;
+                width: 130px;
+              }
+            }
+
+            .fileBox {
+              display: inline-block;
+
+              .inputFile {
+                input[type="file"] {
+                  display: none;
+                }
+
+                label {
+                  &.upload {
+                    @include btnLayout;
+                    @include btn_white_t2;
+                    position: relative;
+                    display: inline-block;
+                    width: 130px;
+                    height: 35px;
+                    font-size: 14px;
+                    line-height: 2.3;
+                    vertical-align: middle;
+                  }
+                }
+              }
+            }
+          }
+
+          .fileList {
+            margin-top: 20px;
+            border-top: 1px solid $borderColorGray_abmNamyang;
+            border-bottom: 1px solid $borderColorGray_abmNamyang;
+
+            .list {
+              .inputFile {
+                display: inline-block;
+                width: 90%;
+
+                input[type="text"] {
+                  @include ellipsis;
+                  display: inline-block;
+                  width: 100%;
+                  padding: 0;
+                  font-size: 13px;
+                  vertical-align: middle;
+                  border: none;
+
+                  &:before {
+                    content: "";
+                    position: relative;
+                    display: inline-block;
+                    width: 3px;
+                    height: 3px;
+                    top: -3px;
+                    margin-right: 4px;
+                    border-radius: 100%;
+                    background-color: $mainFontColor_abmNamyang;
+                  }
+                }
+              }
+
+              button {
+                @include btnLayout;
+
+                &.remove {
+                  @include ico_close_bk;
+                  margin-left: 15px;
+                  padding: 10px;
+                  font-size: 0;
+                  vertical-align: middle;
+                }
+              }
+            }
+          }
+
+          .btnArea {
+            margin: 40px auto 30px;
+
+            button {
+              @include btnLayoutM;
+
+              &.save {
+                @include btn_red;
+              }
+
+              &.cancel {
+                @include btn_gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  /* CDP - 회원 DB직접 업로드 바2, 
+     CDP - 회원 DB직접 업로드 완료  */
+  &.md_customerDbUploadResult {
+    width: 450px;
+    height: 250px;
+
+    .modalContent {
+      height: 100px;
+      padding-bottom: 0;
+
+      section {
+
+        /* 회원 DB 직접 업로드 바 */
+        &.sec_customerDbUploadBar {
+          .txtBox {
+            text-align: center;
+            line-height: 26px;
+            color: $subFontColor_abmNamyang;
+            font-size: 14px;
+          }
+
+          .loadbarBox {
+            width: 350px;
+            height: 20px;
+            margin: 20px auto 0;
+            border: 1px solid $mainColor_abmNamyang;
+            border-radius: 4px;
+
+            .bgBar {
+              height: 18px;
+              background-color: $mainColor_abmNamyang;
+              text-align: center;
+
+              span {
+                display: inline-block;
+                color: #fff;
+                font-size: 13px;
+                text-align: center;
+              }
+            }
+          }
+        }
+
+        /* 회원 DB 직접 업로드 완료 */
+        &.sec_customerDbUploadEnd {
+          .txtBox {
+            text-align: center;
+            line-height: 26px;
+            color: $subFontColor_abmNamyang;
+            font-size: 14px;
+
+            p {
+              &:first-child {
+                span {
+                  color: $mainColor_abmNamyang;
+                }
+              }
+
+              &:nth-child(2),
+              &:nth-child(3) {
+                span {
+                  &:before {
+                    content: ":";
+                    display: inline-block;
+                    margin: 0 4px;
+                  }
+                }
+              }
+
+              &:nth-child(2) {
+                display: inline-block;
+                margin-top: 20px;
+              }
+
+              &:nth-child(3) {
+                display: inline-block;
+
+                &:before {
+                  content: "";
+                  position: relative;
+                  display: inline-block;
+                  width: 1px;
+                  height: 10px;
+                  margin: 0 14px;
+                  border-left: 1px solid $subFontColor_abmNamyang;
+                }
+
+                span {
+                  &.warning {
+                    color: $mainColor_abmNamyang;
+                    text-decoration: underline;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      button {
+        &.confirm {
+          @include btnLayoutM;
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btnLayoutM;
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+  /* CDP - 고객로그 > 회원DB 실패결과 조회 */
+  &.md_customerFailList {
+    width: 650px;
+    height: 800px;
+
+    .modalContent {
+      max-height: 660px;
+
+      section {
+        &.sec_crossDeviceInfo {
+          .secTit {
+            p {
+              &.secDes {
+                @include ftRegular;
+                font-size: 14px;
+                color: $subFontColor_abmNamyang;
+
+                &:before {
+                  @include txtDot;
+                  color: $subFontColor_abmNamyang;
+                }
+              }
+            }
+          }
+
+          .secCont {
+            .tableWrap {
+              .tableBox {
+                max-height: 500px;
+
+                table {
+                  thead {
+                    @include tableHeaderFixed;
+
+                    &:before {
+                      @include tableHeaderBeforeFixed;
+                    }
+
+                    tr {
+                      th {
+                        &:first-child {
+                          min-width: 120px;
+                        }
+
+                        &:nth-child(2) {
+                          min-width: 120px;
+                        }
+                      }
+                    }
+                  }
+
+                  tbody {
+                    tr {
+                      td {
+                        @include tablePadding_t2;
+                        white-space: normal;
+                        word-break: break-all;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .paging {
+              ul {
+                margin: 30px 0 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      margin-top: 10px;
+    }
+  }
+
+  /* CDP - 고객로그 > 유저 항목 열 수정 */
+  &.md_userColumnModify {
+    width: 600px;
+    height: 550px;
+
+    section {
+      &.sec_userColumnModify {
+        .secTit {
+          p {
+            &.secDes {
+              @include ftRegular;
+              font-size: 14px;
+              color: $subFontColor_abmNamyang;
+            }
+          }
+        }
+
+        .secCont {
+          .tableWrap {
+            .tableBox {
+              table {
+                thead {
+                  th {
+                    width: 33.33333%;
+                  }
+                }
+
+                tbody {
+                  tr {
+
+                    th,
+                    td {
+                      height: 45px;
+                    }
+
+                    td {
+                      text-align: left;
+
+                      input[type="checkbox"]+label {
+                        font-size: 13px;
+
+                        span {
+                          display: inline-block;
+                          width: calc(100% - 30px);
+                          vertical-align: text-top;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+
+      button {
+        @include btnLayout;
+
+        &.register {
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+  /* CDP - 고객로그 > 크로스 디바이스 정보 */
+  &.md_crossDeviceInfo {
+    width: 770px;
+    height: 650px;
+
+    section {
+      &.sec_crossDeviceInfo {
+        .secTit {
+          p {
+            &.secDes {
+              @include ftRegular;
+              font-size: 14px;
+              color: $subFontColor_abmNamyang;
+            }
+          }
+        }
+
+        .secCont {
+          .tableWrap {
+            .tableBox {
+              max-height: 490px;
+
+              table {
+                thead {
+                  @include tableHeaderFixed;
+
+                  &:before {
+                    @include tableHeaderBeforeFixed;
+                  }
+                }
+
+                tbody {
+                  tr {
+
+                    th,
+                    td {
+                      @include tablePadding_t2;
+                    }
+
+                    td {
+                      &:first-child {
+                        width: 60px;
+                      }
+
+                      &:nth-child(2) {
+                        width: 100px;
+                      }
+
+                      &:nth-child(3) {
+                        width: 120px;
+                      }
+
+                      &:nth-child(4) {
+                        width: 120px;
+                      }
+
+                      &:nth-child(5) {
+                        @include ellipsis;
+                        max-width: 150px;
+
+                        &:hover {
+                          @include ellipsisHover;
+                        }
+                      }
+
+                      &:nth-child(6) {
+                        min-width: 130px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* CDP - 고객로그 > 사이트 방문 이력 */
+  &.md_visitHistory {
+    width: 620px;
+    height: 650px;
+
+    section {
+      &.sec_crossDeviceInfo {
+        .secTit {
+          p {
+            &.secDes {
+              @include ftRegular;
+              font-size: 14px;
+              color: $subFontColor_abmNamyang;
+            }
+          }
+        }
+
+        .secCont {
+          .tableWrap {
+            .tableBox {
+              max-height: 490px;
+
+              table {
+                thead {
+                  @include tableHeaderFixed;
+
+                  &:before {
+                    @include tableHeaderBeforeFixed;
+                  }
+
+                  tr {
+                    th {
+                      &:first-child {
+                        min-width: 60px;
+                      }
+
+                      &:nth-child(2) {
+                        min-width: 230px;
+                      }
+
+                      &:nth-child(3) {
+                        min-width: 90px;
+                      }
+
+                      &:nth-child(4) {
+                        min-width: 160px;
+                      }
+                    }
+                  }
+                }
+
+                tbody {
+                  tr {
+                    td {
+                      white-space: normal;
+                      word-break: break-all;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* CDP - 고객분석 > 캠페인 상품 선택 */
+  &.md_campaignPrdChoice {
+    width: 960px;
+    height: 860px;
+
+    .modalContent {
+      max-height: 700px;
+      height: 700px;
+
+      section {
+        &.sec_campaignPrdChoice {
+          .secTit {
+            p {
+              &.secDes {
+                @include ftRegular;
+                font-size: 14px;
+                color: $subFontColor_abmNamyang;
+
+                &:before {
+                  @include ftMedium;
+                  color: $subFontColor_abmNamyang;
+                }
+
+                &:nth-child(2),
+                &:nth-child(3) {
+                  display: inline-block;
+                  margin-top: 10px;
+
+                  span {
+                    @include ftMedium;
+                    color: $mainColor_abmNamyang;
+                  }
+                }
+
+                &:nth-child(3) {
+                  &:before {
+                    content: "/";
+                    display: inline-block;
+                    margin: 0 4px;
+                  }
+                }
+              }
+            }
+          }
+
+          .secCont {
+            margin-top: 20px;
+
+            .tableHeader {
+              position: absolute;
+              float: right;
+              top: 15px;
+              right: 20px;
+
+              .selectBox {
+                display: inline-block;
+              }
+
+              .searchBox {
+                display: inline-block;
+                margin-left: 10px;
+
+                .inputSearch {
+                  width: 300px;
+                }
+              }
+            }
+
+            .tableWrap {
+              position: relative;
+
+              .tableBox {
+                max-height: 550px;
+
+                table {
+                  thead {
+                    @include tableHeaderFixed;
+
+                    &:before {
+                      @include tableHeaderBeforeFixed;
+                    }
+
+                    tr {
+                      th {
+                        &:nth-child(1) {
+                          min-width: 80px;
+                        }
+
+                        &:nth-child(2) {
+                          min-width: 140px;
+                        }
+
+                        &:nth-child(3),
+                        &:nth-child(5),
+                        &:nth-child(6) {
+                          min-width: 120px;
+                        }
+                      }
+                    }
+                  }
+
+                  tbody {
+                    tr {
+                      td {
+                        @include tablePadding_t2;
+                        white-space: normal;
+                        word-break: break-all;
+
+                        &:nth-child(4) {
+                          text-align: left;
+                        }
+
+                        img {
+                          width: 100px;
+                          height: 100px;
+                          text-align: center;
+                        }
+
+                        button {
+                          &.choice {
+                            @include btnLayout;
+                            @include btn_white_t2;
+                            width: 65px;
+                            height: 25px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .paging {
+              ul {
+                margin: 30px 0 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      margin-top: 10px;
+    }
+  }
+
+  /* CDP - 캠페인관리 > 캠페인 생성 */
+  &.md_campaignCreate {
+    width: 500px;
+    height: 300px;
+
+    .modalContent {
+      height: 150px;
+      padding-bottom: 0;
+
+      section {
+        .box_txt {
+          text-align: center;
+          line-height: 26px;
+          color: #555;
+          font-size: 14px;
+        }
+
+        .box_input {
+          margin-top: 20px;
+
+          .inputBox {
+            margin-top: 15px;
+            vertical-align: middle;
+
+            input[type="text"] {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      button {
+        @include btnLayoutM;
+        line-height: 1.5;
+
+        &.create {
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+
+  /* CDP - 캠페인관리 > 추천 캠페인 불러오기 Type1 수정삭제리스트 */
+  &.md_campaignCall {
+    width: 600px;
+    height: 770px;
+
+    .modalContent {
+      max-height: 710px;
+
+      section {
+        &.sec_campaignCall {
+          .secTit {
+            p {
+              &.secDes {
+                @include ftRegular;
+                font-size: 14px;
+                line-height: 20px;
+                color: $subFontColor_abmNamyang;
+              }
+            }
+          }
+
+          .secCont {
+            margin-top: 20px;
+
+            .tableWrap {
+              .tableBox {
+                max-height: 590px;
+
+                table {
+                  thead {
+                    @include tableHeaderFixed;
+
+                    &:before {
+                      @include tableHeaderBeforeFixed;
+                    }
+
+                    tr {
+                      th {
+                        &:first-child {
+                          width: 90px;
+                        }
+
+                        &:nth-child(2) {
+                          width: 330px;
+                        }
+
+                        &:nth-child(3) {
+                          width: 120px;
+                        }
+                      }
+                    }
+                  }
+
+                  tbody {
+                    tr {
+                      td {
+                        @include tablePadding_t2;
+
+                        button {
+                          @include btnLayout;
+                          min-width: 65px;
+                          height: 25px;
+
+                          &.create {
+                            @include btn_white_t2;
+                          }
+
+                          &.reset {
+                            @include btn_red;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* CDP - 캠페인관리 > 추천 캠페인 불러오기 Type2 전체리스트 */
+  &.md_campaignCallList {
+    width: 600px;
+    height: 340px;
+
+    .modalContent {
+
+      section {
+        &.sec_campaignCallList {
+          .secTit {
+            p {
+              &.secDes {
+                @include ftRegular;
+                font-size: 14px;
+                line-height: 20px;
+                color: $subFontColor_abmNamyang;
+              }
+            }
+          }
+
+          .secCont {
+            .tableWrap {
+              .tableBox {
+                max-height: 195px;
+
+                table {
+                  thead {
+                    @include tableHeaderFixed;
+
+                    &:before {
+                      @include tableHeaderBeforeFixed;
+                    }
+
+                    tr {
+                      th {
+                        &:first-child {
+                          width: 70px;
+                        }
+
+                        &:nth-child(2) {
+                          width: 130px;
+                        }
+
+                        &:nth-child(3) {
+                          width: 120px;
+                        }
+
+                        &:nth-child(4) {
+                          width: 90px;
+                        }
+
+                        &:nth-child(3) {
+                          width: 110px;
+                        }
+                      }
+                    }
+                  }
+
+                  tbody {
+                    tr {
+                      td {
+                        @include tablePadding_t2;
+
+                        button {
+                          @include btnLayout;
+                          min-width: 65px;
+                          height: 25px;
+
+                          &.create {
+                            @include btn_white_t2;
+                          }
+
+                          &.reset {
+                            @include btn_red;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* CDP - 캠페인관리 > 캠페인통계 */
+  &.md_campaignState {
+    width: 1010px;
+    height: 920px;
+
+    .modalContent {
+      max-height: 860px;
+
+      section {
+        &.sec_campaignState {
+          .secTit {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+              &.secDes {
+                @include ftRegular;
+                font-size: 14px;
+                line-height: 20px;
+                color: $subFontColor_abmNamyang;
+              }
+            }
+          }
+
+          .secCont {
+            margin-top: 10px;
+
+            .tab {
+              ul {
+                li {
+                  min-width: 100px;
+                }
+              }
+            }
+
+            .tabView {
+              border: 1px solid $tabViewBorder_abmNamyang;
+              border-top: none;
+
+              .tabViewList {
+                .graphBox {
+                  height: 220px;
+                }
+
+                .titBox {
+                  margin-top: 40px;
+
+                  p {
+                    @include modalSubTitle;
+                  }
+                }
+
+                &:first-child {}
+
+                &:nth-child(2) {}
+
+                &:nth-child(3) {}
+
+              }
+            }
+
+            .tableWrap {
+              margin-top: 20px;
+
+              .tableBox {
+                max-height: 302px;
+
+                table {
+                  thead {
+                    @include tableHeaderFixed;
+
+                    &:before {
+                      @include tableHeaderBeforeFixed;
+                    }
+
+                    tr {
+                      th {
+                        &:first-child {
+                          width: 70px;
+                        }
+
+                        &:nth-child(2) {
+                          width: 130px;
+                        }
+
+                        &:nth-child(3) {
+                          width: 120px;
+                        }
+
+                        &:nth-child(4) {
+                          width: 90px;
+                        }
+
+                        &:nth-child(3) {
+                          width: 110px;
+                        }
+                      }
+                    }
+                  }
+
+                  tbody {
+                    tr {
+                      td {
+                        @include tablePadding_t2;
+
+                        button {
+                          @include btnLayout;
+                          min-width: 65px;
+                          height: 25px;
+
+                          &.create {
+                            @include btn_white_t2;
+                          }
+
+                          &.reset {
+                            @include btn_red;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .paging {
+              ul {
+                margin: 30px auto 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+  /***** 설정 메뉴 *****/
+  /* 설정 - 패스워드 변경 */
+  &.md_passwordChange {
+    width: 500px;
+    height: 400px;
+
+    .modalContent {
+      height: 250px;
+      padding-bottom: 0;
+
+      section {
+        .box_txt {
+          text-align: center;
+          line-height: 26px;
+          color: #555;
+          font-size: 14px;
+
+          span {
+            @include ftMedium;
+            margin-right: 4px;
+            text-decoration: underline;
+          }
+        }
+
+        .box_input {
+          margin-top: 20px;
+
+          .inputBox {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 15px;
+            vertical-align: middle;
+
+            p {
+              min-width: 130px;
+              line-height: 2.5;
+            }
+
+            input {
+              flex-grow: 1;
+            }
+
+          }
+
+          p {
+            &.warning {
+              width: 100%;
+              padding-left: 130px;
+              font-size: 13px;
+              color: $errorColor_abmNamyang;
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      button {
+        @include btnLayoutM;
+        line-height: 1.5;
+
+        &.save {
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+  /* 설정 - 서브 운영자 등록 */
+  &.md_subManagerRegister {
+    width: 815px;
+    height: 720px;
+
+    .modalContent {
+      section {
+        &.sec_subManagerRegister {
+          .secTit {}
+
+          .secCont {
+            margin-top: 5px;
+
+            .tableWrap {
+              border-left: none;
+              border-right: none;
+
+              .divTblBody {
+                .divTblTr {
+                  >div {
+                    &:nth-child(odd) {
+                      width: 230px;
+                    }
+
+                    &:nth-child(even) {
+
+                      input[type="text"],
+                      input[type="password"],
+                      input[type="email"],
+                      input[type="tel"],
+                      select {
+                        width: 100%;
+
+                        &.wdSmall {
+                          width: 200px;
+                        }
+                      }
+
+                      .calendarBox {
+                        .calendar {
+                          width: 100%;
+
+                          .dateChoice {
+                            width: calc(100% - 30px);
+
+                            input[type="text"] {
+                              text-align: left;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  /* 추후 삭제 ! >> 서브 운영자 수정 부분을 서브 운영자 등록 클래스로 함께 썼을때 CSS 임 */
+                  &:nth-child(5) {
+                    .inputBox {
+                      float: right;
+                      display: inline-block;
+
+                      p {
+                        margin-right: 20px;
+                      }
+
+                      input[type="text"] {
+                        width: 200px;
+                      }
+                    }
+                  }
+
+                  &:nth-child(7) {
+                    .inputBox {
+                      float: right;
+                      display: inline-block;
+
+                      p {
+                        margin-right: 20px;
+                      }
+
+                      input[type="text"] {
+                        width: 200px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .btnArea {
+              button {
+                @include btnLayout;
+                @include btnLayoutM;
+
+                &.register {
+                  @include btn_red;
+                }
+
+                &.cancel {
+                  @include btn_gray;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 설정 - 서브 운영자 수정 */
+  &.md_subManagerModify {
+    width: 815px;
+    height: 720px;
+
+    section {
+      &.sec_subManagerModify {
+        .secTit {}
+
+        .secCont {
+          margin-top: 5px;
+
+          .tableWrap {
+            border-left: none;
+            border-right: none;
+
+            .divTblBody {
+              .divTblTr {
+                >div {
+                  &:nth-child(odd) {
+                    width: 230px;
+                  }
+
+                  &:nth-child(even) {
+
+                    input[type="text"],
+                    input[type="password"],
+                    input[type="email"],
+                    input[type="tel"],
+                    select {
+                      width: 100%;
+
+                      &.wdSmall {
+                        width: 200px;
+                      }
+                    }
+
+                    .calendarBox {
+                      .calendar {
+                        width: 100%;
+
+                        .dateChoice {
+                          width: calc(100% - 30px);
+
+                          input[type="text"] {
+                            text-align: left;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                &:nth-child(7) {
+                  .inputBox {
+                    float: right;
+                    display: inline-block;
+
+                    p {
+                      margin-right: 20px;
+                    }
+
+                    input[type="text"] {
+                      width: 200px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .btnArea {
+            button {
+              @include btnLayout;
+              @include btnLayoutM;
+
+              &.register {
+                @include btn_red;
+              }
+
+              &.cancel {
+                @include btn_gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 설정 - 권한 설정 */
+  &.md_authSet {
+    width: 815px;
+    height: 720px;
+
+    section {
+
+      &.sec_brandAuthSet,
+      &.sec_menuAuthSet,
+      &.sec_lastConfirmTime {
+        .secTit {
+          border-bottom: 1px solid #eee;
+        }
+
+        .secCont {
+          margin-top: 20px;
+        }
+      }
+
+      &.sec_brandAuthSet {}
+
+      &.sec_menuAuthSet {
+        .secTit {
+          margin-top: 50px;
+        }
+
+        .secCont {
+          .tableWrap {
+            margin-top: 20px;
+
+            .tableBox {
+              input[type="checkbox"]+label:before {
+                margin-right: 0;
+              }
+
+              table {
+                thead {
+                  tr {
+                    th {
+
+                      &:nth-child(2),
+                      &:nth-child(3),
+                      &:nth-child(4) {
+                        width: 100px;
+                      }
+                    }
+                  }
+                }
+
+                tbody {
+                  tr {
+
+                    th,
+                    td {
+                      height: 45px;
+                    }
+
+                    &:nth-child(11),
+                    &:last-child {
+                      th {
+                        border-bottom: none;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.sec_lastConfirmTime {
+        .secTit {
+          margin-top: 50px;
+        }
+      }
+    }
+
+    .btnArea {
+      margin: 50px auto 10px;
+
+      button {
+        @include btnLayout;
+        @include btnLayoutM;
+
+        &.register {
+          @include btn_red;
+        }
+
+        &.cancel {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+
+  /*  설정 - Web 스크립트 관리 */
+  &.md_scriptGuide {
+    width: 580px;
+    height: 290px;
+
+    .modalContent {
+      height: 200px;
+      padding-bottom: 0;
+
+      section {
+        &.sec_script {
+          display: flex;
+          justify-content: space-around;
+          margin-top: 30px;
+
+          .box_android,
+          .box_ios {
+            p {
+              @include ftMedium;
+              text-align: center;
+            }
+
+            button {
+              @include btnLayout;
+              @include btn_white;
+              min-width: 200px;
+              height: 40px;
+              margin-top: 20px;
+              border: 1px solid $inputBorder_abmNamyang;
+              background-color: $inputBg_abmNamyang;
+            }
+          }
+
+          .box_android {
+            p {
+              &:before {
+                @include iLayout;
+                @include ico_android_bk;
+                content: "";
+                position: relative;
+                display: block;
+                width: 40px;
+                height: 49px;
+                margin: 0 auto 10px;
+                text-align: center;
+                background-size: contain;
+              }
+            }
+          }
+
+          .box_ios {
+            p {
+              &:before {
+                @include iLayout;
+                @include ico_ios_bk;
+                content: "";
+                position: relative;
+                display: block;
+                width: 40px;
+                height: 49px;
+                margin: 0 auto 10px;
+                text-align: center;
+                background-size: contain;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 설정 - Web 스크립트 */
+  &.md_webScript {
+    width: 710px;
+    height: 600px;
+
+    .modalContent {
+      section {
+        &.sec_webScript {
+          >div {
+            &:nth-child(1) {
+              p {
+                color: #777;
+                line-height: 20px;
+              }
+            }
+
+            &:nth-child(2) {
+              margin-top: 30px;
+
+              p {
+                @include ftMedium;
+                display: inline-block;
+              }
+
+              .selectBox {
+                display: inline-block;
+                margin-left: 10px;
+
+                select {
+                  width: 250px;
+                }
+              }
+
+              .btnBox {
+                display: inline-block;
+
+                button {
+                  @include btnLayout;
+                  @include btn_red;
+                  height: 40px;
+                  margin-left: 10px;
+                  font-size: 14px;
+
+                  &.download {
+                    width: 100px;
+                  }
+
+                  &.copy {
+                    width: 80px;
+                  }
+                }
+              }
+            }
+
+            &:nth-child(3) {
+              margin-top: 30px;
+
+              textarea {
+                width: 100%;
+                height: 340px;
+                padding: 20px;
+                line-height: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* 설정 - APP 관리 */
+  &.md_appSupervise {
+
+    width: 720px;
+    min-height: 560px;
+    max-height: 640px;
+
+    .modalContent {
+      min-height: 410px;
+      max-height: 470px;
+
+      section {
+        &.sec_appSupervise {
+
+          .tableWrap {
+            border-left: none;
+            border-right: none;
+
+            .divTable {
+              .divTblBody {
+                .divTblTr {
+                  >div {
+
+                    /* table th */
+                    &:nth-child(odd) {
+                      min-width: 130px;
+                      width: 160px;
+                      padding: 20px;
+                      vertical-align: middle;
+                    }
+
+                    /* table td */
+                    &:nth-child(even) {
+                      padding-right: 0;
+
+                      >div {
+                        display: flex;
+                        justify-content: space-between;
+
+
+                        .checkBox {
+                          input[type="checkbox"]+label {
+                            font-size: 0;
+
+                            &:before {
+                              position: relative;
+                              top: 5px;
+                            }
+
+                            i {
+                              position: relative;
+                              display: inline-block;
+                              width: 60px;
+                              height: 30px;
+                              font-size: 14px;
+                              font-style: normal;
+                              text-align: center;
+                              vertical-align: middle;
+
+                              &.android {
+                                &:before {
+                                  @include iLayout;
+                                  @include ico_android_gy;
+                                }
+                              }
+
+                              &.ios {
+                                left: 1px;
+
+                                &:before {
+                                  @include iLayout;
+                                  @include ico_ios_gy;
+                                  margin-left: 15px;
+                                  padding: 0 15px 4px 0;
+
+                                }
+                              }
+
+                              &.web {
+                                left: 2px;
+
+                                &:before {
+                                  @include iLayout;
+                                  @include ico_web_gy;
+                                  margin-left: 15px;
+                                  padding: 0 15px 2px 0;
+                                }
+                              }
+                            }
+
+                          }
+
+                          input[type="checkbox"]:checked+label {
+
+                            i {
+                              &.android {
+                                &:before {
+                                  @include iLayout;
+                                  @include ico_android_bk;
+                                }
+                              }
+
+                              &.ios {
+                                left: 1px;
+
+                                &:before {
+                                  @include iLayout;
+                                  @include ico_ios_bk;
+                                  margin-left: 15px;
+                                  padding: 0 15px 4px 0;
+
+                                }
+                              }
+
+                              &.web {
+                                left: 2px;
+
+                                &:before {
+                                  @include iLayout;
+                                  @include ico_web_bk;
+                                  margin-left: 15px;
+                                  padding: 0 15px 2px 0;
+                                }
+                              }
+                            }
+                          }
+                        }
+
+                        .searchBox {
+                          .inputSearch {
+                            min-width: 370px;
+                          }
+
+                          button {
+                            @include btnSearch_red;
+                          }
+                        }
+
+                        input,
+                        select {
+                          width: 100%;
+                        }
+                      }
+                    }
+
+
+
+                    .warning {
+                      margin-top: 4px;
+                      font-size: 12px;
+                      line-height: 15px;
+                      letter-spacing: -0.1px;
+                      color: $warningColor_abmNamyang;
+                    }
+                  }
+
+
+                }
+
+                .divTblTr:first-child {
+                  >div {
+                    &:nth-child(even) {
+                      >div {
+                        min-height: 75px;
+                      }
+                    }
+                  }
+
+                  >div {
+                    &:nth-child(even) {
+                      >div {
+
+                        &:nth-of-type(3) {
+                          min-height: 60px;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                /* 수정 전 css 사용시 제거해야 할 부분 */
+                .divTblTr:first-child {
+                  >div {
+                    &:nth-child(2) {
+                      >div {
+                        display: inline-block;
+                        width: 30%;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          >div {
+            &:nth-child(1) {
+
+              p {
+                color: #777;
+                line-height: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modalFooter {
+      padding-bottom: 30px;
+
+      button {
+        @include btnLayout;
+        width: 120px;
+        height: 40px;
+
+        &:nth-child(1) {
+          @include btn_red;
+        }
+
+        &:nth-child(2) {
+          @include btn_gray;
+        }
+      }
+    }
+  }
+}

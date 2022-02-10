@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.778" height="21" viewBox="0 0 27.778 21">
+    <defs>
+        <style>
+            .cls-5{fill:none}.cls-4{stroke:none}
+        </style>
+    </defs>
+    <g id="logout" transform="translate(-1608.111 -23)">
+        <g id="타원_143" data-name="타원 143" transform="translate(1608.111 23)" style="stroke-width:3px;stroke:#cc3c44;fill:none">
+            <circle class="cls-4" cx="10.5" cy="10.5" r="10.5"/>
+            <circle class="cls-5" cx="10.5" cy="10.5" r="9"/>
+        </g>
+        <g id="사각형_2439" data-name="사각형 2439" style="stroke:#fff;fill:#cc3c44;stroke-width:3px">
+            <path class="cls-4" d="M0 0h12.444v3H0z" transform="translate(1620.444 32)"/>
+            <path class="cls-5" d="M-1.5-1.5h15.444v6H-1.5z" transform="translate(1620.444 32)"/>
+        </g>
+        <path id="다각형_10" data-name="다각형 10" d="M4.5 0 9 5H0z" transform="rotate(90 803.056 832.056)" style="fill:#cc3c44"/>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="btn_sub03_arrow_left" width="11" height="10" viewBox="0 0 11 10">
+    <defs>
+        <style>
+            .cls-1{fill:#888}
+        </style>
+    </defs>
+    <path id="chevron-down-light" d="M9.921 5.229l-.159.16a.268.268 0 0 1-.381 0L5 .976.619 5.389a.268.268 0 0 1-.381 0l-.159-.16a.272.272 0 0 1 0-.384L4.808.08a.268.268 0 0 1 .381 0l1.559 1.57 3.171 3.2a.27.27 0 0 1 .002.379z" class="cls-1" transform="rotate(-90 5 5)"/>
+    <path id="chevron-down-light-2" d="M9.921 5.229l-.159.16a.268.268 0 0 1-.381 0L5 .976.619 5.389a.268.268 0 0 1-.381 0l-.159-.16a.272.272 0 0 1 0-.384L4.808.08a.268.268 0 0 1 .381 0l1.559 1.57 3.171 3.2a.27.27 0 0 1 .002.379z" class="cls-1" transform="rotate(-90 7.766 2.234)"/>
+</svg>

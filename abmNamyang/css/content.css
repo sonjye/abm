@@ -1,0 +1,77 @@
+/********** common  **********/
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::-moz-selection {
+  background: #85b74e;
+}
+
+::selection {
+  background: #85b74e;
+}
+
+/********** btnArea  **********/
+.btnArea {
+  font-size: 0;
+  text-align: center;
+}
+
+.btnArea button {
+  min-width: 100px;
+  height: 44px;
+  display: inline-block;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 12px;
+}
+
+.btnArea button:first-child {
+  margin-left: 0;
+}
+
+.btnArea button.submit {
+  background-color: #85b74e;
+}
+
+.btnArea button.cancel {
+  background-color: #bbb;
+}
+
+.btnArea.type02 {
+  margin: 40px 0;
+}
+
+.btnArea.type02 button {
+  width: 110px;
+  height: 40px;
+  font-size: 15px;
+}
+
+.btnArea.type02 button.cancel {
+  background-color: #7e7e7e;
+}
+
+/********** table  **********/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table thead tr th {
+  background-color: #85b74e;
+}

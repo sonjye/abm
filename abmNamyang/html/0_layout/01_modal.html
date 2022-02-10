@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="MOBTUNE" />
+    <meta name="keywords" content="MOBTUNE" />
+    <meta name="author" content="인라이플" />
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <!-- 퍼블 확인 용 STYLE CSS -->
+    <style>
+        .modalWrap {
+            position: relative !important;
+            margin: 100px auto;
+        }
+
+        /* 메뉴 설명 */
+        .container_wrapper>strong {
+            position: relative;
+            display: block;
+            width: 50%;
+            top: 50px;
+            margin: 50px auto 0;
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .container_wrapper>p {
+            position: relative;
+            display: block;
+            width: 50%;
+            top: 50px;
+            margin: 20px auto 0;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            z-index: 999;
+        }
+    </style>
+    <!-- 퍼블 확인 용 STYLE CSS END -->
+    <script>
+        //검색조건 li 클릭할 때 active 클래스 toggle 
+        $(function () {
+            // i_mark 마우스 오버 & 마우스 아웃시 말풍선 효과
+            $('.i_mark').on('mouseover', function () {
+                $(this).siblings(".i_mark_after").css('display', 'block');
+            }).on('mouseout', function () {
+                $('.i_mark_after').css('display', 'none');
+            })
+        });
+    </script>
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>메뉴명</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul class="active">
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li class="on"><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <script>
+            /* popup_data_check */
+            $(document).ready(function () {
+                $(".popup_data_check").click(function (event) { //팝업 Open 버튼 클릭 시     
+                    $(".modalWrap").css({
+                        "top": (($(window).height() - $(".modalWrap").outerHeight()) / 2 + $(
+                            window).scrollTop()) + "px",
+                        "left": (($(window).width() - $(".modalWrap").outerWidth()) / 2 + $(
+                            window).scrollLeft()) + "px"
+                        //팝업창을 가운데로 띄우기 위해 현재 화면의 가운데 값과 스크롤 값을 계산하여 팝업창 CSS 설정
+                    });
+                    $(".modalDim").css("display", "block"); //팝업 뒷배경 display block
+                    $(".modalWrap").css("display", "block"); //팝업창 display block
+                    $("html").css("overflow", "hidden"); //html 스크롤바 없애기
+                });
+                $(".popup_close_btn").click(function (event) {
+                    $(".modalDim").css("display", "none"); //팝업창 뒷배경 display none
+                    $(".modalWrap").css("display", "none"); //팝업창 display none
+                    $("html").css("overflow", "auto"); //html 스크롤바 생성
+                });
+            });
+            /* mouseover, mouseout 이벤트 */
+            $(document).ready(function () {
+                $('.btn_question').on('mouseover', function () {
+                    $('.bubble_question').css('display', 'block'); // mouseover일 경우 보이고
+                }).on('mouseout', function () {
+                    $('.bubble_question').css('display', 'none'); //mouseout일 경우 숨김
+                })
+            });
+        </script>
+        <div class="modalDim btnClose"></div>
+        <!-- // modalDim end-->
+        <strong>공통</strong>
+        <p>공통 > 버튼 하나 모달</p>
+        <!-- 공통 > 확인경고창 -->
+        <div class="modalWrap md_alert">
+            <div class="modalTitle">
+                <p>확인</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="modalSection">
+                    <div class="box_txt">
+                        <p>등록된 계정이 없습니다.</p>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="confirm">확인</button>
+            </div>
+        </div>
+        <!--// md_alert end -->
+        <p>공통 > 버튼 두개 모달</p>
+        <!-- 공통 > 확인경고창 -->
+        <div class="modalWrap md_confirm">
+            <div class="modalTitle">
+                <p>확인</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="modalSection">
+                    <div class="box_txt">
+                        <p>모비튠 계정이 확인되었습니다.</p>
+                        <strong>광고주명 : 남양유업(주)</strong>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="confirm">확인</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_accountConfirm end -->
+        <strong>트래킹 메뉴</strong>
+        <p> 대시보드 > 트래킹 정보가 없는 경우</p>
+        <!-- 대시보드 > 트래킹 정보 확인 -->
+        <div class="modalWrap md_trackingCheck">
+            <div class="modalTitle">
+                <p>확인</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="modalSection">
+                    <div class="box_txt">
+                        <strong>등록된 트래킹 정보가 없습니다.</strong>
+                        <p>Web, App 트래킹 정보 입력 후 <br> 실시간 분석 데이터를 활용하세요.</p>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="setting">계정 셋팅하기</button>
+            </div>
+        </div>
+        <!--// md_trackingCheck end -->
+        <strong>CDP 메뉴</strong>
+        <p>고객로그 > 회원 DB 직접 업로드 -1</p>
+        <!-- CDP 고객로그 > 회원 DB 직접 업로드 -->
+        <div class="modalWrap md_customerDbUpload">
+            <div class="modalTitle">
+                <p>회원 DB 직접 업로드</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_customerDbUpload">
+                    <div class="txtBox">
+                        <p><span>회원 DB 양식 다운로드</span> 버튼을 클릭하여 해당 양식에 맞추어 업로드 해주세요.</p>
+                        <p>CDP에 등록하신 개인정보는 암호화되어 저장되며, 파일은 별도로 저장하지 않습니다.</p>
+                        <p>등록 완료 후 해당 파일은 삭제 하여 <span class="warning">개인정보 유출 사고</span>에 유의하시길 바랍니다.</p>
+                    </div>
+                    <div class="inputBox">
+                        <button type="button" class="download">회원 DB 양식 다운로드</button>
+                        <div class="fileBox">
+                            <div class="inputFile">
+                                <label for="file" class="upload">파일 업로드</label>
+                                <input type="file" id="file" class="upload">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fileList">
+                        <div class="list">
+                            <div class="inputFile">
+                                <input type="text" class="fileName">
+                            </div>
+                            <button class="remove">삭제</button>
+                        </div>
+                        <!-- <div class="list">
+                            <p class="fileName">스타일난다._회원 정보DB_20210202.xls (1.3MB)dddddddddddddddddddd</p>
+                            <button class="remove">삭제</button>
+                        </div> -->
+                    </div>
+                    <div class="btnArea">
+                        <button type="button" class="save">저장</button>
+                        <button type="button" class="cancel">취소</button>
+                    </div>
+                </section>
+            </div>
+            <script>
+                /* 파일 업로드 */
+                // $(".fileList .list .remove").css("display", "none");
+                // $("#file").on('change', function () {
+                //     var fileName = $("#file").val();
+                //     $(".fileName").val(fileName);
+                //     $(".fileList .list .remove").css("display", "inline-block");
+                // });
+                $(function () {
+                    var fileRemoveBtn = $(".md_customerDbUpload .fileList .list button.remove");
+                    var fileInputText = $(".md_customerDbUpload .fileList .inputFile .fileName");
+                    $(".md_customerDbUpload .fileList").css("display", "none");
+                    $(".md_customerDbUpload #file").on('change', function () {
+                        var fileName = $("#file").val();
+                        $(".fileName").val(fileName);
+                        $(".fileList").css("display", "block");
+                    });
+                    fileRemoveBtn.each(function () {
+                        $(this).on("click", function () {
+                            $(fileInputText).val('');
+                            $(".fileList").css("display", "none");
+                        });
+                    });
+                });
+            </script>
+        </div>
+        <!--// md_customerDbUpload end -->
+        <p>고객로그 > 회원 DB 직접 업로드 -2</p>
+        <!-- CDP 고객로그 > 회원 DB 직접 업로드바-->
+        <div class="modalWrap md_customerDbUploadResult">
+            <div class="modalTitle">
+                <p>회원 DB 직접 업로드</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_customerDbUploadBar">
+                    <div class="txtBox">
+                        <p>회원 DB를 업로드 하는 중입니다. 화면을 닫지 마세요.</p>
+                    </div>
+                    <div class="loadbarBox">
+                        <div class="bgBar" style="width:50%"><span>50%</span></div>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_customerDbUploadBar end -->
+        <p>고객로그 > 회원 DB 직접 업로드 -3</p>
+        <!-- CDP 고객로그 > 회원 DB 직접 업로드 완료 -->
+        <div class="modalWrap md_customerDbUploadResult">
+            <div class="modalTitle">
+                <p>회원 DB 직접 업로드</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_customerDbUploadEnd">
+                    <div class="txtBox">
+                        <p><span>20,000</span> 건의 회원 DB 등록이 완료 되었습니다.</p>
+                        <p>성공<span>20,000건</span></p>
+                        <p>실패<span class="warning">0건</span></p>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="confirm">확인</button>
+            </div>
+        </div>
+        <!--// md_customerDbUploadBar end -->
+        <p>고객로그 > 회원DB 실패결과 조회</p>
+        <!-- CDP 고객로그 > 회원DB 실패결과 조회 -->
+        <div class="modalWrap md_customerFailList">
+            <div class="modalTitle">
+                <p>회원 DB - 실패결과 조회</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_crossDeviceInfo">
+                    <div class="secTit">
+                        <p class="secDes">실패 : <span>10,000 건</span></p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>행</th>
+                                            <th>*USERID</th>
+                                            <th>비고</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>15 번째 행</td>
+                                            <td>abcdefg.cafe24.com</td>
+                                            <td>USERID누락/이메일형식/가입일자형식</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15 번째 행</td>
+                                            <td>abcdefg.cafe24.com</td>
+                                            <td>USERID누락/이메일형식/가입일자형식/가입일자형식/가입일자형식</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="paging">
+                            <ul>
+                                <li class="prev"><a href="javascript:pageLink(0);"></a></li>
+                                <li class="on"><a href="javascript:pageLink(1);">1</a></li>
+                                <li><a href="javascript:pageLink(2);">2</a></li>
+                                <li><a href="javascript:pageLink(3);">3</a></li>
+                                <li><a href="javascript:pageLink(4);">4</a></li>
+                                <li><a href="javascript:pageLink(5);">5</a></li>
+                                <li><a href="javascript:pageLink(6);">6</a></li>
+                                <li><a href="javascript:pageLink(7);">7</a></li>
+                                <li><a href="javascript:pageLink(8);">8</a></li>
+                                <li><a href="javascript:pageLink(9);">9</a></li>
+                                <li><a href="javascript:pageLink(10);">10</a></li>
+                                <li class="next"><a href="javascript:pageLink(10+1);"></a></li>
+                            </ul>
+                        </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="upload">재업로드</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_customerFailList end -->
+        <p>고객로그 > 유저 항목 열 수정(2022.01.25 수정)</p>
+        <!-- CDP 고객로그 > 유저 항목 열 수정 -->
+        <div class="modalWrap md_userColumnModify">
+            <div class="modalTitle">
+                <p>유저 항목 열 수정</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_userColumnModify">
+                    <div class="secTit">
+                        <p class="secDes">유저 목록에 출력할 항목을 선택 후 설정하세요</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>유저정보</th>
+                                            <th>사이트 이용정보</th>
+                                            <th>트래킹 정보</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"><span>이름</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox2" value="00">
+                                                <label for="checkbox2"><span>주문수량 / 주문금액</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox3" value="00">
+                                                <label for="checkbox3"><span>디바이스 / OS / <br>통신사 정보</span></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox4" value="00"
+                                                    checked>
+                                                <label for="checkbox4"><span>이메일 / 연락처</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox5" value="00">
+                                                <label for="checkbox5"><span>장바구니 수 /<br> 장바구니 금액</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox6" value="00">
+                                                <label for="checkbox6"><span>크로스 디바이스</span></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox7" value="00"
+                                                    checked>
+                                                <label for="checkbox7"><span>나이 / 생년월일</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox8" value="00">
+                                                <label for="checkbox8"><span>방문수 / 로그인 수</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox9" value="00">
+                                                <label for="checkbox9"><span>사이트 방문 이력</span></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox10" value="00"
+                                                    checked>
+                                                <label for="checkbox10"><span>성별 / 결혼여부</span></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox11" value="00">
+                                                <label for="checkbox11"><span>최근 구매일 / <br>최근 방문일 / <br>회원가입
+                                                        일</span></label>
+                                            </td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox12" value="00">
+                                                <label for="checkbox12"><span>매체성향</span></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox13" value="00"
+                                                    checked>
+                                                <label for="checkbox13"><span>지역</span></label></td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+                <!-- <div class="btnArea">
+                    <button type="button" class="register">설정</button>
+                </div> -->
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="register">설정</button>
+            </div>
+        </div>
+        <!--// md_userColumnModify end -->
+        <p>고객로그 > 유저 항목 열 수정(수정전)</p>
+        <p> >>사용시 inline 스타일 제거 후 css 추가</p>
+        <!-- CDP 고객로그 > 유저 항목 열 수정 -->
+        <div class="modalWrap md_userColumnModify" style="height:680px">
+            <div class="modalTitle">
+                <p>유저 항목 열 수정</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_userColumnModify">
+                    <div class="secTit">
+                        <p class="secDes">유저 목록에 출력할 항목을 선택 후 설정하세요</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>유저정보</th>
+                                            <th>사이트 이용정보</th>
+                                            <th>트래킹 정보</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1">이름</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox2" value="00">
+                                                <label for="checkbox2">주문수량</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox3" value="00">
+                                                <label for="checkbox3">디바이스</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox4" value="00"
+                                                    checked>
+                                                <label for="checkbox4">이메일</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox5" value="00">
+                                                <label for="checkbox5">주문금액</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox6" value="00">
+                                                <label for="checkbox6">OS</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox7" value="00"
+                                                    checked>
+                                                <label for="checkbox7">연락처</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox8" value="00">
+                                                <label for="checkbox8">장바구니수</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox9" value="00">
+                                                <label for="checkbox9">통신사정보</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox10" value="00"
+                                                    checked>
+                                                <label for="checkbox10">나이</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox11" value="00">
+                                                <label for="checkbox11">장바구니금액</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox12" value="00">
+                                                <label for="checkbox12">크로스 디바이스</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox13" value="00"
+                                                    checked>
+                                                <label for="checkbox13">생년월일</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox14" value="00">
+                                                <label for="checkbox14">방문수</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox15" value="00">
+                                                <label for="checkbox15">사이트 방문이력</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox16" value="00"
+                                                    checked>
+                                                <label for="checkbox16">성별</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox17" value="00">
+                                                <label for="checkbox17">로그인수</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox18" value="00">
+                                                <label for="checkbox18">매체성향</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox19" value="00"
+                                                    checked>
+                                                <label for="checkbox19">결혼여부</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox20" value="00">
+                                                <label for="checkbox20">최근구매일</label></td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox21" value="00"
+                                                    checked>
+                                                <label for="checkbox21">지역</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox22" value="00">
+                                                <label for="checkbox22">최근방문일</label></td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox23" value="00"
+                                                    checked>
+                                                <label for="checkbox23">회원등급</label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox24" value="00">
+                                                <label for="checkbox24">회원가입일</label></td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="register">설정</button>
+            </div>
+        </div>
+        <!--// md_userColumnModify end -->
+        <p>고객로그 > 크로스 디바이스 정보</p>
+        <!-- CDP 고객로그 > 크로스 디바이스 정보 -->
+        <div class="modalWrap md_crossDeviceInfo">
+            <div class="modalTitle">
+                <p>크로스 디바이스 정보</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_crossDeviceInfo">
+                    <div class="secTit">
+                        <p class="secDes">AU_ID : 774ca63b7735171f-4e68ecde1781576d648-5adb</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Device</th>
+                                            <th>OS</th>
+                                            <th>Browser</th>
+                                            <th>AU_ID</th>
+                                            <th>IP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>11111</td>
+                                            <td>mobile</td>
+                                            <td>Windows</td>
+                                            <td>Chrome</td>
+                                            <td>f-4e68ecde1776-4e68ecde1776-4e68ecde1776</td>
+                                            <td>221.150.126.75</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>mobile</td>
+                                            <td>Windows</td>
+                                            <td>Chrome</td>
+                                            <td>f-4e68ecde1776-4e68ecde1776-4e68ecde1776</td>
+                                            <td>221.150.126.75</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_userColumnModify end -->
+        <p>고객로그 > 사이트 방문 이력 </p>
+        <!-- CDP 고객로그 > 사이트 방문 이력 -->
+        <div class="modalWrap md_visitHistory">
+            <div class="modalTitle">
+                <p>사이트 방문 이력</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_crossDeviceInfo">
+                    <div class="secTit">
+                        <p class="secDes">AU_ID : 774ca63b7735171f-4e68ecde1781576d648-5adb</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>URL</th>
+                                            <th>접속횟수</th>
+                                            <th>마지막 접속일시</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>madamgrade1.cafe24.com</td>
+                                            <td>23</td>
+                                            <td>2021-12-07 09:04:06</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1111</td>
+                                            <td>madamgrade1madamgrade1madamgrade1madamgrade1.cafe24.com</td>
+                                            <td>23</td>
+                                            <td>2021-12-07 09:04:06</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_visitHistory end -->
+        <p>고객분석 > 캠페인 상품 선택</p>
+        <p>md_campaignPrdChoice</p>
+        <!-- CDP 고객분석 > 캠페인 상품 선택 -->
+        <div class="modalWrap md_campaignPrdChoice">
+            <div class="modalTitle">
+                <p>캠페인 상품 선택</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_campaignPrdChoice">
+                    <div class="secTit">
+                        <p class="secDes">캠페인 조건에 등록하실 상품을 선택하세요.</p>
+                        <p class="secDes">결과 : <span>10,000</span></p>
+                        <p class="secDes">총 : <span>10</span></p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableHeader">
+                            <div class="selectBox"><select name="" id="">
+                                    <option value="">상품명</option>
+                                </select></div>
+                            <div class="searchBox">
+                                <div class="inputSearch">
+                                    <input type="text" name="" id="" placeholder="검색어를 입력하세요">
+                                    <button type="button" class="search">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>상품코드</th>
+                                            <th>상품이미지</th>
+                                            <th>선택</th>
+                                            <th>상품명</th>
+                                            <th>가격</th>
+                                            <th>등록일</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>30</td>
+                                            <td><img src="../../img/test/graph1.png" alt=""></td>
+                                            <td><button type="button" class="choice">선택</button></td>
+                                            <td>[삼성전자] 양문형냉장고양문형냉장고양문형냉장고양문형냉장고양문형냉장고양문형냉장고 T9000 [RF905VCLASAL] (901L)
+                                            </td>
+                                            <td>2,671</td>
+                                            <td>2021-12-12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>30</td>
+                                            <td><img src="../../img/test/graph1.png" alt=""></td>
+                                            <td><button type="button" class="choice">선택</button></td>
+                                            <td>[삼성전자] 양문형냉장고 T9000 [RF905VCLASAL] (901L) </td>
+                                            <td>2,671,000</td>
+                                            <td>2021-12-12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="close">닫기</button>
+            </div>
+        </div>
+        <!--// md_campaignPrdChoice end -->
+        <p>캠페인관리 > 캠페인 생성</p>
+        <p>md_campaignCreate</p>
+        <!-- CDP 캠페인관리 > 캠페인 생성 -->
+        <div class="modalWrap md_campaignCreate">
+            <div class="modalTitle">
+                <p>캠페인 생성</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="modalSection">
+                    <div class="box_txt">
+                        <p><span>설정하신 조건으로 캠페인을 생성하시려면, 캠페인명을 입력해주세요.</p>
+                    </div>
+                    <div class="box_input">
+                        <div class="inputBox">
+                            <input type="text" name="" id="" placeholder="캠페인 이름을 입력해주세요.">
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="create">캠페인생성</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_campaignCreate end -->
+        <p>캠페인관리 > 추천 캠페인 불러오기(수정/초기화)</p>
+        <p>md_campaignCall</p>
+        <!-- CDP 캠페인관리 > 추천 캠페인 불러오기(수정/초기화) -->
+        <div class="modalWrap md_campaignCall">
+            <div class="modalTitle">
+                <p>추천 캠페인 불러오기</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_campaignCall">
+                    <div class="secTit">
+                        <p class="secDes">추천 캠페인을 기본 조건으로 바로 생성하거나, 조건값을 수정한 후 생성할 수 있습니다.</p>
+                        <p class="secDes">단, 통계 데이터로 사용되고 있는 필수 캠페인의 조건값 수정은 가능하지만 삭제할 수 없습니다. </p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>구분</th>
+                                            <th>캠페인명</th>
+                                            <th>추가 생성</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>추천</td>
+                                            <td>장바구니 리마인드<i class="Qmark"></i></td>
+                                            <td><button type="button" class="create">생성</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>추천</td>
+                                            <td>장바구니 리마인드<i class="Qmark"></i></td>
+                                            <td><button type="button" class="reset">초기화</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_campaignCall end -->
+        <p>캠페인관리 > 추천 캠페인 불러오기(전체리스트)</p>
+        <!-- CDP 캠페인관리 > 추천 캠페인 불러오기(전체리스트) -->
+        <div class="modalWrap md_campaignCallList">
+            <div class="modalTitle">
+                <p>연동채널</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_campaignCallList">
+                    <div class="secTit">
+                        <p class="secDes">캠페인명: <span>전체회원</span></p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="tableBox">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>번호</th>
+                                            <th>연결된 서비스명</th>
+                                            <th>연결일자</th>
+                                            <th>사용횟수</th>
+                                            <th>마지막 사용일자</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>CMP</td>
+                                            <td>2021-08-05</td>
+                                            <td>8</td>
+                                            <td>2021-08-05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>CMP</td>
+                                            <td>2021-08-05</td>
+                                            <td>1,118</td>
+                                            <td>2021-08-05</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_campaignCallList end -->
+        <p>캠페인관리 > 캠페인 통계</p>
+        <!-- CDP 캠페인관리 > 캠페인통계 -->
+        <div class="modalWrap md_campaignState">
+            <div class="modalTitle">
+                <p>캠페인 통계</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_campaignState">
+                    <div class="secTit">
+                        <p class="secDes">캠페인명:<span> 최근 180일간 18~21:00시 2회 이상 방문</span></p>
+                        <p class="secDes">등록일 :<span>2021-07-06</span></p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tab">
+                            <ul>
+                                <li class="on">일간</li>
+                                <li>주간</li>
+                                <li>월간</li>
+                            </ul>
+                        </div>
+                        <div class="tabView">
+                            <div class="tabViewList show">
+                                <div class="graphBox" style="border: 1px solid #f00;">
+                                    <div>그래프</div>
+                                </div>
+                                <div class="titBox">
+                                    <p>데이터 일간 내역</p>
+                                </div>
+                                <div class="tableWrap">
+                                    <div class="tableBox">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>일자별 (24시간 기준)</th>
+                                                    <th>대상 모수</th>
+                                                    <th>실회원</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>521</td>
+                                                    <td>2021-06-07 (월)</td>
+                                                    <td>18,023</td>
+                                                    <td>102,251</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="paging">
+                                    <ul>
+                                        <li class="prev"><a href="javascript:pageLink(0);"></a></li>
+                                        <li class="on"><a href="javascript:pageLink(1);">1</a></li>
+                                        <li><a href="javascript:pageLink(2);">2</a></li>
+                                        <li><a href="javascript:pageLink(3);">3</a></li>
+                                        <li><a href="javascript:pageLink(4);">4</a></li>
+                                        <li><a href="javascript:pageLink(5);">5</a></li>
+                                        <li><a href="javascript:pageLink(6);">6</a></li>
+                                        <li><a href="javascript:pageLink(7);">7</a></li>
+                                        <li><a href="javascript:pageLink(8);">8</a></li>
+                                        <li><a href="javascript:pageLink(9);">9</a></li>
+                                        <li><a href="javascript:pageLink(10);">10</a></li>
+                                        <li class="next"><a href="javascript:pageLink(10+1);"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tabViewList"></div>
+                            <div class="tabViewList"></div>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_campaignCallList end -->
+        <strong>설정 메뉴</strong>
+        <p>설정 > 비밀번호 변경</p>
+        <p>md_passwordChange</p>
+        <!-- 설정 > 비밀번호 변경 -->
+        <div class="modalWrap md_passwordChange">
+            <div class="modalTitle">
+                <p>패스워드 변경</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="modalSection">
+                    <div class="box_txt">
+                        <p><span>8~16자 영문, 숫자, 특수문자를</span>사용하세요.</p>
+                    </div>
+                    <div class="box_input">
+                        <div class="inputBox">
+                            <p>현재 패스워드</p>
+                            <input type="password" name="" id="" placeholder="현재 패스워드 입력">
+                        </div>
+                        <div class="inputBox">
+                            <p>변경할 패스워드</p>
+                            <input type="password" name="" id="" placeholder="변경할 패스워드 입력">
+                        </div>
+                        <div class="inputBox">
+                            <p>패스워드 확인</p>
+                            <input type="password" name="" id="" placeholder="패스워드를 입력해주세요.">
+                            <p class="warning">입력한 정보가 일치하지 않습니다.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="save">저장</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_passwordChange end -->
+        <p>설정 > 서브 운영자 등록</p>
+        <p>md_subManagerRegister</p>
+        <!-- 설정 > 서브 운영자 등록 -->
+        <div class="modalWrap md_subManagerRegister">
+            <div class="modalTitle">
+                <p>서브 운영자 등록</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_subManagerRegister">
+                    <div class="secTit">
+                        <p>서브 운영자 등록</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="divTable divTableColumn">
+                                <div class="divTblBody">
+                                    <div class="divTblTr">
+                                        <div>아이디</div>
+                                        <div><input type="text" name="" id="" placeholder="아이디를 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">비밀번호</div>
+                                        <div><input type="password" name="" id=""
+                                                placeholder="8~16자 영문, 숫자, 특수문자를 사용하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">비밀번호 확인</div>
+                                        <div><input type="password" name="" id="" placeholder="비밀번호를 한번 더 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>구분</div>
+                                        <div>
+                                            <div class="radioBox">
+                                                <input type="radio" name="radioName3" id="radio1" value="00" checked>
+                                                <label for="radio1" checked>임직원</label>
+                                                <input type="radio" name="radioName3" id="radio2" value="01">
+                                                <label for="radio2">대행사</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>기업명</div>
+                                        <div><input type="text" name="" id="" placeholder="남양유업(주)" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>부서/팀</div>
+                                        <div><input type="text" name="" id="" placeholder="부서/팀을 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">담당자</div>
+                                        <div>
+                                            <input type="text" name="" id="" class="wdSmall" placeholder="담당자를 입력하세요.">
+                                            <div class="inputBox">
+                                                <p>직급</p>
+                                                <input type="text" name="" id="" placeholder="직급을 입력하세요.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">휴대폰 번호</div>
+                                        <div>
+                                            <input type="tel" name="" id="">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>사무실 번호</div>
+                                        <div>
+                                            <div>
+                                                <input type="tel" name="" id="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">이메일</div>
+                                        <div><input type="email" name="" id="" placeholder="이메일을 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>로그인 허용</div>
+                                        <div>
+                                            <div class="ip_toggle">
+                                                <input type="checkbox" name="ip_toggle" id="ip_toggle_1" checked>
+                                                <label for="ip_toggle_1">로그인 허용</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">로그인 허용 기간</div>
+                                        <div>
+                                            <div class="calendarBox">
+                                                <div class="calendar">
+                                                    <div class="icon"></div>
+                                                    <div class="dateChoice">
+                                                        <input type="text" id="dateInput" name="dateInput" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">기본 대시보드 브랜드 선택</div>
+                                        <div><select name="" id="" disabled>
+                                                <option value="">권한 없음</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>등록일</div>
+                                        <div>2021-11-10 12:45:32</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnArea">
+                            <button type="button" class="register">등록</button>
+                            <button type="button" class="cancel">취소</button>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_subManagerRegister end -->
+        <p>설정 > 서브 운영자 수정</p>
+        <!-- 설정 > 서브 운영자 수정 -->
+        <div class="modalWrap md_subManagerModify">
+            <div class="modalTitle">
+                <p>서브 운영자 수정</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_subManagerModify">
+                    <div class="secTit">
+                        <p>서브 운영자 수정</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="tableWrap">
+                            <div class="divTable divTableColumn">
+                                <div class="divTblBody">
+                                    <div class="divTblTr">
+                                        <div>아이디</div>
+                                        <div><input type="text" name="" id="" placeholder="아이디를 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">패스워드</div>
+                                        <div><input type="password" name="" id=""
+                                                placeholder="8~16자 영문, 숫자, 특수문자를 사용하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">패스워드 확인</div>
+                                        <div><input type="password" name="" id="" placeholder="비밀번호를 확인해 주세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>구분</div>
+                                        <div>
+                                            <div class="radioBox">
+                                                <input type="radio" name="radioName4" id="radio1" value="00" checked>
+                                                <label for="radio1" checked>임직원</label>
+                                                <input type="radio" name="radioName4" id="radio2" value="01">
+                                                <label for="radio2">대행사</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>기업명</div>
+                                        <div><input type="text" name="" id="" placeholder="남양유업(주)" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>부서/팀</div>
+                                        <div><input type="text" name="" id="" placeholder="부서/팀을 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">담당자</div>
+                                        <div>
+                                            <input type="text" name="" id="" class="wdSmall" placeholder="담당자를 입력하세요.">
+                                            <div class="inputBox">
+                                                <p>직급</p>
+                                                <input type="text" name="" id="" placeholder="직급을 입력하세요.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">휴대폰 번호</div>
+                                        <div>
+                                            <input type="tel" name="" id="">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>사무실 번호</div>
+                                        <div>
+                                            <div>
+                                                <input type="tel" name="" id="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">이메일</div>
+                                        <div><input type="email" name="" id="" placeholder="이메일을 입력하세요.">
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>로그인 허용</div>
+                                        <div>
+                                            <div class="ip_toggle">
+                                                <input type="checkbox" name="ip_toggle" id="ip_toggle_1" checked>
+                                                <label for="ip_toggle_1">로그인 허용</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">로그인 허용 기간</div>
+                                        <div>
+                                            <div class="calendarBox">
+                                                <div class="calendar">
+                                                    <div class="icon"></div>
+                                                    <div class="dateChoice">
+                                                        <input type="text" id="dateInput" name="dateInput" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div class="star">기본 대시보드 브랜드 선택</div>
+                                        <div><select name="" id="" disabled>
+                                                <option value="">권한 없음</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="divTblTr">
+                                        <div>등록일</div>
+                                        <div>2021-11-10 12:45:32</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnArea">
+                            <button type="button" class="register">등록</button>
+                            <button type="button" class="cancel">취소</button>
+                        </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_subManagerModify end -->
+        <p>설정 > 권한 설정</p>
+        <!-- 설정 > 권한 설정 -->
+        <div class="modalWrap md_authSet">
+            <div class="modalTitle">
+                <p>권한 설정</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_brandAuthSet">
+                    <div class="secTit">
+                        <p>브랜드 권한 설정</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="radioBox">
+                            <input type="radio" name="radioName" id="radio1-1" value="00" checked>
+                            <label for="radio1-1">모든 브랜드</label>
+                            <input type="radio" name="radioName" id="radio1-2" value="00">
+                            <label for="radio1-2">남양몰</label>
+                            <input type="radio" name="radioName" id="radio1-3" value="00">
+                            <label for="radio1-3">남양몰</label>
+                        </div>
+                </section>
+                <section class="sec_menuAuthSet">
+                    <div class="secTit">
+                        <p>메뉴 권한 설정</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="radioBox">
+                            <input type="radio" name="radioboxName2" id="radio2-1" class="checkAll" value="00" checked>
+                            <label for="radio2-1">전체 설정</label>
+                            <input type="radio" name="radioboxName2" id="radio2-2" class="checkRelease" value="00">
+                            <label for="radio2-2">선택 설정</label>
+                        </div>
+                        <div class="tableWrap">
+                            <div class="tableBox checkAllArea">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">메뉴</th>
+                                            <th>열람</th>
+                                            <th>등록</th>
+                                            <th>수정/삭제</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2">Dashboard</th>
+                                            <td> <input type="checkbox" name="checkboxName3" id="checkbox3-1" value="00"
+                                                    checked>
+                                                <label for="checkbox3-1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName3" id="checkbox3-2"
+                                                    value="00">
+                                                <label for="checkbox3-2"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName3" id="checkbox3-3"
+                                                    value="00">
+                                                <label for="checkbox3-3"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="5">트래킹 센터</th>
+                                            <th>Dashboard</th>
+                                            <td> <input type="checkbox" name="checkboxName4" id="checkbox4-1" value="00"
+                                                    checked>
+                                                <label for="checkbox4-1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName4" id="checkbox4-2"
+                                                    value="00">
+                                                <label for="checkbox4-2"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName4" id="checkbox4-3"
+                                                    value="00">
+                                                <label for="checkbox4-3"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>일반 트래킹</th>
+                                            <td> <input type="checkbox" name="checkboxName5" id="checkbox5-1" value="00"
+                                                    checked>
+                                                <label for="checkbox5-1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName5" id="checkbox5-2"
+                                                    value="00">
+                                                <label for="checkbox5-2"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName5" id="checkbox5-3"
+                                                    value="00">
+                                                <label for="checkbox5-3"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고추적 URL 생성</th>
+                                            <td> <input type="checkbox" name="checkboxName6" id="checkbox6-1" value="00"
+                                                    checked>
+                                                <label for="checkbox6-1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName6" id="checkbox6-2"
+                                                    value="00">
+                                                <label for="checkbox6-2"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName6" id="checkbox6-3"
+                                                    value="00">
+                                                <label for="checkbox6-3"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>리포트</th>
+                                            <td> <input type="checkbox" name="checkboxName7" id="checkbox7-1" value="00"
+                                                    checked>
+                                                <label for="checkbox7-1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName7" id="checkbox7-2"
+                                                    value="00">
+                                                <label for="checkbox7-2"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName7" id="checkbox7-3"
+                                                    value="00">
+                                                <label for="checkbox7-3"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>트래킹 관리</th>
+                                            <td> <input type="checkbox" name="checkboxName8" id="checkbox8-1" value="00"
+                                                    checked>
+                                                <label for="checkbox8-1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName8" id="checkbox8-2"
+                                                    value="00">
+                                                <label for="checkbox8-2"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName8" id="checkbox8-3"
+                                                    value="00">
+                                                <label for="checkbox8-3"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="4">CDP</th>
+                                            <th>Dashboard</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>고객 로그</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>고객 분석</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>캠페인 관리</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="4">설정</th>
+                                            <th>사용자 정보</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>권한 설정</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>브랜드 설정</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>공지사항</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00">
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function (e) {
+                                $(".modalWrap.md_authSet").find(".checkAllArea input[type=checkbox]").prop(
+                                    'checked', true);
+                                $('.checkAll').click(function () {
+                                    $(this).closest("section").find(
+                                        ".checkAllArea input[type=checkbox]").prop('checked', this
+                                        .checked);
+                                });
+                                $('.checkRelease').click(function () {
+                                    $(this).closest("section").find(
+                                        ".checkAllArea input[type=checkbox]",
+                                        ".checkAll input[type=checkbox]").prop('checked', false);
+                                });
+                            });
+                        </script>
+                </section>
+                <section class="sec_lastConfirmTime">
+                    <div class="secTit">
+                        <p>마지막 수정 시간</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="lastConfirmTime">
+                            <p>2022-03-15 20:57:55</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="btnArea">
+                    <button type="button" class="register">등록</button>
+                    <button type="button" class="cancel">취소</button>
+                </div>
+            </div>
+        </div>
+        <!--// md_authSet end -->
+        <p>설정 > 권한 설정(수정후_22.01.20)</p>
+        <!-- 설정 > 권한 설정 -->
+        <div class="modalWrap md_authSet">
+            <div class="modalTitle">
+                <p>권한 설정</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_brandAuthSet">
+                    <div class="secTit">
+                        <p>브랜드 권한 설정</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="checkBox">
+                            <input type="checkbox" name="checkboxName" id="checkbox1-1" value="00" checked>
+                            <label for="checkbox1-1">모든 브랜드</label>
+                            <input type="checkbox" name="checkboxName" id="checkbox1-2" value="00">
+                            <label for="checkbox1-2">남양몰</label>
+                            <input type="checkbox" name="checkboxName" id="checkbox1-3" value="00">
+                            <label for="checkbox1-3">남양몰</label>
+                        </div>
+                </section>
+                <section class="sec_menuAuthSet">
+                    <div class="secTit">
+                        <p>메뉴 권한 설정</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="checkBox">
+                            <input type="checkbox" name="checkboxboxName2" id="checkbox2-1" class="checkAll" value="00"
+                                checked>
+                            <label for="checkbox2-1">전체 설정</label>
+                        </div>
+                        <div class="tableWrap">
+                            <div class="tableBox checkAllArea">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">메뉴</th>
+                                            <th>허용</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="2">Dashboard</th>
+                                            <td> <input type="checkbox" name="checkboxName3" id="checkbox3-1" value="00"
+                                                    checked>
+                                                <label for="checkbox3-1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="5">트래킹 센터</th>
+                                            <th>Dashboard</th>
+                                            <td> <input type="checkbox" name="checkboxName4" id="checkbox4-1" value="00"
+                                                    checked>
+                                                <label for="checkbox4-1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>일반 트래킹</th>
+                                            <td> <input type="checkbox" name="checkboxName5" id="checkbox5-1" value="00"
+                                                    checked>
+                                                <label for="checkbox5-1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고추적 URL 생성</th>
+                                            <td> <input type="checkbox" name="checkboxName6" id="checkbox6-1" value="00"
+                                                    checked>
+                                                <label for="checkbox6-1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>리포트</th>
+                                            <td> <input type="checkbox" name="checkboxName7" id="checkbox7-1" value="00"
+                                                    checked>
+                                                <label for="checkbox7-1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>트래킹 관리</th>
+                                            <td> <input type="checkbox" name="checkboxName8" id="checkbox8-1" value="00"
+                                                    checked>
+                                                <label for="checkbox8-1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="4">CDP</th>
+                                            <th>Dashboard</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>고객 로그</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>고객 분석</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>캠페인 관리</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="4">설정</th>
+                                            <th>사용자 정보</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>권한 설정</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>브랜드 설정</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>공지사항</th>
+                                            <td> <input type="checkbox" name="checkboxName" id="checkbox1" value="00"
+                                                    checked>
+                                                <label for="checkbox1"></label></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function (e) {
+                                $(".modalWrap.md_authSet").find(".checkAllArea input[type=checkbox]").prop(
+                                    'checked', true);
+                                $('.checkAll').click(function () {
+                                    $(this).closest("section").find(
+                                        ".checkAllArea input[type=checkbox]").prop('checked', this
+                                        .checked);
+                                });
+                                $('.checkRelease').click(function () {
+                                    $(this).closest("section").find(
+                                        ".checkAllArea input[type=checkbox]",
+                                        ".checkAll input[type=checkbox]").prop('checked', false);
+                                });
+                            });
+                        </script>
+                </section>
+                <section class="sec_lastConfirmTime">
+                    <div class="secTit">
+                        <p>마지막 수정 시간</p>
+                    </div>
+                    <div class="secCont">
+                        <div class="lastConfirmTime">
+                            <p>2022-03-15 20:57:55</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="btnArea">
+                    <button type="button" class="register">등록</button>
+                    <button type="button" class="cancel">취소</button>
+                </div>
+            </div>
+        </div>
+        <!--// md_authSet end -->
+        <p>설정 > Web 스크립트-1</p>
+        <!-- 설정 >  Web 스크립트-1 -->
+        <div class="modalWrap md_scriptGuide">
+            <div class="modalTitle">
+                <p>Web 스크립트</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_script">
+                    <div class="box_android">
+                        <p>Android</p>
+                        <button type="button" class="sdkGuide">SDK가이드-Github</button>
+                    </div>
+                    <div class="box_ios">
+                        <p>iOS</p>
+                        <button type="button" class="sdkGuide">SDK가이드-Github</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_scriptGuide end -->
+        <p>설정 > Web 스크립트-2</p>
+        <!-- 설정 >  Web 스크립트-2 -->
+        <div class="modalWrap md_webScript">
+            <div class="modalTitle">
+                <p>Web 스크립트</p>
+                <button type="button" class="close">닫기</button>
+            </div>
+            <div class="modalContent">
+                <section class="sec_webScript">
+                    <div>
+                        <p>해당 Script를 서비스 &#60;head&#62; 태그 영역에 삽입하면,<br>WEB 플랫폼의 전반적 트래킹 및 데이터 연동에 대해서 컨트롤 기능을 제공합니다.
+                        </p>
+                    </div>
+                    <div>
+                        <p>사이트 솔루션을 선택하세요.</p>
+                        <div class="selectBox"><select name="" id="">
+                                <option value="">cafe24</option>
+                            </select></div>
+                        <div class="btnBox"><button type="button" class="download">다운로드</button><button type="button"
+                                class="copy">복사</button>
+                        </div>
+                    </div>
+                    <div><textarea name="" id="" disabled>
+                                </textarea>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!--// md_webScript end -->
+        <p>설정 > APP 관리 (수정 22.01.27)</p>
+        <p>md_appSupervise</p>
+        <!-- 설정 >  APP 관리 -->
+        <div class="modalWrap md_appSupervise">
+            <div class="modalTitle">
+                <p>APP 관리</p>
+            </div>
+            <div class="modalContent">
+                <section class="sec_appSupervise">
+                    <div class="tableWrap">
+                        <div class="divTable divTableColumn">
+                            <div class="divTblBody">
+                                <div class="divTblTr">
+                                    <div>Platform</div>
+                                    <div>
+                                        <div>
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise1" value="00" checked="">
+                                                <label for="appSupervise1"><i class="android">Android</i>Android</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise2" value="00">
+                                                <label for="appSupervise2"><i class="ios">iOS</i>iOS</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise3" value="00">
+                                                <label for="appSupervise3"><i class="web">Web</i>Web</label>
+                                            </div>
+                                        </div>
+                                        <p class="warning">※ 통합 트래킹에서 확인할 플랫폼을 모두 선택하세요. </p>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>APP Name</div>
+                                    <div>
+                                        <div><input type="text" name="" id="" class="inputWarning">
+                                        </div>
+                                        <p class="warning">20자 이상 입력할 수 없습니다.</p>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Application Key</div>
+                                    <div>
+                                        <div><input type="text" name="" id="" placeholder="abcdefg_test" disabled></div>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Category</div>
+                                    <div>
+                                        <div><select name="" id="">
+                                                <option value="">Commerce</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Timezone</div>
+                                    <div>
+                                        <div><select name="" id="">
+                                                <option value="">UTC+9</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="create">생성</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_appSupervise end -->
+        <p>설정 > APP 관리 (수정 22.01.27 - Application Key 없는 경우)</p>
+        <p>md_appSupervise</p>
+        <!-- 설정 >  APP 관리 -->
+        <div class="modalWrap md_appSupervise">
+            <div class="modalTitle">
+                <p>APP 관리</p>
+            </div>
+            <div class="modalContent">
+                <section class="sec_appSupervise">
+                    <div class="tableWrap">
+                        <div class="divTable divTableColumn">
+                            <div class="divTblBody">
+                                <div class="divTblTr">
+                                    <div>Platform</div>
+                                    <div>
+                                        <div>
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise1" value="00" checked="">
+                                                <label for="appSupervise1"><i class="android">Android</i>Android</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise2" value="00">
+                                                <label for="appSupervise2"><i class="ios">iOS</i>iOS</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise3" value="00">
+                                                <label for="appSupervise3"><i class="web">Web</i>Web</label>
+                                            </div>
+                                        </div>
+                                        <p class="warning">※ 통합 트래킹에서 확인할 플랫폼을 모두 선택하세요. </p>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>APP Name</div>
+                                    <div>
+                                        <div><input type="text" name="" id="" class="inputWarning">
+                                        </div>
+                                        <p class="warning">20자 이상 입력할 수 없습니다.</p>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Category</div>
+                                    <div>
+                                        <div><select name="" id="">
+                                                <option value="">Commerce</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Timezone</div>
+                                    <div>
+                                        <div><select name="" id="">
+                                                <option value="">UTC+9</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="create">생성</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_appSupervise end -->
+        <p>설정 > APP 관리</p>
+        <p> (수정전 >> 사용시 인라인 스타일 제거 후 CSS 수정요청 요청)</p>
+        <!-- 설정 >  APP 관리 -->
+        <div class="modalWrap md_appSupervise" style="height:680px">
+            <div class="modalTitle">
+                <p>APP 관리</p>
+            </div>
+            <div class="modalContent" style="height:520px;">
+                <section class="sec_appSupervise">
+                    <div class="tableWrap">
+                        <div class="divTable divTableColumn">
+                            <div class="divTblBody">
+                                <div class="divTblTr">
+                                    <div>Platform</div>
+                                    <div>
+                                        <div style="display: flex; width: auto;">
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise1" value="00" checked="">
+                                                <label for="appSupervise1"><i class="android">Android</i>Android</label>
+                                            </div>
+                                            <div class="searchBox">
+                                                <div class="inputSearch">
+                                                    <input type="text" name="" id="" placeholder="앱 이름을 검색하세요">
+                                                    <button type="button" class="search">확인</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display: flex; width: auto;">
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise2" value="00">
+                                                <label for="appSupervise2"><i class="ios">iOS</i>iOS</label>
+                                            </div>
+                                            <div class="searchBox">
+                                                <div class="inputSearch">
+                                                    <input type="text" name="" id="" placeholder="앱 이름을 검색하세요">
+                                                    <button type="button" class="search">확인</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display: flex; width: auto;">
+                                            <div class="checkBox">
+                                                <input type="checkbox" name="checkboxName_appSupervise"
+                                                    id="appSupervise3" value="00">
+                                                <label for="appSupervise3"><i class="web">Web</i>Web</label>
+                                            </div>
+                                            <div class="searchBox">
+                                                <div class="inputSearch">
+                                                    <input type="text" name="" id="" placeholder="PC URL을 입력하세요">
+                                                    <button type="button" class="search">확인</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="warning">※ 통합 트래킹에서 확인할 플랫폼을 모두 선택하세요. </p>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>APP Name</div>
+                                    <div>
+                                        <div><input type="text" name="" id="" class="inputWarning">
+                                        </div>
+                                        <p class="warning">20자 이상 입력할 수 없습니다.</p>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Category</div>
+                                    <div>
+                                        <div><select name="" id="">
+                                                <option value="">Commerce</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                                <div class="divTblTr">
+                                    <div>Timezone</div>
+                                    <div>
+                                        <div><select name="" id="">
+                                                <option value="">UTC+9</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modalFooter">
+                <button type="button" class="create">생성</button>
+                <button type="button" class="cancel">취소</button>
+            </div>
+        </div>
+        <!--// md_appSupervise end -->
+        <section class="contents_wrapper">
+            <div class="contents">
+            </div>
+            <!--// md_interlockChannel end -->
+            <footer class="footer">
+                <h2 class="hide">하단 회사 정보 영역</h2>
+                <p>
+                    <span>(주)인라이플</span><span>113-86-60934</span><span>한경훈,이근옥</span><span>서울특별시 구로구 구로동 디지털로 272
+                        한신아이티타워 501호~504호</span>
+                </p>
+                <p>
+                    <span>TEL .070-7705-2093(948)</span><span>FAX .02-865-6845</span><span>E-mail :
+                        mobsense@enliple.com</span>
+                </p>
+                <p>Copyright ⓒ MOBON All rights reserved.</p>
+            </footer>
+        </section>
+    </div>
+</body>
+
+</html>

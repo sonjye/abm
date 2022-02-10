@@ -1,0 +1,177 @@
+@charset "UTF-8";
+/*-------------------------------------------------------------------------------------------------------------
+    File   : excelForm.scss
+    Date   : 2022.01.27
+/*------------------------------------------------------------------------------------------------------------*/
+/********** excelForm  **********/
+/* guide */
+/* 
+1. excel의 경우 class 값이 먹지 않으니 id값으로 제작
+타이틀 table과 리스트 table 두개로 분리해서 적용 
+ex) excelFormTitle_visitUser,
+excelFormList_visitUser (excelForm + Title or list + 고유 페이지명으로 아이디값 제작하였음)
+2. 태그 구조는 기존 제작된 구조를 참고하여 제작할 것
+3. 상단의 common 스타일은 공통 부분이므로 html 상단에 공통적으로 추가해 주고 
+하단의 개별 스타일 추가 
+4. 스타일 추가시 scss파일을 css로 변환후 css 파일의 내용을 html에 <style> </style> 태그안에 추가할 것
+5. 폰트는 스타일이 적용되지 않으므로 필히 추가해야 할 경우 다른 방법 찾아봐야 함
+*/
+/* 참고 css 부분 */
+/* red color : #e82e2e , blue color : #3082ec */
+/********** excelForm  **********/
+/* excelForm common */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  font-family: "NotoSansR;";
+}
+
+table thead tr th,
+table thead tr td {
+  padding: 6px 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  border: 1px solid #e9e9e9;
+  border-width: thin;
+}
+
+table thead tr th h1 {
+  margin: 0;
+  padding: 30px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+table thead tr td {
+  text-align: right;
+  padding: 2px 10px;
+}
+
+table tbody tr th,
+table tbody tr td {
+  text-align: center;
+  padding: 10px 10px;
+  color: #333;
+  text-align: center;
+  border: 1px solid #e9e9e9;
+  border-width: thin;
+}
+
+table tbody tr th {
+  padding: 12px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #f8f8f8;
+}
+
+table tbody tr td {
+  font-size: 13px;
+}
+
+/* excelForm each  */
+/**** 광고 추적 리포트 *****/
+/* excelFormTitle_adTrackingReport */
+#excelFormTitle_adTrackingReport tr th,
+#excelFormTitle_adTrackingReport tr td {
+  border: none;
+}
+
+/* excelFormTitle_adTrackingReport */
+#excelFormList_adTrackingReport {
+  margin-top: 20px;
+}
+
+#excelFormList_adTrackingReport thead tr th,
+#excelFormList_adTrackingReport thead tr td {
+  background-color: #f8f8f8;
+}
+
+#excelFormList_adTrackingReport thead tr th {
+  padding: 12px 10px;
+}
+
+#excelFormList_adTrackingReport tbody tr th {
+  background-color: #fff0f0;
+}
+
+#excelFormList_adTrackingReport tbody tr th p {
+  margin: 0;
+}
+
+#excelFormList_adTrackingReport tbody tr td:first-child {
+  text-align: left;
+}
+
+/**** APP유지율 분석 *****/
+/* excelFormTitle_appPersist */
+#excelFormTitle_appPersist tr th,
+#excelFormTitle_appPersist tr td {
+  border: none;
+}
+
+/* excelFormList_appPersist */
+#excelFormList_appPersist {
+  margin-top: 20px;
+}
+
+#excelFormList_appPersist thead tr th,
+#excelFormList_appPersist thead tr td {
+  padding: 12px 10px;
+  font-weight: bold;
+  background-color: #f8f8f8;
+}
+
+#excelFormList_appPersist tbody tr th p,
+#excelFormList_appPersist tbody tr td p {
+  margin: 0;
+}
+
+/**** 통합트래킹 *****/
+/* excelFormTitle_totalTracking */
+#excelFormTitle_totalTracking tr th,
+#excelFormTitle_totalTracking tr td {
+  border: none;
+}
+
+/* excelFormList_totalTracking */
+#excelFormList_totalTracking {
+  margin-top: 20px;
+}
+
+#excelFormList_totalTracking thead tr th {
+  padding: 12px 10px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #f8f8f8;
+}
+
+#excelFormList_totalTracking thead tr:nth-child(2) th {
+  background-color: #fff0f0;
+}
+
+#excelFormList_totalTracking tbody tr th,
+#excelFormList_totalTracking tbody tr td {
+  font-weight: normal;
+  background-color: #fff;
+}
+
+/***** 180일 이내 방문한 유저 *****/
+/* excelFormTitle_visitUser */
+#excelFormTitle_visitUser tr th,
+#excelFormTitle_visitUser tr td {
+  border: none;
+}
+
+/* excelFormList_visitUser */
+#excelFormList_visitUser {
+  margin-top: 20px;
+}
+
+#excelFormList_visitUser thead tr th {
+  padding: 12px 10px;
+  background-color: #f8f8f8;
+}

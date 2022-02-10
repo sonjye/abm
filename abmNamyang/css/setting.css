@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*-------------------------------------------------------------------------------------------------------------
+    File   : setting.scss
+    Date   : 2021.11.24
+/*------------------------------------------------------------------------------------------------------------*/
+/********** salesStatus common css **********/
+/********** salesStatus each css **********/
+.abmNamyang {
+  /* layout 참고  */
+}
+
+.abmNamyang.abmNamyang_layout section.sec_userInfo .box_userInfo .cont .tableWrap,
+.abmNamyang.abmNamyang_layout section.sec_userInfo .box_setBrand .cont .tableWrap,
+.abmNamyang.abmNamyang_layout section.sec_userInfo .box_serviceInfo .cont .tableWrap {
+  margin-top: 16px;
+}
+
+.abmNamyang.abmNamyang_layout section.sec_userInfo .box_userInfo .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(odd),
+.abmNamyang.abmNamyang_layout section.sec_userInfo .box_setBrand .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(odd),
+.abmNamyang.abmNamyang_layout section.sec_userInfo .box_serviceInfo .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(odd) {
+  width: 230px;
+}
+
+/***** 01.menu - userAdmin *****/

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.165" height="44.073" viewBox="0 0 17.165 44.073">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round}
+        </style>
+    </defs>
+    <g id="ic_scrolll_arrow" transform="rotate(90 797.326 -83.944)">
+        <path id="Line_25" fill="none" stroke="#fff" d="M0 0L43.332 0" transform="translate(881.27 704.878)"/>
+        <g id="Group_26" transform="translate(918.073 696.922)">
+            <path id="Line_15" d="M6.565 7.878L0 0" class="cls-2"/>
+            <path id="Line_16" d="M6.565 0L0 7.878" class="cls-2" transform="translate(0 7.878)"/>
+        </g>
+    </g>
+</svg>

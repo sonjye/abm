@@ -1,0 +1,301 @@
+/********** common  **********/
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::-moz-selection {
+  background: #85b74e;
+}
+
+::selection {
+  background: #85b74e;
+}
+
+/********** modal  **********/
+.popup_dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  background: #000000;
+  opacity: 0.2;
+  z-index: 998;
+}
+
+.popup_dim.hidden {
+  display: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+  height: 100%;
+  padding-top: 3%;
+  overflow: auto;
+  background-color: rgba(86, 98, 109, 0.5);
+}
+
+.modalContent {
+  width: 600px;
+  padding: 20px;
+  margin: auto auto 200px;
+  background-color: #fefefe;
+  border-radius: 5px;
+  position: relative;
+}
+
+.modalContent .modalMainTitle {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dadada;
+  font-size: 18px;
+  color: #3e3e3e;
+  font-weight: bold;
+}
+
+.modalContent .modalSection {
+  margin-top: 20px;
+}
+
+.modalContent .modalFooter {
+  margin: 30px 30px 10px;
+  text-align: center;
+}
+
+.modalContent .modalFooter button {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background: #85b74e;
+  color: #fff;
+  min-height: 30px;
+  line-height: 28px;
+  padding: 0 30px;
+  border-radius: 3px;
+  margin: 0 3px;
+}
+
+.modalContent .modalFooter button:hover {
+  -webkit-box-shadow: 0.8px 0.6px 5px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0.8px 0.6px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.modalContent .modalFooter button.cancel {
+  background: #ddd;
+}
+
+.modalContent.alert {
+  width: 400px;
+}
+
+.modalContent.dspSetting {
+  width: 600px;
+}
+
+.modalContent.dspSetting .allCheckItems ul {
+  max-height: 300px;
+  overflow-y: scroll;
+  padding: 15px 0 0 0;
+  margin: 15px 0 0 0;
+  border-top: 1px solid #eaeaea;
+}
+
+.modalContent.dspSetting .allCheckItems ul li {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 15px 17px 0;
+}
+
+.modalContent.blockedSetting {
+  width: 800px;
+}
+
+.modalContent.blockedSetting .optionBox {
+  margin: 0;
+}
+
+.modalContent.blockedSetting .setType {
+  margin: 0 0 15px 0;
+}
+
+.modalContent.blockedSetting .setType .allCheckItems input,
+.modalContent.blockedSetting .setType .allCheckItems label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.modalContent.blockedSetting .setType .allCheckItems label {
+  margin-right: 10px;
+}
+
+.modalContent.blockedSetting .tabMenu {
+  margin-bottom: 30px;
+}
+
+.modalContent.blockedSetting .tabCont {
+  position: relative;
+}
+
+.modalContent.blockedSetting .tabCont .box > .btn-default {
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+
+.modalContent.blockedSetting .optLists {
+  max-height: 240px;
+  overflow-y: scroll;
+}
+
+.modalContent.manageAccount {
+  width: 1000px;
+}
+
+.modalContent.manageAccount .tableBox {
+  position: relative;
+}
+
+.modalContent.manageAccount .tableBox .numList {
+  position: absolute;
+  top: 15px;
+  left: 0;
+}
+
+.modalContent.manageAccount dl {
+  margin: 0 0 15px 0;
+}
+
+.modalContent.manageAccount dl dt,
+.modalContent.manageAccount dl dd {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.modalContent.manageAccount dl dt {
+  margin-right: 5px;
+  font-family: "NotoSansB";
+}
+
+.modalContent.manageAccountSsp {
+  width: 1000px;
+}
+
+.modalContent.manageAccountSsp .tableBox {
+  position: relative;
+}
+
+.modalContent.manageAccountSsp .tableBox .numList {
+  position: absolute;
+  top: 15px;
+  left: 0;
+}
+
+.modalContent.manageAccountSsp dl {
+  margin: 0 0 15px 0;
+}
+
+.modalContent.manageAccountSsp dl dt,
+.modalContent.manageAccountSsp dl dd {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.modalContent.manageAccountSsp dl dt {
+  margin-right: 5px;
+  font-family: "NotoSansB";
+}
+
+.modalContent.manageAccountSsp .optionBox .productType ul li .customSelect {
+  width: 300px;
+}
+
+.modalContent.selectDay {
+  width: 400px;
+}
+
+.modalContent.addGroup {
+  width: 500px;
+}
+
+.modalContent.addUser {
+  width: 500px;
+}
+
+.modalContent.mediaLogin {
+  width: 500px;
+}
+
+.modalContent.mediaLogin .optionBox {
+  width: 100%;
+}
+
+.modalContent.mediaLogin .searchBox {
+  width: 100%;
+}
+
+.modalContent.mediaLogin .searchBox input {
+  width: calc(100% - 78px);
+}
+
+.modalContent.mediaLogin .searchBox button {
+  margin-right: 0;
+}
+
+.modalContent.mediaLogin .tableBox {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.modalContent.mediaLogin .tableBox tr.on td {
+  background: rgba(78, 183, 152, 0.15);
+}
+
+.modalContent.mediaLogin .pwInput {
+  margin: 30px 0 0 0;
+}
+
+.modalContent.mediaLogin .pwInput strong {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
+
+.modalContent.mediaLogin .pwInput .inputBox {
+  width: 100%;
+}
+
+.modalContent.mediaLogin .pwInput .inputBox input {
+  width: calc(100% - 79px);
+}
+
+.modalContent.mediaLogin .pwInput .inputBox button {
+  margin-right: 0;
+  padding: 7px 20px;
+  background: #4eb798;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  color: #fff;
+  font-size: 14px;
+  margin-left: 10px;
+}

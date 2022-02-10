@@ -1,0 +1,325 @@
+@charset 'utf-8';
+
+/*-------------------------------------------------------------------------------------------------------------
+    File   : layoutExample.scss
+    Date   : 2021.08.29
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+
+/********** salesStatus common css **********/
+
+.abmNamyang {}
+
+
+/********** salesStatus each css **********/
+.abmNamyang {
+
+  /* layout 참고  */
+  &.abmNamyang_layout {
+    section {
+      &.sec_sectionName {}
+
+      &.sec_sectionName2 {
+        .box_option {
+          div {
+            margin-bottom: 10px;
+
+            &:first-child {
+              button {
+                @include btnLayoutSS;
+              }
+            }
+
+            &:nth-child(2) {
+              button {
+                @include btnLayoutS;
+              }
+            }
+
+            &:nth-child(3) {
+              button {
+                @include btnLayoutM;
+              }
+            }
+
+            &:nth-child(4) {
+              button {
+                @include btnLayoutF;
+              }
+            }
+
+            button {
+              &.btn_comfirm {
+                @include btn_green;
+              }
+
+              &.btn_cancel {
+                @include btn_white;
+              }
+
+              &.btn_delete {
+                @include btn_gray;
+              }
+
+              &.btn_etc {
+                @include btn_navy;
+              }
+
+              &.btn_red {
+                @include btn_red;
+              }
+            }
+          }
+        }
+
+        .box_input {
+          li {
+            margin-bottom: 10px;
+
+            p {
+              display: inline-block;
+              min-width: 100px;
+            }
+
+            &:nth-child(2) {
+              input[type="radio"]+label {
+                @include ip_radio_m;
+              }
+
+              input[type="radio"]+label:before {
+                @include ip_radio_m_label;
+              }
+
+              input[type="radio"]:checked+label:before {
+                @include ip_radio_m_check;
+              }
+            }
+
+            &:nth-child(3) {
+              input[type="radio"]+label {
+                @include ip_radio_l;
+              }
+
+              input[type="radio"]+label:before {
+                @include ip_radio_l_label;
+              }
+
+              input[type="radio"]:checked+label:before {
+                @include ip_radio_l_check;
+              }
+            }
+
+            &:nth-child(5) {
+              input[type="checkbox"]+label {
+                @include ip_checkbox_s;
+              }
+
+              input[type="checkbox"]+label:before {
+                @include ip_checkbox_s_label;
+              }
+
+              input[type="checkbox"]:checked+label:before {
+                @include ip_checkbox_s_check;
+              }
+            }
+
+            &:nth-child(6) {
+              input[type="checkbox"]+label {
+                @include ip_checkbox_m;
+              }
+
+              input[type="checkbox"]+label:before {
+                @include ip_checkbox_m_label;
+              }
+
+              input[type="checkbox"]:checked+label:before {
+                @include ip_checkbox_m_check;
+              }
+            }
+
+            &:nth-child(7) {
+              input[type="checkbox"]+label {
+                @include ip_checkbox_l;
+              }
+
+              input[type="checkbox"]+label:before {
+                @include ip_checkbox_l_label;
+              }
+
+              input[type="checkbox"]:checked+label:before {
+                @include ip_checkbox_l_check;
+              }
+            }
+
+            &:nth-child(12) {
+              .searchBox {
+                .inputSearch {
+                  button {
+                    @include btnSearch_red;
+                  }
+                }
+              }
+            }
+
+            .toggleBox {
+              .ip_toggle {
+                height: 40px;
+                vertical-align: middle;
+              }
+            }
+
+            textarea {
+              height: 100px;
+            }
+          }
+        }
+
+        .box_tooltip {
+          position: relative;
+          margin: 100px 0 20px 0;
+
+          i {
+            &.QmarkHover {
+              top: -90px;
+            }
+          }
+        }
+
+        .box_tabBox {
+          @include tabBox;
+          margin: 30px 0;
+
+          p {
+            margin-bottom: 10px;
+          }
+        }
+
+        .box_icon {
+          ul {
+            margin-bottom: 10px;
+          }
+
+          li {
+            display: inline-block;
+            padding-right: 10px;
+            text-align: center;
+
+            i {
+              @include iLayout;
+
+              &.btn_search {
+                @include ico_search;
+                background-color: $mainColor_abmNamyang;
+                padding: 15px;
+              }
+
+              &.ico_android_bk {
+                @include ico_android_bk;
+                background-size: contain;
+                width: 20px;
+                height: 23px;
+              }
+
+              &.ico_ios_bk {
+                @include ico_ios_bk;
+                background-size: contain;
+                width: 17px;
+                height: 21px;
+              }
+
+              &.ico_pc_bk {
+                @include ico_pc_bk;
+                background-size: contain;
+                width: 21px;
+                height: 18px;
+              }
+            }
+          }
+        }
+      }
+
+      &.sec_sectionName3 {
+        .tableHeader {
+          display: flex;
+          justify-content: space-between;
+
+          .box_txt {
+            line-height: 2;
+          }
+        }
+
+        .tableWrap {
+          height: 300px;
+        }
+      }
+
+      &.sec_sectionName4 {
+        @include secLayout_t2;
+
+
+        .tableHeader {
+          display: flex;
+          justify-content: space-between;
+
+          .box_txt {
+            line-height: 2;
+          }
+        }
+
+        .tableWrap {
+          height: 300px;
+        }
+      }
+
+      &.sec_sectionName5 {
+
+        .tableHeader {
+          display: flex;
+          justify-content: space-between;
+
+          .box_txt {
+            line-height: 2;
+          }
+        }
+
+        .tableWrap {
+          height: 300px;
+        }
+      }
+    }
+  }
+
+  /* 퍼블리싱 미리보기  */
+  &.abmNamyang_publicView {
+    .secCont {
+      section {
+        .tit {
+          @include ftMedium;
+        }
+
+        .cont {
+          .box_button {
+            margin-top: 20px;
+
+            button {
+              @include btnLayout;
+              @include btn_red;
+              min-width: 100px;
+              height: 40px;
+              margin-left: 10px;
+              padding: 0 10px;
+
+              &:first-child {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/***** 01.menu - userAdmin *****/

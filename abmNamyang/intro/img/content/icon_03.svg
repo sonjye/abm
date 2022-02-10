@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-4{fill:#fff}
+        </style>
+    </defs>
+    <g id="icon_03" transform="translate(-739 -686)">
+        <rect id="Rectangle_288" width="29" height="33" class="cls-1" rx="10" transform="translate(757 704)"/>
+        <path id="Path_1175" d="M1132.843 379.683h7.085a.945.945 0 0 1 .945.945.945.945 0 0 1-.945.945h-7.085a.944.944 0 0 1-.945-.945.945.945 0 0 1 .945-.945z" class="cls-1" transform="translate(-364.508 329.04)"/>
+        <g id="Group_1112" transform="translate(-200 50)">
+            <g id="Ellipse_24" fill="none" stroke="#fff" opacity="0.9" transform="translate(939 636)">
+                <circle cx="32.5" cy="32.5" r="32.5" stroke="none"/>
+                <circle cx="32.5" cy="32.5" r="32" class="cls-1"/>
+            </g>
+            <g id="Group_1110" transform="translate(0 -2)">
+                <rect id="Rectangle_289" width="27" height="31" fill="none" stroke="#fff" stroke-width="2px" rx="5" transform="translate(958 655)"/>
+                <path id="Rectangle_1237" d="M0 0H3V8H0z" class="cls-4" transform="translate(964 672)"/>
+                <path id="Rectangle_1238" d="M0 0H3V11H0z" class="cls-4" transform="translate(970 669)"/>
+                <path id="Rectangle_1239" d="M0 0H3V14H0z" class="cls-4" transform="translate(976 666)"/>
+            </g>
+        </g>
+    </g>
+</svg>

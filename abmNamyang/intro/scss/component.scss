@@ -1,0 +1,755 @@
+@charset 'utf-8';
+
+/*------------------------------------------------------------------------------------------------------------
+    File   : component.scss
+    Date   : 2021.11.24
+    Explain: component
+------------------------------------------------------------------------------------------------------------*/
+
+
+/********** color  **********/
+
+/* basic color */
+$mainColor: #85b74e;
+$subColor: #cae2af;
+$errorColor: #ff2c2c;
+$deleteColor: #7e7e7e;
+$checkColor: #416eff;
+$menuDefaultColor: #5e5e5e;
+$menuActiveColor: #f06060;
+$subBgColor: #fbfbfb;
+
+/* ABM Namyang  custom color */
+$mainColor_abmNamyang: #dc000c;
+$gnbBgColor_abmNamyang: #363636;
+$gnbSubBgColor_abmNamyagn: #f2f2f2;
+$gnbTitBgColor_abmNamyang: #222222;
+
+$errorColor_abmNamyang: #ff3452;
+
+$tblBgColor_abmNamyang: #f8f8f8;
+
+
+
+/********** animation **********/
+@mixin transition {
+  transition: all 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+/********** logo  **********/
+@mixin logo_namyang {
+  width: 90px;
+  height: 62px;
+  background: url("../img/logo/logo_namyang.svg") center center no-repeat;
+}
+
+@mixin logo_mobtuneABM_wht {
+  width: 270px;
+  height: 70px;
+  background: url("../img/logo/logo_mobtuneABM_wht.svg") center center no-repeat;
+}
+
+
+
+/********** icon **********/
+
+
+
+/********** layout **********/
+@mixin secLayout($pd:30px, $mg:20px 0 0 0) {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  padding: $pd;
+  // box-shadow: 0.8px 0.6px 5px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  margin: 20px 0 0 0;
+  border: 1px solid #eee;
+}
+
+@mixin secLayout_t2($pd:20px, $mg:30px 0 0 0) {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  // box-shadow: 0.8px 0.6px 5px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 0;
+  margin: 30px 0 0 0;
+}
+
+@mixin titleLayout {
+  font-size: 16px;
+  letter-spacing: -0.3px;
+  color: #333;
+  font-family: "NotoSansM";
+}
+
+@mixin dpLayout {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin clear {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+//icon layout
+@mixin iLayout {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background-position: 0px 0px;
+  font-size: 0;
+}
+
+
+
+/********** text **********/
+// ::-webkit-scrollbar 
+@mixin scrollbar {
+  width: 4px;
+  height: 15px;
+  background: #ebebeb;
+}
+
+//::-webkit-scrollbar-thumb 
+@mixin scrollbar-thumb {
+  height: 15px;
+  background: #bbbbbb;
+  border-radius: 0px;
+}
+
+
+/********** text **********/
+::selection {
+  color: #fff;
+  background: $mainColor_abmNamyang;
+}
+
+.hidden {
+  position: fixed;
+  top: 0;
+  left: -999em;
+}
+
+.disNone {
+  display: none !important;
+}
+
+@mixin txtHide {
+  text-indent: -999999px;
+  font-size: 0;
+}
+
+.txtHide {
+  @include txtHide();
+}
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin ellipsis_l4($wlc:4) {
+  display: -webkit-box;
+  //width: 100px;
+  //height: 100px;
+  //line-height: 22px;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-all;
+  -webkit-line-clamp: $wlc;
+  -webkit-box-orient: vertical;
+}
+
+.elHvrVsbl {
+  @include ellipsis;
+}
+
+.elHvrVsbl2 {
+  @include ellipsis_l4($wlc:2);
+}
+
+.elHvrVsbl4 {
+  @include ellipsis_l4;
+}
+
+
+
+/********** font **********/
+@mixin ftRegular {
+  font-family: "NotoSansR";
+}
+
+@mixin ftMedium {
+  font-family: "NotoSansM";
+}
+
+@mixin ftBold {
+  font-family: "NotoSansB";
+}
+
+
+
+/********** table **********/
+// header fixed, th에 추가
+@mixin tableHeaderFixed {
+  position: sticky;
+  top: 0;
+}
+
+@mixin hoverVisible {
+  white-space: normal !important;
+  overflow: visible !important;
+  word-break: break-all !important;
+}
+
+@mixin divTableColumnTh {
+  padding: 20px 30px;
+  font-size: 15px;
+  text-align: left;
+  color: #777;
+  font-family: "NotoSansM";
+}
+
+@mixin divTableColumnTd {
+  flex-grow: 1;
+  padding: 12px 25px;
+  font-size: 14px;
+  text-align: left;
+  color: #777;
+}
+
+@mixin divTableRowTd {
+  font-size: 13px;
+  text-align: center;
+}
+
+
+
+/********** input **********/
+/* input */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+textarea {
+  @include dpLayout;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-family: "NotoSansR";
+  padding: 10px 15px;
+  font-size: 14px;
+
+  &:disabled {
+    color: #777;
+    background-color: #f8f8f8;
+  }
+
+  &:focus {
+    border: 1px solid #b7b8bd;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #bbb;
+  }
+}
+
+
+
+/* checkbox */
+@mixin ico_checkbox_on {
+  background: url("../img/component/ico_checkbox_on.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_off {
+  background: url("../img/component/ico_checkbox_off.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_s_on {
+  background: url("../img/component/ico_checkbox_s_on.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_s_off {
+  background: url("../img/component/ico_checkbox_s_off.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_m_on {
+  background: url("../img/component/ico_checkbox_m_on.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_m_off {
+  background: url("../img/component/ico_checkbox_m_off.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_l_on {
+  background: url("../img/component/ico_checkbox_l_on.svg") center center no-repeat;
+}
+
+@mixin ico_checkbox_l_off {
+  background: url("../img/component/ico_checkbox_l_off.svg") center center no-repeat;
+}
+
+/* checkbox basic */
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]+label {
+  margin-right: 35px;
+  font-size: 15px;
+  vertical-align: middle;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+input[type="checkbox"]+label:before {
+  @include ico_checkbox_off;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 7px 3px 0;
+  vertical-align: middle;
+}
+
+input[type="checkbox"]:checked+label:before {
+  content: "";
+  @include ico_checkbox_on;
+}
+
+
+/* checkbox size s */
+//input[type="checkbox"]+label 
+@mixin ip_checkbox_s {
+  margin-right: 10px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+//input[type="checkbox"]+label:before 
+@mixin ip_checkbox_s_label {
+  @include ico_checkbox_s_off;
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 10px 3px 0;
+  vertical-align: middle;
+  font-family: "NotoSansR";
+}
+
+//input[type="checkbox"]:checked+label:before 
+@mixin ip_checkbox_s_check {
+  content: "";
+  @include ico_checkbox_s_on;
+}
+
+
+
+/* button */
+button {
+  font-family: "NotoSansR";
+
+  &:disabled {
+    color: #e6e6e6 !important;
+    border: 1px solid #bbb !important;
+    background-color: #bbb !important;
+  }
+}
+
+@mixin btnLayout {
+  text-align: center;
+  border-radius: 4px;
+  font-family: "NotoSansR";
+}
+
+/* table button */
+@mixin btnLayoutSS($height:25px) {
+  min-width: 60px;
+  height: $height;
+  padding: 2px 17px 4px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+@mixin btnLayoutS($height:30px) {
+  min-width: 80px;
+  height: $height;
+  padding: 2px 25px 4px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+@mixin btnLayoutM($pd:7px 25px) {
+  min-width: 120px;
+  height: 40px;
+  padding: $pd;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+@mixin btnLayoutF($pd:13px) {
+  width: 100%;
+  height: 50px;
+  padding: $pd;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+@mixin btn_green {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color: $mainColor;
+}
+
+@mixin btn_white {
+  color: $mainColor_abmNamyang;
+  border: 1px solid $mainColor_abmNamyang;
+  background-color: #fff;
+}
+
+@mixin btn_gray {
+  color: #fff;
+  border: 1px solid #b8b8b8;
+  background-color: #b8b8b8;
+}
+
+@mixin btn_deepGray {
+  color: #fff;
+  border: 1px solid #555555;
+  background-color: #555555;
+}
+
+@mixin btn_navy {
+  color: #fff;
+  border: 1px solid #2f374d;
+  background-color: #2f374d;
+}
+
+@mixin btn_red {
+  color: #fff;
+  border: 1px solid #dc000c;
+  background-color: #dc000c;
+}
+
+
+/* searchBox */
+.searchBox {
+  .inputSearch {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    height: 40px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+
+    input[type="text"] {
+      width: calc(100% - 60px);
+      height: 38px;
+      padding: 10px 10px;
+      border: none;
+
+      &::placeholder {
+        color: #bbb;
+        font-size: 13px;
+        font-family: "NotoSansR";
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      @include btnLayout;
+      @include btn_red;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      top: -1px;
+      right: -1px;
+      font-size: 0;
+      border-radius: 0 4px 4px 0;
+
+      &:before {
+        @include iLayout;
+        @include ico_search;
+      }
+    }
+  }
+}
+
+
+
+
+/********** table  **********/
+/* tableHeader */
+.tableHeader {
+  margin-bottom: 15px;
+}
+
+
+/* tableWrap */
+.tableWrap {
+  overflow: auto;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+
+  /* divTable */
+  .divTable {
+    display: table;
+    min-width: 100%;
+
+    .divTblHead {
+      @include tableHeaderFixed;
+      display: table-header-group;
+
+      .divTblTr {
+        display: table-row;
+
+        >div {
+          display: table-cell;
+          padding: 10px;
+          min-height: 36px;
+          font-size: 14px;
+          text-align: center;
+          background-color: #f8f8f8;
+
+          &:last-child {
+            border-right: 1px solid #eaeaea;
+          }
+        }
+
+        &:nth-child(1) {
+          >div {
+            padding: 11px 10px 10px 10px;
+          }
+        }
+      }
+    }
+
+    .divTblBody {
+      display: table-row-group;
+
+      .divTblTr {
+        display: table-row;
+
+        >div {
+          display: table-cell;
+          padding: 10px;
+          text-align: center;
+          font-size: 13px;
+          line-height: 15px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .divTblFoot {
+      display: table-footer-group;
+
+      .divTblTr {
+        display: table-row;
+
+        >div {
+          display: table-cell;
+          padding: 10px;
+        }
+      }
+    }
+
+    &.divTableColumn {
+      .divTblBody {
+        padding: 30px 0;
+
+        .divTblTr {
+
+          &:first-child {
+            >div {
+              box-sizing: border-box;
+              border-top: 10px solid transparent;
+            }
+          }
+
+          &:last-child {
+            >div {
+              box-sizing: border-box;
+              border-bottom: 10px solid transparent;
+            }
+          }
+
+          >div {
+            &:nth-child(odd) {
+              @include divTableColumnTh;
+              min-width: 230px;
+              background-color: $tblBgColor_abmNamyang;
+
+              &.star {
+                &:before {
+                  content: "*";
+                  position: relative;
+                  display: inline-block;
+                  font-size: 15px;
+                  color: $errorColor_abmNamyang;
+                  font-family: "NotoSansM";
+                }
+              }
+            }
+
+            &:nth-child(even) {
+              @include divTableColumnTd;
+            }
+          }
+        }
+      }
+    }
+
+    &.divTableRow {
+      .divTblHead {
+        .divTblTr {
+          >div {
+            display: table-cell;
+            padding: 13px 10px;
+            min-height: 36px;
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+            border: 1px solid #e9e9e9;
+            background-color: #f8f8f8;
+            font-family: "NotoSansM";
+          }
+        }
+      }
+
+      .divTblBody {
+        .divTblTr {
+          >div {
+            border-right: 1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+
+            &:first-child {
+              border-left: 1px solid #e9e9e9;
+            }
+          }
+
+          &:last-child {
+            >div {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  /* tableBox */
+  .tableBox {
+    table {
+      width: 100%;
+      background: #fff;
+
+      td,
+      th {
+        padding: 10px 10px;
+        vertical-align: middle;
+        text-align: center;
+        border: 1px solid #e9e9e9;
+      }
+
+      thead {
+        tr {
+          th {
+            color: #3e3e3e;
+            font-size: 14px;
+            font-weight: normal;
+            background-color: #f8f8f8;
+            font-family: "NotoSansM";
+          }
+
+          &:first-child {
+            th {
+              border-top: none;
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          &:last-child {
+            td {
+              border-bottom: none;
+            }
+          }
+        }
+
+        th {
+          color: #777;
+          font-size: 14px;
+          font-weight: normal;
+          font-family: "NotoSansR";
+        }
+
+        td {
+          line-height: 1.3;
+          color: #333;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.divTblDataNone {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  border-bottom: 1px solid #e9e9e9;
+
+  >div {
+    position: relative;
+    width: 100%;
+    padding-top: 100px;
+
+    p {
+      display: block;
+      width: 100%;
+      font-size: 14px;
+      color: #bbb;
+      text-align: center;
+    }
+  }
+}
+
+

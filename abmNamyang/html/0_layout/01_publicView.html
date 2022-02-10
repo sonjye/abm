@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/ico">
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <link type="text/css" href="../../css/common_layoutExample.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>메뉴명</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                    <ul class="active">
+                        <li class="on"><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">통합 트래킹</a></li>
+                        <li><a href="javascript:void(0);">APP 유지율 분석</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 URL</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 리포트</a></li>
+                        <li><a href="javascript:void(0);">랜딩 도메인 생성</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                    <ul class="active">
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li class="on"><a href="javascript:void(0);">고객 로그</a></li>
+                        <li><a href="javascript:void(0);">고객 분석</a></li>
+                        <li><a href="javascript:void(0);">캠페인 관리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul class="active">
+                        <li class="on"><a href="javascript:void(0);">계정 셋팅</a></li>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_publicView">
+                <div class="secTit">
+                    <h3>퍼블리싱</h3>
+                </div>
+                <div class="secCont">
+                    <section class="sec_sectionName">
+                        <div class="tit">
+                            <h4>레이아웃</h4>
+                        </div>
+                        <div class="cont">
+                            <div class="box_button">
+                                <!-- <button type="button"
+                                    onclick="location.href='/abm/html/01_layout/01_modal.html'">레이아웃</button> -->
+                                <button type="button"
+                                    onclick="location.href='/abm/html/01_layout/01_modal.html'">모달</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_sectionName">
+                        <div class="tit">
+                            <h4>대시보드</h4>
+                        </div>
+                        <div class="cont">
+                            <div class="box_button">
+                                <button type="button"
+                                    onclick="location.href='/abm/html/01_dashboard/01_dashboard.html'">대시보드</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_sectionName">
+                        <div class="tit">
+                            <h4>트래킹 센터</h4>
+                        </div>
+                        <div class="cont">
+                            <div class="box_button">
+                                <!-- <button type="button">대시보드</button> -->
+                                <button type="button"
+                                    onclick="location.href='/abm/html/02_tracking/02_totalTracking.html'">통합
+                                    트래킹</button>
+                                <button type="button"
+                                    onclick="location.href='/abm/html/02_tracking/03_appPersist.html'">APP 유지율
+                                    분석</button>
+                                <button type="button"
+                                    onclick="location.href='/abm/html/02_tracking/04_adTrackingURL.html'">광고 추적
+                                    URL</button>
+                                <button type="button"
+                                    onclick="location.href='/abm/html/02_tracking/05_adTrackingReport.html'">광고 추적
+                                    리포트</button>
+                                <button type="button"
+                                    onclick="location.href='/abm/html/02_tracking/06_landingDomain.html'">랜딩 도메인
+                                    생성</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_sectionName">
+                        <div class="tit">
+                            <h4>CDP</h4>
+                        </div>
+                        <div class="cont">
+                            <div class="box_button">
+                                <button type="button"
+                                    onclick="location.href='/abm/html/03_cdp/01_dashboard.html'">대시보드</button>
+                                <button type="button" onclick="location.href='/abm/html/03_cdp/02_customerLog.html'">고객
+                                    로그</button> <button type="button"
+                                    onclick="location.href='/abm/html/03_cdp/03_campaignCreate.html'">고객
+                                    분석</button><button type="button"
+                                    onclick="location.href='/abm/html/03_cdp/04_campaignManagement.html'">캠페인
+                                    관리</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_sectionName">
+                        <div class="tit">
+                            <h4>CMP</h4>
+                        </div>
+                        <div class="cont">
+                            <div class="box_button">
+                                <button type="button"
+                                    onclick="location.href='/abm/html/03_cdp/01_dashboard.html'">대시보드</button>
+                                <button type="button"
+                                    onclick="location.href='/abm/html/04_cmp/02_campaign_list.html'">캠페인 리스트</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_sectionName3">
+                        <div class="tit">
+                            <h4>설정</h4>
+                        </div>
+                        <div class="cont">
+                            <div class="box_button">
+                                <button type="button"
+                                    onclick="location.href='/abm/html/08_setting/01_setAccount.html'">계정 셋팅</button>
+                                <button type="button" onclick="location.href='/abm/html/08_setting/02_userInfo.html'">My
+                                    Page</button>
+                                <button type="button" onclick="location.href='/abm/html/08_setting/03_setAuth.html'">사용자
+                                    관리</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <footer class="footer">
+                    <h2 class="hide">하단 회사 정보 영역</h2>
+                    <p>
+                        <span>(주)인라이플</span><span>113-86-60934</span><span>한경훈,이근옥</span><span>서울특별시 구로구 구로동 디지털로 272
+                            한신아이티타워 501호~504호</span>
+                    </p>
+                    <p>
+                        <span>TEL .070-7705-2093(948)</span><span>FAX .02-865-6845</span><span>E-mail :
+                            mobsense@enliple.com</span>
+                    </p>
+                    <p>Copyright ⓒ MOBON All rights reserved.</p>
+                </footer>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

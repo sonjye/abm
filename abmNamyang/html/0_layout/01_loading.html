@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="MOBTUNE" />
+    <meta name="keywords" content="MOBTUNE" />
+    <meta name="author" content="인라이플" />
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>메뉴명</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul class="active">
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li class="on"><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <script>
+            /* popup_data_check */
+            $(document).ready(function () {
+                $(".popup_data_check").click(function (event) { //팝업 Open 버튼 클릭 시     
+                    $(".modalWrap").css({
+                        "top": (($(window).height() - $(".modalWrap").outerHeight()) / 2 + $(
+                            window).scrollTop()) + "px",
+                        "left": (($(window).width() - $(".modalWrap").outerWidth()) / 2 + $(
+                            window).scrollLeft()) + "px"
+                        //팝업창을 가운데로 띄우기 위해 현재 화면의 가운데 값과 스크롤 값을 계산하여 팝업창 CSS 설정
+                    });
+                    $(".modalDim").css("display", "block"); //팝업 뒷배경 display block
+                    $(".modalWrap").css("display", "block"); //팝업창 display block
+                    $("html").css("overflow", "hidden"); //html 스크롤바 없애기
+                });
+                $(".popup_close_btn").click(function (event) {
+                    $(".modalDim").css("display", "none"); //팝업창 뒷배경 display none
+                    $(".modalWrap").css("display", "none"); //팝업창 display none
+                    $("html").css("overflow", "auto"); //html 스크롤바 생성
+                });
+            });
+            /* mouseover, mouseout 이벤트 */
+            $(document).ready(function () {
+                $('.btn_question').on('mouseover', function () {
+                    $('.bubble_question').css('display', 'block'); // mouseover일 경우 보이고
+                }).on('mouseout', function () {
+                    $('.bubble_question').css('display', 'none'); //mouseout일 경우 숨김
+                })
+            });
+        </script>
+        <section class="contents_wrapper">
+            <div class="contents">
+            </div>
+        </section>
+    </div>
+    <div id="loadingBg">
+        <p>데이터를 불러오는 중입니다.</p>
+    </div>
+</body>
+
+</html>

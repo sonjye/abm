@@ -1,0 +1,198 @@
+@charset 'utf-8';
+
+/*-------------------------------------------------------------------------------------------------------------
+    File   : login.scss
+    Date   : 2021.11.30
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+/********** login **********/
+.container_wrap {
+  &.abmNamyang_login {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background-color: #000;
+
+    section {
+      .content {
+        h1 {
+          font-size: 0;
+        }
+
+        section {
+          &.sec_login {
+            position: relative;
+            padding: 180px 0 60px 0;
+
+            >.txtBox {
+              p {
+                text-align: center;
+                font-size: 0;
+
+                &:before {
+                  content: "";
+                  position: relative;
+                  display: inline-block;
+                  @include logo_mobtuneABM_wht;
+                }
+              }
+            }
+
+            .loginWrap {
+              position: relative;
+              width: 500px;
+              margin: 40px auto 0;
+              box-sizing: border-box;
+              border: 50px solid transparent;
+              background-color: rgba(255, 255, 255, 0.9);
+              z-index: 2;
+            }
+
+            .loginArea {
+              h2 {
+                @include iLayout;
+                @include logo_namyang;
+                width: 100%;
+                text-align: center;
+              }
+
+              .inputBox {
+                position: relative;
+                margin-top: 50px;
+
+                input[type="text"],
+                input[type="password"] {
+                  width: 100%;
+                  min-height: 50px;
+                  border: 1px solid #d0d0d0;
+
+                  &:focus {
+                    color: #333;
+                    border: 1px solid #333;
+                    outline: none;
+                  }
+                }
+
+                input[type="password"] {
+                  margin-top: 10px;
+                }
+
+                .checkBox {
+                  margin-top: 10px;
+
+                  input[type="checkbox"]+label {
+                    font-size: 14px;
+                    color: #666;
+                    font-family: "NotoSansR"
+                  }
+                }
+              }
+
+              .btnArea {
+                margin-top: 25px;
+
+                button {
+                  &.login {
+                    @include btnLayout;
+                    @include btn_red;
+                    width: 100%;
+                    height: 50px;
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+
+            .confirmArea {
+
+              .txtBox {
+                text-align: center;
+
+                strong {
+                  font-size: 23px;
+                  font-family: "NotoSansM";
+                }
+
+                p {
+                  margin-top: 25px;
+                  font-size: 13px;
+                  color: #888;
+                  font-family: "NotoSansR";
+                }
+              }
+
+              .inputBox {
+                margin-top: 25px;
+
+                input[type="text"],
+                input[type="tel"],
+                input[type="number"] {
+                  width: 100%;
+                  height: 50px;
+                }
+
+                input[type="tel"],
+                input[type="number"] {
+                  margin-top: 10px;
+                }
+              }
+
+              .btnArea {
+                margin-top: 20px;
+
+                button {
+                  @include btnLayout;
+                  @include btn_red;
+                  width: 100%;
+                  height: 50px;
+                  font-size: 16px;
+
+                  &.confirmNum {}
+                }
+              }
+
+              .confirmBox {
+                margin-top: 30px;
+
+                .titBox {
+                  p {
+                    font-size: 15px;
+                    font-family: "NotoSansM";
+
+                    span {
+                      margin-left: 4px;
+                      color: #f00;
+                    }
+                  }
+                }
+
+                .numberBox {
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 10px;
+
+                  input {
+                    flex-grow: 1;
+                    height: 50px;
+                  }
+
+                  button {
+                    @include btnLayout;
+                    @include btn_white;
+
+                    &.confirmNumResend {
+                      width: 130px;
+                      height: 50px;
+                      margin-left: 10px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

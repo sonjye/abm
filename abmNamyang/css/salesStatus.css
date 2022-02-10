@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/*-------------------------------------------------------------------------------------------------------------
+    File   : salesStatus.scss
+    Date   : 2021.08.05
+/*------------------------------------------------------------------------------------------------------------*/
+/********** salesStatus common css **********/
+/********** salesStatus each css **********/
+.moblab {
+  /* 소비 트렌드 분석 - 업종별 매출 현황 */
+}
+
+.moblab.consumeAnalysis_salesStatus section.sec_salesChart .cont .box_chart {
+  height: 470px;
+}
+
+/***** 01.menu - userAdmin *****/

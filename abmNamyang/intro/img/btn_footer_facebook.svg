@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
+    <defs>
+        <pattern id="ebn1448mua" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 157 336"/>
+    </defs>
+    <g>
+        <path fill="#3e3e3e" d="M0 0H45V45H0z" transform="translate(-1474 -5015) translate(1474 5015)"/>
+        <path fill="url(#ebn1448mua)" d="M0 0H11V24H0z" transform="translate(-1474 -5015) translate(1492 5025)"/>
+    </g>
+</svg>

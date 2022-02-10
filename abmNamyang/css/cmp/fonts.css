@@ -1,0 +1,89 @@
+@font-face {
+	font-family: "NotoSans";
+	font-weight: 300;
+	font-display: swap;
+	src: url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2") format("woff2")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff") format("woff")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf") format("opentype");
+}
+@font-face {
+	font-family: "NotoSans";
+	font-weight: 400;
+	font-display: swap;
+	src: url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2") format("woff2")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff") format("woff")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "NotoSans";
+	font-weight: 500;
+	font-display: swap;
+	src: url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2") format("woff2")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff") format("woff")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf") format("opentype");
+}
+@font-face {
+	font-family: "NotoSans";
+	font-weight: 700;
+	font-display: swap;
+	src: url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2") format("woff2")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff") format("woff")
+		,url("//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf") format("opentype");
+}
+
+/*
+@font-face {
+  font-family: "NanumSquare";
+  font-weight: 500;
+  src: url("/fonts/nanum/NanumSquareR.eot");
+  src: url("/fonts/nanum/NanumSquareR.eot")
+      format("embedded-opentype"),
+    url("/fonts/nanum/NanumSquareR.woff") format("woff");
+}
+@font-face {
+  font-family: "NanumSquare";
+  font-weight: 600;
+  src: url("/fonts/nanum/NanumSquareB.eot");
+  src: url("/fonts/nanum/NanumSquareB.eot")
+      format("embedded-opentype"),
+    url("/fonts/nanum/NanumSquareB.woff") format("woff");
+}
+
+@font-face {
+  font-family: "NanumSquareEB";
+  src: url("/fonts/nanum/NanumSquareEB.eot");
+  src: url("/fonts/nanum/NanumSquareEB.eot")
+      format("embedded-opentype"),
+    url("/fonts/nanum/NanumSquareEB.woff") format("woff");
+}
+*/
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/roboto/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Gilroy ExtraBold';
+  font-display: swap;
+  src: url('/fonts/gilroy/Gilroy-ExtraBold.woff') format('woff');
+}
+
+/*
+@font-face {
+  font-family: "SourceSansPro";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/source/SourceSansPro-Regular.ttf") format("truetype");
+}
+*/

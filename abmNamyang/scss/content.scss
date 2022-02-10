@@ -1,0 +1,49 @@
+@charset 'utf-8';
+
+/*-------------------------------------------------------------------------------------------------------------
+    File   : content.scss
+    Date   : 2021.08.29
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+/********** btnArea **********/
+
+
+
+/********** btnArea  **********/
+.btnArea {
+  margin: 50px auto;
+  // font-size: 0;
+  text-align: center;
+
+  button {
+    @include btnLayout;
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+
+
+/********** input  **********/
+/* radioBox */
+.radioBox,
+.checkBox,
+.selectBox,
+.inputBox,
+.toggleBox,
+.urlBox,
+.searchBox {
+  p {
+    display: inline-block;
+    font-size: 15px;
+    font-family: "NotoSansM";
+  }
+}
+
+.btnBox {
+  font-size: 0;
+}

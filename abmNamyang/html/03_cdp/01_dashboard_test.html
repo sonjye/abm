@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/ico">
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>Dashboard</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">통합 트래킹</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 URL</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 리포트</a></li>
+                        <li><a href="javascript:void(0);">랜딩 도메인 생성</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                    <ul class="active">
+                        <li class="on"><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">고객 로그</a></li>
+                        <li><a href="javascript:void(0);">고객 분석</a></li>
+                        <li><a href="javascript:void(0);">캠페인 관리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">계정 셋팅</a></li>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_cdpDashboard">
+                <div class="secTit">
+                    <h3>CDP Dashboard</h3>
+                </div>
+                <div class="secCont">
+                    <section class="sec_search">
+                        <div class="box_search">
+                            <div class="txtBox">
+                                <p>시스템 최근 업데이트</p>
+                                <p>2021-11-02 14:05</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_summaryUserInfo">
+                        <div class="box_summary">
+                            <div class="tit">
+                                <p>Summary</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphHeader">
+                                    <div class="tabBox">
+                                        <ul>
+                                            <li>오늘</li>
+                                            <li class="on">최근 7일</li>
+                                            <li>최근 30일</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="graphArea">
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>방문자수 <span>순방문자수</span></p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="txtBox">
+                                                <p>12,173</p>
+                                                <p class="up">21.5</p>
+                                            </div>
+                                            <div class="graphBox">
+                                                <img src="../../img/test/graph5.png" alt=""
+                                                    style="width:100%; height: 40px; top:10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>회원수</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="txtBox">
+                                                <p>12,173,012,012</p>
+                                                <p class="down">0.5</p>
+                                            </div>
+                                            <div class="graphBox">
+                                                <img src="../../img/test/graph5.png" alt=""
+                                                    style="width:100%; height: 40px; top:10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>장바구니 이용자수</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="txtBox">
+                                                <p>999</p>
+                                                <p class="up">98.5</p>
+                                            </div>
+                                            <div class="graphBox">
+                                                <img src="../../img/test/graph5.png" alt=""
+                                                    style="width:100%; height: 40px; top:10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>결제 이탈자수</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="txtBox">
+                                                <p>12</p>
+                                                <p class="down">1.5</p>
+                                            </div>
+                                            <div class="graphBox">
+                                                <img src="../../img/test/graph5.png" alt=""
+                                                    style="width:100%; height: 40px; top:10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>완료지수</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="txtBox">
+                                                <p>822</p>
+                                                <p class="up">22.5</p>
+                                            </div>
+                                            <div class="graphBox">
+                                                <img src="../../img/test/graph5.png" alt=""
+                                                    style="width:100%; height: 40px; top:10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>상품 조회지수</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="txtBox">
+                                                <p>8,713</p>
+                                                <p class="up">2.5</p>
+                                            </div>
+                                            <div class="graphBox">
+                                                <img src="../../img/test/graph5.png" alt=""
+                                                    style="width:100%; height: 40px; top:10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_userInfo">
+                            <div class="tit">
+                                <p>유저 정보</p>
+                                <a href="javascript:void(0);">Detail</a>
+                            </div>
+                            <div class="cont">
+                                <div class="userInfo">
+                                    <div class="graphBox" style="height: 250px;"> <img src="../../img/test/graph4.png"
+                                            alt="" style="width:100%; top:25px; position: relative;">
+                                    </div>
+                                    <div class="txtBox">
+                                        <div>
+                                            <p>AU_ID</p>
+                                            <p>759,695</p>
+                                            <p><span class="up">592</span></p>
+                                        </div>
+                                        <div>
+                                            <p>ADID</p>
+                                            <p>9,695</p>
+                                            <p><span class="up">2</span></p>
+                                        </div>
+                                        <div>
+                                            <p>USER ID</p>
+                                            <p>695</p>
+                                            <p><span class="down">1,592</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_campaignStats">
+                        <div class="box_campaignStats">
+                            <div class="tit">
+                                <p>캠페인 통계</p>
+                            </div>
+                            <div class="cont">
+                                <div class="tab">
+                                    <ul>
+                                        <li class="on">VIP 고객</li>
+                                        <li>단골 고객</li>
+                                        <li>신규 고객</li>
+                                        <li>잠재 고객</li>
+                                        <li>이탈 우려 고객</li>
+                                    </ul>
+                                </div>
+                                <div class="tabView">
+                                    <div class="tabViewList show">
+                                        <div class="graphArea">
+                                            <div class="graphHeader">
+                                                <div class="labelBox">
+                                                    <div>
+                                                        <p>대상모수</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>실회원</p>
+                                                    </div>
+                                                </div>
+                                                <div class="tabBox">
+                                                    <ul>
+                                                        <li class="on">일간</li>
+                                                        <li>주간</li>
+                                                        <li>월간</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="graphBox" style="text-align: center;"> <img
+                                                    src="../../img/test/graph14.png" alt=""
+                                                    style=" top:40px; position: relative;">
+                                            </div>
+                                        </div>
+                                        <div class="dataList">
+                                            <div class="titBox">
+                                                <p>데이터 내역 상세_최근 7일</p>
+                                                <a href="#">Detail</a>
+                                            </div>
+                                            <div class="contBox">
+                                                <div>
+                                                    <p>21.12.06(월)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(화)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(수)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(목)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(금)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(토)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(일)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                                <div>
+                                                    <p>21.12.06(월)</p>
+                                                    <p>대상모수 20,000</p>
+                                                    <p>실회원 3,257</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tabViewList">탭2</div>
+                                    <div class="tabViewList">탭3</div>
+                                    <div class="tabViewList">탭4</div>
+                                    <div class="tabViewList">탭5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_visitAnalysis">
+                        <div class="box_visitAnalysis">
+                            <div class="tit">
+                                <p>방문자 분석</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphHeader">
+                                    <div class="tabBox">
+                                        <ul>
+                                            <li>최근 7일</li>
+                                            <li class="on">최근 30일</li>
+                                            <li>최근 90일</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="graphArea">
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>성별/연령별 분포</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="graphBox" style="text-align: center;"><img
+                                                    src="../../img/test/graph15.png" alt=""
+                                                    style="top:-10px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>이용자 디바이스</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="graphBox" style="text-align: center;"><img
+                                                    src="../../img/test/graph22.png" alt=""
+                                                    style="bottom:20px; left:20px; position: relative; ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>지역 분포도</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="graphBox" style="text-align: center;"><img
+                                                    src="../../img/test/graph16.png" alt=""
+                                                    style=" position: relative; display: inline; bottom: 20px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="graphBlock">
+                                        <div class="titBox">
+                                            <p>관심 매체 성향</p>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="graphBox" style="text-align: center;"><img
+                                                    src="../../img/test/graph17.png" alt=""
+                                                    style="bottom:20px; position: relative;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_etcStats">
+                        <div class="box_userStats">
+                            <div class="tit">
+                                <p>유저 사용량 통계</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphArea" style="text-align: center;">
+                                    <div><img src="../../img/test/graph18.png" alt=""
+                                            style="top:60px; position: relative;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_revisitStats">
+                            <div class="tit">
+                                <p>재방문 통계 </p>
+                            </div>
+                            <div class="cont">
+                                <div class="tabBox">
+                                    <ul>
+                                        <li class="on">최근 7일</li>
+                                        <li>최근 30일</li>
+                                    </ul>
+                                </div>
+                                <div class="graphArea" style="text-align: center;">
+                                    <div><img src="../../img/test/graph19.png" alt=""
+                                            style="top:60px; position: relative;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_topCategory">
+                            <div class="tit">
+                                <p>상위 판매 카테고리 통계</p>
+                            </div>
+                            <div class="cont">
+                                <div class="tabBox">
+                                    <ul>
+                                        <li class="on">오늘</>
+                                        <li>최근 7일</>
+                                        <li>최근 30일</>
+                                    </ul>
+                                </div>
+                                <div class="graphArea" style="text-align: center;">
+                                    <div><img src="../../img/test/graph20.png" alt=""
+                                            style="top:60px; position: relative;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

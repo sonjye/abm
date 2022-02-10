@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>메뉴명</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                    <ul class="active">
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">WEB 트래킹</a></li>
+                        <li><a href="javascript:void(0);">APP 트래킹</a></li>
+                        <li class="on"><a href="javascript:void(0);">광고 추적 URL</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 리포트</a></li>
+                        <li><a href="javascript:void(0);">랜딩 도메인 생성</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_adTrackingURL">
+                <div class="secTit">
+                    <h3>광고 추적 URL</h3>
+                </div>
+                <div class="secCont">
+                    <section class="sec_adTrackingURL">
+                        <div class="box_adTrackingURL">
+                            <div class="tit">
+                                <p class="des">필수 항목 (*표시)를 입력하면 광고 추천 URL이 생성됩니다. </p>
+                                <p class="des">생성 된 URL은 변경 시 자동으로 업데이트 됩니다.</p>
+                            </div>
+                            <div class="cont">
+                                <div class="tableWrap">
+                                    <div class="divTable divTableColumn">
+                                        <div class="divTblBody">
+                                            <div class="divTblTr">
+                                                <div>Website URL</div>
+                                                <div><input type="url" name="" id="">
+                                                    <p>전체 웹사이트 URL (ex_http://example.com)</p>
+                                                </div>
+                                            </div>
+                                            <div class="divTblTr">
+                                                <div class="star">utm_source (소스)</div>
+                                                <div><select name="" id="">
+                                                        <option value=""></option>
+                                                    </select>
+                                                    <input type="text" name="" id="" disabled>
+                                                    <p>참조자 (ex_google, newsletter) 어느 출처에서 오는지 입력</p>
+                                                </div>
+                                            </div>
+                                            <div class="divTblTr">
+                                                <div class="star">utm_medium (매체)</div>
+                                                <div><select name="" id="">
+                                                        <option value=""></option>
+                                                    </select><input type="text" name="" id="" disabled>
+                                                    <p>마케팅 매체 (ex_cpc, banner, email) 어느 매체를 통해서 오는지 입력</p>
+                                                </div>
+                                            </div>
+                                            <div class="divTblTr">
+                                                <div>utm_campaign (캠페인)</div>
+                                                <div><input type="text" name="" id="">
+                                                    <p>제품, 프로모션 코드 또는 슬로건 (ex_spring_sale) 어느 매체를 통해서 오는지 입력</p>
+                                                </div>
+                                            </div>
+                                            <div class="divTblTr">
+                                                <div>utm_term (키워드)</div>
+                                                <div><input type="text" name="" id="">
+                                                    <p>검색광고 시 사용되는 검색어를 입력</p>
+                                                </div>
+                                            </div>
+                                            <div class="divTblTr">
+                                                <div>utm_content (광고콘텐츠)</div>
+                                                <div><input type="text" name="" id="">
+                                                    <p>동일한 광고 캠페인에서 소재가 여러 개일 경우, 이를 구분하기 위해 입력</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="urlPreview">
+                                    <div class="titBox">
+                                        <p>광고 추적 URL 미리보기</p>
+                                        <button type="button" class="remove">지우기</button>
+                                    </div>
+                                    <div class="contBox">
+                                        <div>
+                                            <div class="inputBox"><textarea name="" id="" cols="30"
+                                                    rows="10"></textarea>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="copy">URL 복사</button>
+                                            </div>
+                                        </div>
+                                        <div class="txtBox">
+                                            <p>생성된 광고 추천 URL을 트래킹 하고 싶은 버튼 및 링크에 삽입시키면, 광고 추적 보고서를 통해 데이터를 확인 하실 수 있습니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

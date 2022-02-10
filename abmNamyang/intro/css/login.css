@@ -1,0 +1,20 @@
+/*-------------------------------------------------------------------------------------------------------------
+    File   : login.scss
+    Date   : 2021.11.30
+/*------------------------------------------------------------------------------------------------------------*/
+/********** login **********/
+.container_wrap.abmNamyang_login {
+  position: relative;
+  width: 100%;
+  background-color: pink;
+}
+
+.container_wrap.abmNamyang_login section .content h1 {
+  font-size: 0;
+}
+
+.container_wrap.abmNamyang_login section .content section.sec_login .guideTxt p {
+  font-size: 25px;
+  color: #fff;
+  font-family: "NotoSansM";
+}

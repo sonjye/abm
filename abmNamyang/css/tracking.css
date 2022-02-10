@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/*-------------------------------------------------------------------------------------------------------------
+    File   : tracking.scss
+    Date   : 2021.12.02
+/*------------------------------------------------------------------------------------------------------------*/
+/********** abmNamyang common css **********/
+/********** abmNamyang each css **********/
+.abmNamyang {
+  /* 광고 추적 URL */
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .tit p.des {
+  font-size: 13px;
+  line-height: 18px;
+  color: #777;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .tit p.des:before {
+  content: "*";
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .tableWrap {
+  min-width: 854px;
+  margin-top: 20px;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(1) {
+  width: 240px;
+  padding: 15px 30px 35px 30px;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(2) {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(2) input,
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(2) select {
+  width: 100%;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .tableWrap .divTable .divTblBody .divTblTr > div:nth-child(2) p {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #999;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .urlPreview {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 20px 0 0 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 30px solid transparent;
+  background-color: #f8f8f8;
+}
+
+.abmNamyang.abmNamyang_adTrackingURL section.sec_adTrackingURL .cont .urlPreview .titBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+/***** 01.menu - tracking *****/

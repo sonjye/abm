@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="129" height="129" viewBox="0 0 129 129">
+    <defs>
+        <filter id="Ellipse_6" width="129" height="129" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="6"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <style>
+            .cls-3{fill:none;stroke:#222;stroke-linecap:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="btn_floating_top" transform="translate(-1759 -4902)">
+        <g filter="url(#Ellipse_6)" transform="translate(1759 4902)">
+            <g id="Ellipse_6-2" fill="#fff" stroke="#707070" transform="translate(18 15)">
+                <circle cx="46.5" cy="46.5" r="46.5" stroke="none"/>
+                <circle cx="46.5" cy="46.5" r="46" fill="none"/>
+            </g>
+        </g>
+        <text id="Top" fill="#222" font-family="Gilroy-ExtraBold, Gilroy" font-size="16px" font-weight="800" transform="translate(1824 4982)">
+            <tspan x="-15.024" y="0">TOP</tspan>
+        </text>
+        <g id="ic_arrow_2" transform="rotate(-90 3383.193 1575.192)">
+            <path id="Line_15" d="M12.511 0L0 15.014" class="cls-3" transform="translate(0 15.014)"/>
+            <path id="Line_16" d="M12.511 15.014L0 0" class="cls-3"/>
+        </g>
+    </g>
+</svg>

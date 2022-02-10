@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/ico">
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>Dashboard</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                    <ul class="active">
+                        <li class="on"><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">통합 트래킹</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 URL</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 리포트</a></li>
+                        <li><a href="javascript:void(0);">랜딩 도메인 생성</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">고객 로그</a></li>
+                        <li><a href="javascript:void(0);">고객 분석</a></li>
+                        <li><a href="javascript:void(0);">캠페인 관리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">계정 셋팅</a></li>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_trackingDashboard">
+                <div class="secTit">
+                    <h3>트래킹센터<span>Dashboard</span></h3>
+                </div>
+                <div class="secCont">
+                    <section class="sec_search">
+                        <div class="box_search">
+                            <div class="txtBox">
+                                <p>시스템 최근 업데이트</p>
+                                <p>2021-11-02 14:05</p>
+                            </div>
+                            <div class="calendarBox">
+                                <div class="calendar">
+                                    <div class="dateChoice">
+                                        <input type="text" id="dateInput" name="dateInput" value="">
+                                    </div>
+                                    <div class="icon"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_todayStats">
+                        <div class="box_liveStats">
+                            <div class="cont">
+                                <div class="graphHeader"><i class="live">LIVE</i>
+                                    <p>2021-11-02 14:50</p>
+                                    <button type="button" class="reset">새로고침</button>
+                                    <a href="javascript:void(0)">Detail</a>
+                                </div>
+                                <div class="graphArea dimCircle">
+                                    <div class="titBox">
+                                        <p>현재 활성 사용자</p>
+                                        <p>850</p>
+                                    </div>
+                                    <div class="contBox">
+                                        <div class="labelBox">
+                                            <p>Android</p>
+                                            <p>PC web</p>
+                                            <p>iOS</p>
+                                            <p>Mo web</p>
+                                        </div>
+                                        <div class="graphBox" style="text-align: center;"><img
+                                                src="../../img/test/graph1.png" alt=""></div>
+                                    </div>
+                                </div>
+                                <div class="graphArea dimCircle">
+                                    <div class="titBox">
+                                        <p>오늘 매출 현황</p>
+                                        <p>12,173,012,012</p>
+                                    </div>
+                                    <div class="contBox">
+                                        <div class="graphBox" style="text-align: left;"><img
+                                                src="../../img/test/graph2.png" alt=""></div>
+                                        <div class="labelBox">
+                                            <p>Web</p>
+                                            <p>APP</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_salesAnalysis">
+                            <div class="tit">
+                                <p>매출 분석</p>
+                            </div>
+                            <div class="cont">
+                                <div class="userInfo">
+                                    <div class="graphBox" style="text-align: center;">
+                                        <img src="../../img/test/graph3.png" alt=""> </div>
+                                    <div class="txtBox">
+                                        <div>
+                                            <p>Total</p>
+                                            <p>35,000,000</p>
+                                        </div>
+                                        <div>
+                                            <p>Web</p>
+                                            <p>150,000,000</p>
+                                        </div>
+                                        <div>
+                                            <p>APP</p>
+                                            <p>9,695</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_dauAnalysis">
+                        <div class="box_dauAnalysis">
+                            <div class="tit">
+                                <p>DAU 분석</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphArea">
+                                    <div class="graphBox" style="text-align: left;"> <img
+                                            src="../../img/test/graph8.png" alt="" style="position: relative;
+                                            top:20px"></div>
+                                    <div class="labelBox">
+                                        <div>
+                                            <p>Web Total</p>
+                                            <ul>
+                                                <li>
+                                                    <p>DAU</p>
+                                                    <p>20,000</p>
+                                                </li>
+                                                <li>
+                                                    <p>총 방문</p>
+                                                    <p>50,000</p>
+                                                </li>
+                                                <li>
+                                                    <p>PV</p>
+                                                    <p>15</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p>APP Total</p>
+                                            <ul>
+                                                <li>
+                                                    <p>DAU</p>
+                                                    <p>20,000</p>
+                                                </li>
+                                                <li>
+                                                    <p>총 방문</p>
+                                                    <p>50,000</p>
+                                                </li>
+                                                <li>
+                                                    <p>PV</p>
+                                                    <p>15</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_joinAnalysis">
+                            <div class="tit">
+                                <p>회원가입 분석</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphArea">
+                                    <div class="txtBox">
+                                        <p>Total</p>
+                                        <p>35,000,000</p>
+                                    </div>
+                                    <div class="labelBox">
+                                        <div>
+                                            <p>Web</p>
+                                            <p>150,000,000</p>
+                                        </div>
+                                        <div>
+                                            <p>APP</p>
+                                            <p>9,695</p>
+                                        </div>
+                                    </div>
+                                    <div class="graphBox" style="text-align: center;"> <img
+                                            src="../../img/test/graph6.png" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_summaryTime">
+                        <div class="box_summary">
+                            <div class="cont">
+                                <div class="webSummary">
+                                    <div class="titBox">
+                                        <p>Web Summary</p>
+                                        <a href="javascript:void(0)">Detail</a>
+                                    </div>
+                                    <div class="contBox">
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">방문자수</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>12,173 </p>
+                                                <p class="up">15</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">페이지뷰</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>12 </p>
+                                                <p class="down">105</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">회원가입</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>1,555 </p>
+                                                <p class="up">15</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">매출</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>19,444,478</p>
+                                                <p class="up">15</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="appSummary">
+                                    <div class="titBox">
+                                        <p>APP Summary</p>
+                                        <a href="javascript:void(0)">Detail</a>
+                                    </div>
+                                    <div class="contBox">
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">설치</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>100 </p>
+                                                <p class="down">15</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">실행</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>12,173,000 </p>
+                                                <p class="up">15</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">삭제</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>102</p>
+                                                <p class="down">15</p>
+                                            </div>
+                                        </div>
+                                        <div class="box">
+                                            <div class="selectBox"><select name="" id="">
+                                                    <option value="">매출</option>
+                                                </select>
+                                            </div>
+                                            <div class="txtBox">
+                                                <p>12,173 </p>
+                                                <p class="up">15</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dateTracking">
+                                    <div class="titBox">
+                                        <p>일자별 트래킹 통계</p>
+                                        <a href="javascript:void(0)">Detail</a>
+                                    </div>
+                                    <div class="contBox">
+                                        <div class="graphHeader">
+                                            <div class="selectBox">
+                                                <select name="" id="">
+                                                    <option value="">설치(수)</option>
+                                                </select>
+                                            </div>
+                                            <div class="selectBox">
+                                                <select name="" id="">
+                                                    <option value="">실행(수)</option>
+                                                </select>
+                                            </div>
+                                            <div class="labelBox">
+                                                <p>설치(수)</p>
+                                                <p>실행(수)</p>
+                                            </div>
+                                        </div>
+                                        <div class="graphArea" style="text-align: center;"> <img
+                                                src="../../img/test/graph9.png" alt=""
+                                                style="position: relative; max-width: 100%; top:10px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_timeAnalysis">
+                            <div class="tit">
+                                <p>시간대 매출 분석</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphHeader">
+                                    <div class="labelBox">
+                                        <p>범례</p>
+                                    </div>
+                                    <div class="radioBox">
+                                        <input type="radio" name="radioName" id="radio1" value="00" checked>
+                                        <label for="radio1">전체</label>
+                                        <input type="radio" name="radioName" id="radio2" value="01">
+                                        <label for="radio2">Web</label>
+                                        <input type="radio" name="radioName" id="radio3" value="02">
+                                        <label for="radio3">APP</label>
+                                    </div>
+                                </div>
+                                <div class="graphArea" style="text-align: left;"> <img src="../../img/test/graph13.png"
+                                        alt="" style="margin-top: -30px; margin-left: -21px; ">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_etcStats">
+                        <div class="box_bookmark">
+                            <div class="tit">
+                                <p>자주 가는 페이지</p>
+                            </div>
+                            <div class="cont">
+                                <div class="tableWrap">
+                                    <div class="tableBox">
+                                        <table>
+                                            <thead>
+                                                <th>페이지</th>
+                                                <th>페이지 뷰</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><i class="web">웹</i><a
+                                                            href="#">board.html?cod...0&number=1&lock=N</a></td>
+                                                    <td>123,123</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="mobile">휴대폰</i> board.html?cod...0&number=1&lock=N
+                                                    </td>
+                                                    <td>123,123</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="web">웹</i><a
+                                                            href="#">board.html?cod...0&numbernumbernumbernumbernumbernumbernumbernumbernumbernumbernumbernumbernumbernumber=1&lock=N</a>
+                                                    </td>
+                                                    <td>123,123</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_userInflow">
+                            <div class="tit">
+                                <p>사용자 유입 분석 </p>
+                            </div>
+                            <div class="cont">
+                                <div class="tab">
+                                    <ul>
+                                        <li class="on">소스별</li>
+                                        <li>매체별</li>
+                                        <li>소스/매체</li>
+                                    </ul>
+                                </div>
+                                <div class="tabView">
+                                    <div class="tabViewList show">
+                                        <div class="graphArea">
+                                            <div><img src="../../img/test/graph11.png" alt=""
+                                                    style=" position: relative; top:30px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tabViewList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_platformUser">
+                            <div class="tit">
+                                <p>플랫폼별 사용자 현황</p>
+                            </div>
+                            <div class="cont">
+                                <div class="graphArea" style="text-align: center;">
+                                    <div><img src="../../img/test/graph21.png" alt=""
+                                            style=" position: relative; top:40px; left:10px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

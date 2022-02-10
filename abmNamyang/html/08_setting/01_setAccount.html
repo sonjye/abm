@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>메뉴명</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul class="active">
+                        <li class="on"><a href="javascript:void(0);">계정 셋팅</a></li>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_setAccount">
+                <div class="secTit">
+                    <h3>계정 셋팅</h3>
+                </div>
+                <div class="secCont">
+                    <section class="sec_setAccount">
+                        <div class="box_connectAccount">
+                            <div class="tit">
+                                <p>모비튠 계정 연결</p>
+                            </div>
+                            <div class="cont">
+                                <div><input type="text" name="" id="" placeholder="모비튠 ID"><input type="password"
+                                        name="" id="" placeholder="모비튠 PW"><button type="button">검증 및 추가</button></div>
+                            </div>
+                        </div>
+                        <div class="box_accountList">
+                            <div class="tit">
+                                <p>연결 계정: <span>2개</span></p>
+                            </div>
+                            <div class="cont">
+                                <div class="accountListArea">
+                                    <div class="accountList">
+                                        <div>
+                                            <p>남양몰</p>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <p>트래킹</p>
+                                                <p>ID : abm_namyangi (2021.11.01 13:26:54)</p>
+                                                <p class="plan">APP 등록이 필요합니다.</p>
+                                                <div class="btnBox">
+                                                    <button type="button">APP 등록</button>
+                                                    <button type="button">Web 스크립트</button>
+                                                    <button type="button">App SDK</button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p>CDP</p>
+                                                <P>ID : abm_namyangi (2021.11.01 13:26:54)</P>
+                                            </div>
+                                            <div>
+                                                <p>AMP</p>
+                                                <p class="plan">서비스 오픈 예정</p>
+                                            </div>
+                                            <div>
+                                                <p>DMP</p>
+                                                <p class="plan">서비스 오픈 예정</p>
+                                            </div>
+                                            <div>
+                                                <p>CMP</p>
+                                                <p class="plan">서비스 오픈 예정</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accountList">
+                                        <div>
+                                            <p>케어비</p>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <p>트래킹</p>
+                                                <p>ID : abm_namyangi (2021.11.01 13:26:54)</p>
+                                                <p>플랫폼: <i class="android"></i><i class="ios"></i><i class="pc"></i></p>
+                                                <div class="btnBox">
+                                                    <button type="button">APP 등록</button>
+                                                    <button type="button">Web 스크립트</button>
+                                                    <button type="button">App SDK</button>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p>CDP</p>
+                                                <P>ID : abm_namyangi (2021.11.01 13:26:54)</P>
+                                            </div>
+                                            <div>
+                                                <p>AMP</p>
+                                                <p><a href="javascript:void(0);">계정을 연결하세요</a></p>
+                                            </div>
+                                            <div>
+                                                <p>DMP</p>
+                                                <p><a href="javascript:void(0);">계정을 연결하세요</a></p>
+                                            </div>
+                                            <div>
+                                                <p>CMP</p>
+                                                <p><a href="javascript:void(0);">계정을 연결하세요</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

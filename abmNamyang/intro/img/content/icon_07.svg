@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <defs>
+        <style>
+            .cls-2{fill:none}
+        </style>
+    </defs>
+    <g id="icon_07" transform="translate(-1596 -686)">
+        <g id="ic_video" transform="translate(657 50)">
+            <g id="Ellipse_24" fill="none" stroke="#fff" opacity="0.9" transform="translate(939 636)">
+                <circle cx="32.5" cy="32.5" r="32.5" stroke="none"/>
+                <circle cx="32.5" cy="32.5" r="32" class="cls-2"/>
+            </g>
+        </g>
+        <g id="Group_936" transform="translate(-1735.854 279.16)">
+            <g id="Rounded_Rectangle_996" transform="translate(3349.854 427.84)">
+                <rect id="Rectangle_364" width="30" height="23" class="cls-2" rx="10"/>
+                <rect id="Rectangle_365" width="27.38" height="20.963" fill="none" stroke="#fff" stroke-width="2px" rx="5" transform="translate(1.069 1.07)"/>
+            </g>
+            <g id="Shape_996" transform="translate(3353.593 432.79)">
+                <path id="Path_1274" fill="#222" stroke="#fff" stroke-linecap="square" stroke-linejoin="round" d="M3369.511 446.2l-.111-.184-.11.184-10.7-6.417.22-.367 10.585 6.351 10.585-6.351.22.367z" transform="translate(-3358.595 -439.411)"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <!-- //데이터테이블 CSS, JS -->
+    <link type="text/css" href="../../css/lib/jquery.dataTables.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/lib/jquery.dataTables.js"></script>
+    <!-- 데이터테이블 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>Dashboard</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">통합 트래킹</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 URL</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 리포트</a></li>
+                        <li><a href="javascript:void(0);">랜딩 도메인 생성</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                    <ul class="active">
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li class="on"><a href="javascript:void(0);">고객 로그</a></li>
+                        <li><a href="javascript:void(0);">고객 분석</a></li>
+                        <li><a href="javascript:void(0);">캠페인 관리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">계정 셋팅</a></li>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_customerLog">
+                <div class="secTit">
+                    <h3>고객 로그</h3>
+                </div>
+                <div class="secCont">
+                    <section class="sec_customerLog">
+                        <div class="box_searchList">
+                            <div class="cont">
+                                <div class="list">
+                                    <p>기간</p>
+                                    <div class="selectBox">
+                                        <select>
+                                            <option>패션의류</option>
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="calendarBox">
+                                        <div class="calendar">
+                                            <div class="dateChoice">
+                                                <input type="text" id="dateInput" name="dateInput" value="">
+                                            </div>
+                                            <div class="icon"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>유저</p>
+                                    <div class="selectBox">
+                                        <select>
+                                            <option>AU_ID</option>
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="inputBox">
+                                        <input type="text" placeholder="2자 이상 입력">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_searchList">
+                            <div class="tit">
+                                <p>※ 각 항목에 대한 최근 3개월 통계가 %로 표시됩니다. (조회 기간 영향 없음)</p>
+                            </div>
+                            <div class="cont">
+                                <div class="list">
+                                    <p>성별</p>
+                                    <div class="checkBox allCheckArea">
+                                        <input type="checkbox" name="checkName" id="check1" value="01"
+                                            class="allCheckbox">
+                                        <label for="check1">ALL</label>
+                                        <input type="checkbox" name="checkName" id="check2" value="02" class="checkbox">
+                                        <label for="check2">남자<span>5.5%</span></label>
+                                        <input type="checkbox" name="checkName" id="check3" value="03" class="checkbox">
+                                        <label for="check3" class="strong">여자<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName" id="check4" value="04" class="checkbox">
+                                        <label for="check4">알수없음<span>15.5%</span></label>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>연령별</p>
+                                    <div class="checkBox allCheckArea">
+                                        <input type="checkbox" name="checkName2" id="check2-1" value="01"
+                                            class="allCheckbox">
+                                        <label for="check2-1">ALL</label>
+                                        <input type="checkbox" name="checkName2" id="check2-2" value="02"
+                                            class="checkbox">
+                                        <label for="check2-2">~13<span>55.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-3" value="03"
+                                            class="checkbox">
+                                        <label for="check2-3">14~19<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-4" value="04"
+                                            class="checkbox">
+                                        <label for="check2-4">20~24<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-5" value="05"
+                                            class="checkbox">
+                                        <label for="check2-5">25~27<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-6" value="06"
+                                            class="checkbox">
+                                        <label for="check2-6" class="strong">28~35<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-7" value="07"
+                                            class="checkbox">
+                                        <label for="check2-7">36~44<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-8" value="08"
+                                            class="checkbox">
+                                        <label for="check2-8">45~54<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-9" value="9"
+                                            class="checkbox">
+                                        <label for="check2-9">55~64<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-10" value="10"
+                                            class="checkbox">
+                                        <label for="check2-10">65~<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-11" value="12"
+                                            class="checkbox">
+                                        <label for="check2-11">알수없음<span>100.0%</span></label>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>크로스디바이스</p>
+                                    <div class="checkBox allCheckArea">
+                                        <input type="checkbox" name="checkName3" id="check3-1" value="01"
+                                            class="allCheckbox">
+                                        <label for="check3-1">ALL</label>
+                                        <input type="checkbox" name="checkName3" id="check3-2" value="02"
+                                            class="checkbox">
+                                        <label for="check3-2">크로스디바이스<span>5.5%</span></label>
+                                        <input type="checkbox" name="checkName3" id="check3-3" value="03"
+                                            class="checkbox">
+                                        <label for="check3-3">단일디바이스<span>15.5%</span></label>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>디바이스</p>
+                                    <div class="checkBox allCheckArea">
+                                        <input type="checkbox" name="checkName4" id="check4-1" value="01"
+                                            class="allCheckbox">
+                                        <label for="check4-1">ALL</label>
+                                        <input type="checkbox" name="checkName4" id="check4-2" value="02"
+                                            class="checkbox">
+                                        <label for="check4-2">PC<span>5.5%</span></label>
+                                        <input type="checkbox" name="checkName4" id="check4-3" value="03"
+                                            class="checkbox">
+                                        <label for="check4-3">모바일<span>15.5%</span></label>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>운영체제</p>
+                                    <div class="checkBox allCheckArea">
+                                        <input type="checkbox" name="checkName6" id="check5-1" value="01"
+                                            class="allCheckbox">
+                                        <label for="check5-1">ALL</label>
+                                        <input type="checkbox" name="checkName6" id="check5-2" value="02"
+                                            class="checkbox">
+                                        <label for="check5-2">Android<span>5.5%</span></label>
+                                        <input type="checkbox" name="checkName6" id="check5-3" value="03"
+                                            class="checkbox">
+                                        <label for="check5-3">i-OS<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName6" id="check5-4" value="03"
+                                            class="checkbox">
+                                        <label for="check5-4">Linux<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName6" id="check5-5" value="03"
+                                            class="checkbox">
+                                        <label for="check5-5">Windows<span>15.5%</span></label>
+                                        <input type="checkbox" name="checkName6" id="check5-6" value="03"
+                                            class="checkbox">
+                                        <label for="check5-6">MAC OS<span>15.5%</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnArea">
+                            <button type="button" class="check">데이터 조회</button>
+                        </div>
+                    </section>
+                    <section class="sec_tableLog">
+                        <div class="cont">
+                            <div class="tab">
+                                <ul>
+                                    <li class="on">전체_AUID<span>251,412</span></li>
+                                    <li>ADID<span>51,412</span></li>
+                                    <li>MOID<span>51,412</span></li>
+                                    <li>USER_ID<span>51,412</span></li>
+                                </ul>
+                            </div>
+                            <div class="inputArea">
+                                <div class="buttonBox">
+                                    <button type="button" class="dbUpload">회원 DB 직접 업로드</button>
+                                    <button type="button" class="setting">항목 설정</button>
+                                </div>
+                                <div class="selectBox"><select name="" id="">
+                                        <option value="">50개씩보기</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="tabView">
+                                <div class="tabViewList box_auidTable show">
+                                    <div class="tableWrap">
+                                        <div class="tableBox dataTable">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="6">개인정보</th>
+                                                        <th colspan="4">사이트 이용 정보</th>
+                                                        <th colspan="3">트래킹 정보</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span>AU_ID</span></th>
+                                                        <th><span>이름</span></th>
+                                                        <th><span>이메일</span><span>연락처</span></th>
+                                                        <th><span>나이</span><span>생년월일</span></th>
+                                                        <th><span>성별</span><span>결혼여부</span></th>
+                                                        <th><span>지역</span></th>
+                                                        <th><span>주문수량</span><span>주문금액</span></th>
+                                                        <th><span>장바구니수</span><span>장바구니 금액</span></th>
+                                                        <th><span>방문수</span><span>로그인수</span></th>
+                                                        <th><span>최근구매일</span><span>최근방문일</span><span>회원가입일</span></th>
+                                                        <th><span>디바이스</span><span>OS</span><span>크로스 디바이스</span></th>
+                                                        <th><span>사이트</span><span>방문이력</span></th>
+                                                        <th><span>매체성향</span></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span>4ddae124ff32000c731ac28817d5647222178 </span></td>
+                                                        <td><span>홍*길동</span></td>
+                                                        <td><span>sea***@naver.com</span><span>010****1251</span></td>
+                                                        <td><span>36~44</span><span> 1965-06-02</span></td>
+                                                        <td><span>여자</span><span>미혼</span></td>
+                                                        <td><span>서울</span></td>
+                                                        <td><span>12</span><span>1,215,000</span></td>
+                                                        <td><span>3</span><span> 15,121,110</span></td>
+                                                        <td><span>32</span><span>20</span></td>
+                                                        <td><span>2021-11-25 </span><span>2021-11-20</span><span>
+                                                                2021-11-18</span>
+                                                        </td>
+                                                        <td><span>Mobile</span><span> Android</span><span> 15</span>
+                                                        </td>
+                                                        <td><span>18</span></td>
+                                                        <td><span>사회/일반, </span><span>생활문화일반</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                        <td>&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="divTblDataNone">
+                                        <div>
+                                            <p>등록된 리포트가 없습니다.</p>
+                                            </div>
+                                      </di  v> -->
+                                    <div class="paging">
+                                        <ul>
+                                            <li class="prev"><a href="javascript:pageLink(0);"></a></li>
+                                            <li class="on"><a href="javascript:pageLink(1);">1</a></li>
+                                            <li><a href="javascript:pageLink(2);">2</a></li>
+                                            <li><a href="javascript:pageLink(3);">3</a></li>
+                                            <li><a href="javascript:pageLink(4);">4</a></li>
+                                            <li><a href="javascript:pageLink(5);">5</a></li>
+                                            <li><a href="javascript:pageLink(6);">6</a></li>
+                                            <li><a href="javascript:pageLink(7);">7</a></li>
+                                            <li><a href="javascript:pageLink(8);">8</a></li>
+                                            <li><a href="javascript:pageLink(9);">9</a></li>
+                                            <li><a href="javascript:pageLink(10);">10</a></li>
+                                            <li class="next"><a href="javascript:pageLink(10+1);"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tabViewList box_adidTable">ADID</div>
+                                <div class="tabViewList box_moidTable">MOID</div>
+                                <div class="tabViewList box_userIdTable">USER_ID</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

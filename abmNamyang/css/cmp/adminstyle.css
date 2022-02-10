@@ -1,0 +1,84 @@
+.secWrap { position: relative; width: 100%; background: #fff; box-shadow: rgba(180, 180, 180, 0.16) 0px 2px 8px 0px; margin-top: 25px; padding: 20px; }
+
+.secWrap .temp-list__serch { padding: 0; border: 1px solid #eaeaea; }
+
+.secWrap .temp-list__serch .temp-list__serch-group { display: flex; justify-content: flex-start; align-items: center; height: auto; max-height: 136px; border-bottom: 1px solid #dcdcdc; background: #f4f4f4; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-text { display: inline-block; width: 200px; background: #f4f4f4; border-right: #e8e8e8 1px solid; padding-left: 20px; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-text .serch-title { font-size: 14px; font-weight: 500; font-stretch: normal; font-style: normal; letter-spacing: normal; color: #595a5a; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select { background: #fff; margin-top: 0; width: 100%; height: 40px; border-radius: 0; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select ul { display: flex; justify-content: flex-start; align-items: center; height: 39px; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select ul li { padding: 0 20px; line-height: normal; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select ul li input[type="checkbox"] { display: none; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select ul li input[type="checkbox"] + label { cursor: pointer; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select ul li input[type="checkbox"]:checked ~ label { color: #6f45bf; font-weight: bold; cursor: pointer; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select ul li .calendar { padding-left: 0; margin-top: 0; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select.day_select ul li { padding: 0; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select.day_select ul li:first-child { padding: 0 20px; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select.day_select ul li input[type="checkbox"] + label { border: 1px solid #d0d0d0; padding: 5px 20px; border-right: 0; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select.day_select ul li input[type="checkbox"]:checked ~ label { background: #6f45bf; color: #fff; font-weight: normal; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select.day_select ul li .calendar { padding-left: 0; margin-top: 0; }
+
+.secWrap .temp-list__serch .temp-list__serch-group .temp-list__serch-select.day_select ul li:last-child input[type="checkbox"] + label { border-right: 1px solid #d0d0d0; }
+
+.secWrap .temp-list__serch .temp-list__serch-group:last-child { border-bottom: 0; }
+
+.secWrap .tabWrap .tab_btnWrap { position: relative; width: 100%; }
+
+.secWrap .tabWrap .tab_btnWrap ul { display: flex; justify-content: space-between; align-items: center; height: 40px; }
+
+.secWrap .tabWrap .tab_btnWrap ul li { display: flex; justify-content: center; align-items: center; flex: 1; font-size: 13px; color: #999; background: #f9fafb; border: 1px solid #d0d0d0; border-right: 0; cursor: pointer; height: 40px; }
+
+.secWrap .tabWrap .tab_btnWrap ul li:last-child { border-right: 1px solid #d0d0d0; }
+
+.secWrap .tabWrap .tab_btnWrap ul li.active { background: #6f45bf; border: 1px solid #6f45bf; color: #fff; }
+
+.secWrap .tabWrap .tab_conWrap { display: none; position: relative; width: 100%; background: #fff; padding: 20px; }
+
+.secWrap .tabWrap .tab_conWrap.active { display: block; }
+
+.secWrap .tabWrap .tab_conWrap .chartArea { display: flex; justify-content: center; align-items: center; height: 432px; }
+
+.secWrap .list_table table thead tr th { line-height: 18px; font-size: 13px; }
+
+.secWrap .list_table table thead tr.tit th { font-weight: bold; }
+
+.secWrap .list_table table tbody tr td { position: relative; line-height: 18px; font-size: 13px; }
+
+.secWrap .list_table table tbody tr td span.ico { position: absolute; transform: translateY(-50%); top: 50%; cursor: pointer; }
+
+.secWrap .list_table table tbody tr td span.ico::before { content: ""; position: relative; display: inline-block; width: 18px; height: 20px; background: url(../images/btn_search.png) no-repeat; background-size: 100%; margin-left: 5px; top: 4px; }
+
+.secWrap .chartWrap { position: relative; width: 100%; background: #fff; padding: 20px; }
+
+.secWrap .chartWrap .chartArea { display: flex; justify-content: center; align-items: center; height: 432px; }
+
+.secWrap .conWrap { position: relative; display: flex; justify-content: space-between; align-items: center; position: relative; width: 100%; background: #fff; padding: 20px; }
+
+.secWrap .conWrap.conUserWrap { padding: 0; }
+
+.secWrap .conWrap div { flex: 1; }
+
+.secWrap .conWrap div .titBox { font-size: 15px; font-weight: bold; margin-bottom: 10px; }
+
+.secWrap .conWrap div .conT .list_table table tbody tr { height: 45px; }
+
+.secWrap .conWrap div.sendWrap { position: relative; height: 100%; min-height: 297px; }
+
+.secWrap .conWrap div.salesWrap { position: relative; height: 100%; min-height: 297px; margin: 0 20px; }
+
+.secWrap .conWrap div.campaign_sendWrap { position: relative; height: 100%; min-height: 297px; }
+/*# sourceMappingURL=adminstyle.css.map */

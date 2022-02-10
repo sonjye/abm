@@ -1,0 +1,439 @@
+@charset 'utf-8';
+
+/*-------------------------------------------------------------------------------------------------------------
+    File   : setting.scss
+    Date   : 2021.11.24
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+
+/********** abmNamyang common css **********/
+
+.abmNamyang {}
+
+
+/********** abmNamyang each css **********/
+.abmNamyang {
+
+  /* abmNamyang_setAccount - 계정 셋팅  */
+  &.abmNamyang_setAccount {
+    section {
+      &.sec_setAccount {
+        .box_connectAccount {
+          .tit {
+            @include titleLayout;
+          }
+
+          .cont {
+            position: relative;
+            margin-top: 20px;
+
+            input {
+              width: 300px;
+              margin-left: 10px;
+
+              &:nth-of-type(1) {
+                margin-left: 0;
+              }
+            }
+
+            button {
+              @include btnLayoutM;
+              @include btn_red;
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .box_accountList {
+          margin-top: 40px;
+
+          .tit {
+            @include titleLayout;
+
+            span {
+              color: $mainColor_abmNamyang;
+            }
+          }
+
+          .cont {
+            margin-top: 20px;
+
+            .accountListArea {
+              .accountList {
+                margin-top: 20px;
+
+                &:first-child {
+                  margin-top: 0;
+                }
+
+                >div {
+                  display: block;
+                  border: 1px solid $subBorderColor_abmNamyang;
+
+                  &:nth-child(1) {
+                    @include titleLayout;
+                    background-color: $bgColor_abmNamyang;
+                    min-height: 50px;
+                    padding: 12px 30px;
+
+                    p {
+                      position: relative;
+                      top: 4px;
+                    }
+                  }
+
+                  &:nth-child(2) {
+                    display: grid;
+                    gap: 20px;
+                    padding: 30px 35px;
+                    border-top: none;
+
+                    >div {
+                      p {
+                        &.plan {
+                          font-size: 14px;
+                          color: #aaa;
+                        }
+
+                        &:nth-child(1) {
+                          @include ftMedium;
+                          text-indent: -5px;
+
+                          &:before {
+                            content: "";
+                            position: relative;
+                            display: inline-block;
+                            top: -4px;
+                            width: 3px;
+                            height: 3px;
+                            margin: 0 4px 0 0;
+                            font-size: 15px;
+                            border-radius: 25px;
+                            background-color: $mainFontColor_abmNamyang;
+                          }
+                        }
+
+                        &:nth-child(2) {
+                          margin-top: 10px;
+                          color: #444;
+                          color: #666;
+
+                          a {
+                            font-size: 14px;
+                            color: #aaa;
+                            border-bottom: 1px solid #aaa;
+
+                            &:after {
+                              content: ">";
+                              position: relative;
+                              display: inline-block;
+                              margin-left: 4px;
+                            }
+                          }
+                        }
+                      }
+
+                      &:nth-child(1) {
+                        grid-column: 1/2;
+                        grid-row: 1/3;
+
+                        p {
+                          font-size: 15px;
+
+                          &:nth-child(3) {
+                            margin-top: 20px;
+                            font-size: 14px;
+                            color: #aaa;
+
+                            i {
+                              @include iLayout;
+                              margin: 0 10px;
+                              vertical-align: text-bottom;
+
+                              &.android {
+                                @include ico_android_bk;
+                                background-size: contain;
+                                width: 20px;
+                                height: 23px;
+                              }
+
+                              &.ios {
+                                @include ico_ios_bk;
+                                background-size: contain;
+                                width: 17px;
+                                height: 21px;
+                              }
+
+                              &.pc {
+                                @include ico_pc_bk;
+                                background-size: contain;
+                                width: 21px;
+                                height: 18px;
+                              }
+                            }
+                          }
+                        }
+
+                        .btnBox {
+                          margin-top: 20px;
+
+                          button {
+                            @include btnLayout;
+                            @include btn_red;
+                            min-width: 100px;
+                            height: 30px;
+                            margin-left: 10px;
+                            font-size: 12px;
+                            border-radius: 3px;
+
+                            &:first-child {
+                              margin-left: 0;
+                            }
+                          }
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        grid-column: 2/3;
+                        grid-row: 1/2;
+                      }
+
+                      &:nth-child(3) {
+                        grid-column: 3/4;
+                        grid-row: 1/2;
+                      }
+
+                      &:nth-child(4) {
+                        grid-column: 2/3;
+                        grid-row: 2/3;
+                      }
+
+                      &:nth-child(5) {
+                        grid-column: 3/4;
+                        grid-row: 2/3;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  /* abmNamyang_userInfo - 사용자 정보  */
+  &.abmNamyang_userInfo {
+    section {
+      &.sec_userInfo {
+
+        /* 공통 */
+        .box_userInfo,
+        .box_setBrand,
+        .box_serviceInfo {
+          margin-top: 50px;
+
+          .tit {
+            @include titleLayout;
+          }
+
+          .cont {
+            .tableWrap {
+              margin-top: 16px;
+              border-left: none;
+              border-right: none;
+
+              .divTable {
+                .divTblBody {
+                  .divTblTr {
+                    >div {
+                      &:nth-child(odd) {
+                        width: 230px;
+                      }
+
+                      &:nth-child(even) {
+
+                        input[type="text"],
+                        input[type="password"],
+                        input[type="tel"],
+                        input[type="email"],
+                        select {
+                          width: 500px;
+                        }
+
+                        .inputTel {
+                          input[type="text"] {
+                            width: 30%;
+                          }
+                        }
+
+                        p {
+                          &.errorText {
+                            display: inline-block;
+                            margin-left: 10px;
+                            font-size: 12px;
+                            color: $errorColor_abmNamyang;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        /* 사용자 정보 */
+        .box_userInfo {
+          margin-top: 0;
+
+          .cont {
+            .tableWrap {
+              .divTable {
+                .divTblBody {
+                  .divTblTr {
+                    >div:nth-child(even) {
+                      input[type="text"] {
+                        &.wdSmall {
+                          width: 210px;
+                        }
+                      }
+
+                      button {
+                        &.password {
+                          @include btnLayoutM;
+                          @include btn_red;
+                        }
+                      }
+
+                      .inputBox {
+                        display: inline-block;
+                        margin-left: 26px;
+
+                        p {
+                          margin-right: 20px;
+                        }
+
+                        input[type="text"] {
+                          width: 210px;
+                        }
+                      }
+
+                      .inputTel {
+                        width: 500px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .btnArea {
+          button {
+            @include btnLayout;
+            @include btnLayoutM;
+
+            &.modify {
+              @include btn_red;
+            }
+
+            &.cancel {
+              @include btn_gray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* abmNamyang_setAuth - 권한 설정  */
+  &.abmNamyang_setAuth {
+    .sec_setAuth {
+      .box_setAuth {
+        .tit {
+          display: none;
+        }
+
+        .cont {
+          .tableHeader {
+            display: flex;
+
+            >div {
+              &.searchBox {
+                margin-left: 10px;
+              }
+
+              &.btnBox {
+                position: relative;
+                margin: 0 0 0 8px;
+
+                button {
+                  position: relative;
+                  top: 10px;
+                  padding: 4px;
+                  font-size: 13px;
+                  color: $subFontColor_abmNamyang;
+                  text-decoration: underline;
+                  background-color: #fff;
+                }
+              }
+
+              &:nth-child(4) {
+                flex-grow: 1;
+                text-align: right;
+
+                &.btnArea {
+                  margin: 0px 0 0 0;
+                  text-align: right;
+
+                  button {
+                    &.register {
+                      @include btnLayout;
+                      @include btnLayoutM;
+                      @include btn_red;
+                      min-width: 180px;
+                    }
+                  }
+                }
+              }
+
+              &:last-child {
+                margin-left: 10px;
+                text-align: right;
+              }
+            }
+          }
+
+          .tableWrap {
+            a {
+              text-decoration: underline;
+            }
+
+            button {
+              &.setting {
+                @include btnLayout;
+                @include btnLayoutSS;
+                @include btn_deepGray;
+              }
+            }
+          }
+
+          .paging {
+            ul {
+              margin: 50px auto 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/***** 01.menu - userAdmin *****/

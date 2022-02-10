@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+    <meta name="description" content="Open RTB SSP" />
+    <meta name="keywords" content="Open RTB SSP" />
+    <meta name="author" content="인라이플" />
+    <title>남양유업 ABM Platform</title>
+    <!-- 기본 CSS, JS -->
+    <link type="text/css" href="../../css/base.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery-2.2.2.min.js"></script>
+    <!-- //기본 CSS, JS -->
+    <!-- //데이터테이블 CSS, JS -->
+    <link type="text/css" href="../../css/lib/jquery.dataTables.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/lib/jquery.dataTables.js"></script>
+    <!-- 데이터테이블 CSS, JS -->
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <script src="../../js/jquery.easing.1.3.js"></script>
+    <script src="../../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/moment.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/daterangepicker_popup.js"></script>
+    <link type="text/css" href="../../css/lib/daterangepicker_popup.css" rel="stylesheet" />
+    <script src="../../js/ui.js"></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function () {
+            //AreaTab li 클릭시 하단 내용 바뀜 기능
+            $(".tab li").click(function (e) {
+                e.preventDefault();
+                $(this).closest("section").find(".tab li").removeClass("on");
+                var tabIndex = $(this).addClass("on").index();
+                var tabListIndex = $(this).closest("section").find(".tabView > .tabViewList");
+                $(tabListIndex).removeClass("show");
+                $(tabListIndex).eq(tabIndex).addClass("show");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container_wrapper">
+        <header class="header">
+            <h1><a href="javascript:void(0);">ABM남양</a></h1>
+            <div class="userinfo">
+                <div class="moveSite">
+                    <p>브랜드 이동</p><select name="" id="">
+                        <option value="">남양몰</option>
+                    </select>
+                </div>
+                <div class="name"><i class="master">마스터</i><strong>namyangi_gdhong</strong>님</div>
+                <div class="logout"><button type="button" class="logout"></button></div>
+            </div>
+        </header>
+        <nav class="navigation">
+            <h2>메뉴</h2>
+            <div class="authTitle">
+                <h4>Dashboard</h4>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_tracking"></i><span>트래킹 센터</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">통합 트래킹</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 URL</a></li>
+                        <li><a href="javascript:void(0);">광고 추적 리포트</a></li>
+                        <li><a href="javascript:void(0);">랜딩 도메인 생성</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);"><i class="ico_nav_cdp"></i><span>CDP</span></a>
+                    <ul class="active">
+                        <li><a href="javascript:void(0);">Dashboard</a></li>
+                        <li><a href="javascript:void(0);">고객 로그</a></li>
+                        <li><a href="javascript:void(0);">고객 분석</a></li>
+                        <li class="on"><a href="javascript:void(0);">캠페인 관리</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_cmp"></i><span>CMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_amp"></i><span>AMP</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">캠페인 생성</a></li>
+                        <li><a href="javascript:void(0);">캠페인 리스트</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_dmp"></i><span>DMP</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_data"></i><span>데이터 연동 센터</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_system"></i><span>시스템 로그</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="ico_nav_setting"></i><span>설정</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">계정 셋팅</a></li>
+                        <li><a href="javascript:void(0);">My Page</a></li>
+                        <li><a href="javascript:void(0);">사용자 관리</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <script>
+                $(function () {
+                    $(".userMenu .btns").on("click", function () {
+                        var nextEl = $(this).next("ul");
+                        $(this).toggleClass("on");
+                        nextEl.toggle(300);
+                    });
+                    $(document).mouseup(function (e) {
+                        var userMenu = $(".userMenu");
+                        if (!userMenu.is(e.target) && userMenu.has(e.target).length === 0) {
+                            $(".userMenu ul").hide(300);
+                            $(".userMenu .btns").removeClass("on");
+                        }
+                    });
+                    $(".navigation .hamburger").on("click", function () {
+                        $(".navigation").toggleClass("closed");
+                        $(".header").toggleClass("wide-view");
+                        $(".contents_wrapper").toggleClass("wide-view");
+                        if ($(".navigation").hasClass("closed")) {
+                            $(".navigation").animate({
+                                width: "60px",
+                            }, 400);
+                        } else {
+                            $(".navigation").animate({
+                                width: "250px",
+                            }, 400);
+                        }
+                    });
+                    $(".navigation ul li:has(ul)").addClass("has-list");
+                    $(".navigation > ul > li > a").on("click", function () {
+                        var nextEl = $(this).next();
+                        $(".navigation > ul > li").removeClass("active");
+                        $(this).closest("li").addClass("active");
+                        if (nextEl.is("ul") && nextEl.is(":visible")) {
+                            $(this).closest("li").removeClass("active");
+                            nextEl.slideUp("fast");
+                        }
+                        if (nextEl.is("ul") && !nextEl.is(":visible")) {
+                            $(".navigation > ul > li > ul:visible").slideUp(300);
+                            nextEl.slideDown("fast");
+                        }
+                        if (nextEl.is("ul")) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    });
+                });
+            </script>
+        </nav>
+        <section class="contents_wrapper">
+            <div class="contents abmNamyang abmNamyang_campaignManagement">
+                <div class="secTit">
+                    <h3>캠페인 관리</h3>
+                    <p class="secDes">최근 한달 간 고객 행동 분석입니다. 효과적인 마케팅을 위해 고객 분석 캠페인을 직접 만들어 보세요.</p>
+                    <p class="secDes">기준일 :<span> 2021-12-30 (전일비교)</span></p>
+                </div>
+                <div class="secCont">
+                    <section class="sec_campaignState">
+                        <div class="cont">
+                            <div>
+                                <div class="titBox">
+                                    <p>VIP 고객</p>
+                                    <button type="button" class="set">설정</button>
+                                </div>
+                                <div class="contBox">
+                                    <p>512명</p>
+                                    <span class="up">2.5%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="titBox">
+                                    <p>단골 고객</p>
+                                    <button type="button" class="set">설정</button>
+                                </div>
+                                <div class="contBox">
+                                    <p>52명</p>
+                                    <span class="down">2.5%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="titBox">
+                                    <p>신규 고객</p>
+                                    <button type="button" class="set">설정</button>
+                                </div>
+                                <div class="contBox">
+                                    <p>2명</p>
+                                    <span class="down">2.5%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="titBox">
+                                    <p>잠재 고객</p>
+                                    <button type="button" class="set">설정</button>
+                                </div>
+                                <div class="contBox">
+                                    <p>51,112명</p>
+                                    <span class="down">2.5%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="titBox">
+                                    <p>이탈 우려 고객</p>
+                                    <button type="button" class="set">설정</button>
+                                </div>
+                                <div class="contBox">
+                                    <p>512명</p>
+                                    <span class="down">2.5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sec_campaignSearch">
+                        <div class="box_searchList">
+                            <div class="cont">
+                                <div class="list">
+                                    <p>캠페인명</p>
+                                    <div class="inputBox"><input type="text" name="" id="" placeholder="2자 이상 입력하세요">
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>구분</p>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="checkboxName" id="checkbox1" value="01" checked>
+                                        <label for="checkbox1">ALL</label>
+                                        <input type="checkbox" name="checkboxName" id="checkbox2" value="02">
+                                        <label for="checkbox2" class="strong">추천<span>5</span></label>
+                                        <input type="checkbox" name="checkboxName" id="checkbox3" value="03">
+                                        <label for="checkbox3">즐겨찾기<span>15</span></label>
+                                        <input type="checkbox" name="checkboxName" id="checkbox4" value="04">
+                                        <label for="checkbox4">일반<span>12</span></label>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>상태</p>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="checkName2" id="check2-1" value="01"
+                                            class="allCheckbox" checked>
+                                        <label for="check2-1">ALL</label>
+                                        <input type="checkbox" name="checkName2" id="check2-2" value="02">
+                                        <label for="check2-2">ON<span>4</span></label>
+                                        <input type="checkbox" name="checkName2" id="check2-3" value="03">
+                                        <label for="check2-3">OFF<span>15</span></label>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <p>전송방식</p>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="checkboxName3" id="checkbox3-1" value="01" checked>
+                                        <label for="checkbox3-1">ALL</label>
+                                        <input type="checkbox" name="checkboxName3" id="checkbox3-2" value="02">
+                                        <label for="checkbox3-2">실시간</label>
+                                        <input type="checkbox" name="checkboxName3" id="checkbox3-3" value="03">
+                                        <label for="checkbox3-3">요청시 (30분 갱신)</label>
+                                    </div>
+                                </div>
+                                <div class="list" style="display:none;">
+                                    <p>연동채널</p>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="checkboxName4" id="checkbox4-1" value="01" checked>
+                                        <label for="checkbox4-1">ALL</label>
+                                        <input type="checkbox" name="checkboxName4" id="checkbox4-2" value="02">
+                                        <label for="checkbox4-2">아이바이저<span>5.5%</span></label>
+                                        <input type="checkbox" name="checkboxName4" id="checkbox4-3" value="03">
+                                        <label for="checkbox4-3">모비온 광고<span>15.5%</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnArea">
+                            <button type="button" class="check">캠페인 조회</button>
+                        </div>
+                    </section>
+                    <section class="sec_campaignList">
+                        <div class="tit">
+                            <p>캠페인 리스트</p>
+                        </div>
+                        <div class="cont">
+                            <div class="listHeader">
+                                <!-- <i class="bookmark">즐겨찾기</i>
+                                <i class="realtime">실시간 전송</i>
+                                <i class="request">요청시(30분 갱신)</i> -->
+                                <button type="button" class="load">추천 캠페인 불러오기</button>
+                            </div>
+                            <div class="listArea">
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark on">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_1" checked>
+                                                    <label for="ip_toggle_1"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                    <button type="button" class="download">다운로드</button>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="request">요청시</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_2" checked>
+                                                    <label for="ip_toggle_2"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_3" checked>
+                                                    <label for="ip_toggle_3"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">삭제</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_4" checked>
+                                                    <label for="ip_toggle_4"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">새로고침</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_5" checked>
+                                                    <label for="ip_toggle_5"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_6" checked>
+                                                    <label for="ip_toggle_6"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_7" checked>
+                                                    <label for="ip_toggle_7"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_8" checked>
+                                                    <label for="ip_toggle_8"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_9" checked>
+                                                    <label for="ip_toggle_9"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <div class="listBlock">
+                                        <div class="titBox">
+                                            <div class="iconBox">
+                                                <button type="button" class="bookmark">즐겨찾기</button>
+                                                <i class="realtime">실시간</i>
+                                            </div>
+                                            <div class="listTit">
+                                                <p><a href="javascript:void(0);"><span>[필수]</span>최근 180일간 18~21시 2회이상
+                                                        방문한 유저 대상이 있을경우 캠페인 리스트박스</a></p>
+                                            </div>
+                                            <div class="toggleBox">
+                                                <div class="ip_toggle">
+                                                    <input type="checkbox" name="ip_toggle" id="ip_toggle_9" checked>
+                                                    <label for="ip_toggle_9"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contBox">
+                                            <div class="campaignList">
+                                                <div>
+                                                    <p>AUID</p>
+                                                    <p>8,123,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>ADID</p>
+                                                    <p>8,456명</p>
+                                                </div>
+                                                <div>
+                                                    <p>User ID</p>
+                                                    <p>6명</p>
+                                                </div>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button">연동채널(2)</button>
+                                                <button type="button">통계</button>
+                                                <button type="button">조건초기화</button>
+                                            </div>
+                                        </div>
+                                        <div class="toggleBtn"><button type="button" class="detail">자세히 보기</button>
+                                        </div>
+                                    </div>
+                                    <div class="listDetail">
+                                        <div class="includeBox">
+                                            <div><i>포함</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="excludeBox">
+                                            <div><i>제외</i></div>
+                                            <div>
+                                                <div>
+                                                    <p><span>회원가입일 :</span> 최근 30일전부터 현재 까지 가입한 회원중</p>
+                                                </div>
+                                                <div>
+                                                    <p><span>구매기간</span> : 최근30일동안,</p>
+                                                    <p>(AND) 구매건수 : 0건 이하 구매</p>
+                                                    <p>(AND) 구매금액 : 10,000원 이하 구매 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <script>
+                        $(function () {
+                            //자세히보기 toggle
+                            $(".listDetail").css("display", "none");
+                            var listDetailOpenBtn = $(".listBlock .toggleBtn button");
+                            $(listDetailOpenBtn).click(function (e) {
+                                e.preventDefault();
+                                $(this).toggleClass("on"); // 자세히보기 아이콘 클래스 on/off
+                                $(this).closest(".list").toggleClass("on");
+                                $(this).closest(".list").find(".listDetail").slideToggle(10);
+                            });
+                        });
+                        $(function () {
+                            //즐겨찾기 아이콘 클래스 on/off
+                            $(".listDetail").css("display", "none");
+                            var btnStar = $(".listBlock .titBox .iconBox button.bookmark");
+                            $(btnStar).click(function (e) {
+                                e.preventDefault();
+                                $(this).toggleClass("on");
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+@charset 'utf-8';
+
+/*------------------------------------------------------------------------------------------------------------
+    File   : mixin.scss
+    Date   : 2021.08.29
+    Explain: mixin
+------------------------------------------------------------------------------------------------------------*/
+
+
+/********** common  **********/
+
+$mainColor: #85b74e;
+$subColor: #cae2af;
+$errorColor: #ff2c2c;
+$deleteColor: #7e7e7e;
+$menuDefaultColor: #5e5e5e;
+$menuActiveColor: #f06060;
+
+$mainColor: $mainColor;
+$subColor: $subColor;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/********** layout **********/
+@mixin secLayout($pd:28px 30px, $mg:30px 0 0 0) {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  padding: 28px 30px;
+  // box-shadow: 0.8px 0.6px 5px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  margin: 30px 0 0 0;
+}
+
+@mixin dpLayout {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin clear {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+//icon layout
+@mixin iLayout {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background-position: 0px 0px;
+  font-size: 0;
+}
+
+/********** table **********/
+  // header fixed, th에 추가
+@mixin tableHederFixed {
+  position: sticky;
+  top: 0;
+}
+
+@mixin hoverVisible {
+  white-space: normal !important;
+  overflow: visible !important;
+  word-break: break-all !important;
+}
+
+
+/********** font **********/
+@mixin ftRegular {
+  font-family: "NotoSansR";
+}
+
+@mixin ftMedium {
+  font-family: "NotoSansM";
+}
+
+@mixin ftBold {
+  font-family: "NotoSansB";
+}
+
+
+/********** animation **********/
+@mixin transition {
+  transition: all 0.2s ease-in-out;
+}
+
+
+/********** text **********/
+::selection {
+  background: $mainColor;
+}
+
+.hidden {
+  position: fixed;
+  top: 0;
+  left: -999em;
+}
+
+@mixin txtHide {
+  text-indent: -999999px;
+  font-size: 0;
+}
+
+.hide {
+  @include txtHide();
+}
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin ellipsis_l4($wlc:4) {
+  display: -webkit-box;
+  //width: 100px;
+  //height: 100px;
+  //line-height: 22px;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-all;
+  -webkit-line-clamp: $wlc;
+  -webkit-box-orient: vertical;
+}
+
+.elHvrVsbl {
+  @include ellipsis;
+}
+
+.elHvrVsbl2 {
+  @include ellipsis_l4($wlc:2);
+}
+
+.elHvrVsbl4 {
+  @include ellipsis_l4;
+}
+

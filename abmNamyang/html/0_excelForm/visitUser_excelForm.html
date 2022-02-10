@@ -1,0 +1,616 @@
+ <!DOCTYPE html>
+ <html lang="ko">
+
+ <head>
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+     <meta http-equiv="Content-Type" content="application/vnd.ms-excel; charset=utf-8">
+     <!-- <link type="text/css" href="../../css/excelForm.css" rel="stylesheet" /> -->
+     <style>
+         /* excelForm common */
+         table {
+             width: 100%;
+             border-collapse: collapse;
+             background-color: #fff;
+             font-family:
+                 "NotoSansR;";
+         }
+
+         table thead tr th,
+         table thead tr td {
+             padding: 6px 10px;
+             text-align: center;
+             vertical-align:
+                 middle;
+             font-size: 14px;
+             line-height: 20px;
+             color: #333;
+             border: 1px solid #e9e9e9;
+             border-width: thin;
+         }
+
+         table thead tr th h1 {
+             margin: 0;
+             padding: 30px 0;
+             font-size: 20px;
+             color: #333;
+         }
+
+         table thead tr td {
+             text-align:
+                 right;
+             padding: 2px 10px;
+         }
+
+         table tbody tr th,
+         table tbody tr td {
+             text-align: center;
+             padding: 10px 10px;
+             color: #333;
+             text-align: center;
+             border: 1px solid #e9e9e9;
+             border-width: thin;
+         }
+
+         table tbody tr th {
+             padding:
+                 12px 10px;
+             font-size: 14px;
+             font-weight: bold;
+             background-color: #f8f8f8;
+         }
+
+         table tbody tr td {
+             font-size: 13px;
+         }
+
+         /* excelFormTitle_visitUser */
+         #excelFormTitle_visitUser tr th,
+         #excelFormTitle_visitUser tr td {
+             border: none;
+         }
+
+         /* excelFormList_visitUser */
+         #excelFormList_visitUser {
+             margin-top: 20px;
+         }
+
+         #excelFormList_visitUser thead tr th {
+             padding: 12px 10px;
+             background-color: #f8f8f8;
+         }
+     </style>
+ </head>
+
+ <body>
+     <table id="excelFormTitle_visitUser">
+         <thead>
+             <tr>
+                 <th>
+                     <h1>최근 180일 내 방문한 유저</h1>
+                 </th>
+             </tr>
+             <tr>
+                 <td>다운로드일 : 2022-01-26</td>
+             </tr>
+         </thead>
+     </table>
+     <table id="excelFormList_visitUser">
+         <thead>
+             <tr>
+                 <th><span>No</span></th>
+                 <th><span>User ID</span></th>
+                 <th><span>이메일</span></th>
+                 <th><span>휴대폰번호</span></th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr>
+                 <td>
+                     <span>1</span>
+                 </td>
+                 <td>
+                     <span>sjlee4</span>
+                 </td>
+                 <td>
+                     <span>sjl***@test.com</span>
+                 </td>
+                 <td>
+                     <span>010****5562</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>2</span>
+                 </td>
+                 <td>
+                     <span>ymbaek</span>
+                 </td>
+                 <td>
+                     <span>ymb***@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****6843</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>3</span>
+                 </td>
+                 <td>
+                     <span>wihan4</span>
+                 </td>
+                 <td>
+                     <span>wih***@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****4554</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>4</span>
+                 </td>
+                 <td>
+                     <span>ckhong</span>
+                 </td>
+                 <td>
+                     <span>ckh***@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****2674</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>5</span>
+                 </td>
+                 <td>
+                     <span>zp1494</span>
+                 </td>
+                 <td>
+                     <span>zp1***@nate.com</span>
+                 </td>
+                 <td>
+                     <span>010****1492</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>6</span>
+                 </td>
+                 <td>
+                     <span>gmlals399</span>
+                 </td>
+                 <td>
+                     <span>gml******@naver.com</span>
+                 </td>
+                 <td>
+                     <span>010****6120</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>7</span>
+                 </td>
+                 <td>
+                     <span>jsbyeon</span>
+                 </td>
+                 <td>
+                     <span>jsb****@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****1234</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>8</span>
+                 </td>
+                 <td>
+                     <span>jhlee</span>
+                 </td>
+                 <td>
+                     <span>skg*****@gmail.com</span>
+                 </td>
+                 <td>
+                     <span>010****3333</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>9</span>
+                 </td>
+                 <td>
+                     <span>jhlee4</span>
+                 </td>
+                 <td>
+                     <span>eas*********@gmail.com</span>
+                 </td>
+                 <td>
+                     <span>010****2222</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>10</span>
+                 </td>
+                 <td>
+                     <span>wihan3</span>
+                 </td>
+                 <td>
+                     <span>wih***@kk.kk</span>
+                 </td>
+                 <td>
+                     <span>010****1551</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>11</span>
+                 </td>
+                 <td>
+                     <span>wihan1</span>
+                 </td>
+                 <td>
+                     <span>wih***@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****5880</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>12</span>
+                 </td>
+                 <td>
+                     <span>wihan2</span>
+                 </td>
+                 <td>
+                     <span>wih***@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****5880</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>13</span>
+                 </td>
+                 <td>
+                     <span>easystring90</span>
+                 </td>
+                 <td>
+                     <span>jhl***@enliple.com</span>
+                 </td>
+                 <td>
+                     <span>010****2222</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>14</span>
+                 </td>
+                 <td>
+                     <span>dlrp1234</span>
+                 </td>
+                 <td>
+                     <span>ska********@naver.com</span>
+                 </td>
+                 <td>
+                     <span>010****6252</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>15</span>
+                 </td>
+                 <td>
+                     <span>zp1492</span>
+                 </td>
+                 <td>
+                     <span>zp1***@naver.com</span>
+                 </td>
+                 <td>
+                     <span>010****1492</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>16</span>
+                 </td>
+                 <td>
+                     <span>adcdefg19</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3351</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>17</span>
+                 </td>
+                 <td>
+                     <span>adcdefg18</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3350</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>18</span>
+                 </td>
+                 <td>
+                     <span>adcdefg17</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3349</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>19</span>
+                 </td>
+                 <td>
+                     <span>adcdefg16</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3348</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>20</span>
+                 </td>
+                 <td>
+                     <span>adcdefg15</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3347</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>21</span>
+                 </td>
+                 <td>
+                     <span>adcdefg14</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3346</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>22</span>
+                 </td>
+                 <td>
+                     <span>adcdefg13</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3345</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>23</span>
+                 </td>
+                 <td>
+                     <span>adcdefg12</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3344</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>24</span>
+                 </td>
+                 <td>
+                     <span>adcdefg11</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3343</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>25</span>
+                 </td>
+                 <td>
+                     <span>adcdefg10</span>
+                 </td>
+                 <td>
+                     <span>abc**@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3342</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>26</span>
+                 </td>
+                 <td>
+                     <span>adcdefg9</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3341</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>27</span>
+                 </td>
+                 <td>
+                     <span>adcdefg8</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3340</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>28</span>
+                 </td>
+                 <td>
+                     <span>adcdefg7</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3339</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>29</span>
+                 </td>
+                 <td>
+                     <span>adcdefg6</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3338</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>30</span>
+                 </td>
+                 <td>
+                     <span>adcdefg5</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3337</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>31</span>
+                 </td>
+                 <td>
+                     <span>adcdefg4</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3336</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>32</span>
+                 </td>
+                 <td>
+                     <span>adcdefg3</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3335</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>33</span>
+                 </td>
+                 <td>
+                     <span>adcdefg2</span>
+                 </td>
+                 <td>
+                     <span>abc*@m.net</span>
+                 </td>
+                 <td>
+                     <span>010****3334</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>34</span>
+                 </td>
+                 <td>
+                     <span>test</span>
+                 </td>
+                 <td>
+                     <span>yes*@hotmail.com</span>
+                 </td>
+                 <td>
+                     <span>010****1111</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>35</span>
+                 </td>
+                 <td>
+                     <span>wjyoo</span>
+                 </td>
+                 <td>
+                     <span>tes*@hotmail.com</span>
+                 </td>
+                 <td>
+                     <span>010****1234</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <span>36</span>
+                 </td>
+                 <td>
+                     <span>heaven1717</span>
+                 </td>
+                 <td>
+                     <span>hea******@nate.com</span>
+                 </td>
+                 <td>
+                     <span>010****8541</span>
+                 </td>
+             </tr>
+         </tbody>
+     </table>
+ </body>
+
+ </html>

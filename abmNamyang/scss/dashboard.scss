@@ -1,0 +1,1051 @@
+@charset 'utf-8';
+
+/*-------------------------------------------------------------------------------------------------------------
+    File   : dashboard.scss
+    Date   : 2022.01.12
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+
+/********** abmNamyang common css **********/
+
+.abmNamyang {}
+
+
+/********** abmNamyang each css **********/
+.abmNamyang {
+
+  /* 대시보드 */
+  &.abmNamyang_dashboard {
+    .secTit {
+      h3 {
+        span {
+          @include ftMedium;
+          margin-left: 6px;
+        }
+      }
+    }
+
+    .secCont {
+      section {
+
+        /* tit common */
+        .tit {
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            @include ftBold;
+            font-size: 18px;
+          }
+
+          a {
+            font-size: 14px;
+            text-decoration: underline;
+
+            &:after {
+              content: ">";
+              display: inline-block;
+              margin-left: 6px;
+            }
+          }
+        }
+
+        /* cont common */
+        .cont {
+          margin-top: 20px;
+        }
+
+        &.sec_search {
+          @include secLayout_t2;
+          float: right;
+          position: absolute;
+          display: inline;
+          width: auto;
+          right: 30px;
+          top: 30px;
+          margin: 0;
+
+          .box_search {
+            .txtBox {
+              display: inline-block;
+
+              p {
+                display: inline-block;
+                font-size: 13px;
+
+                &:nth-child(2) {
+                  &:before {
+                    content: "";
+                    display: inline-block;
+                    margin: 0 6px;
+                    border-left: 1px solid #555;
+                    height: 10px;
+                  }
+                }
+              }
+            }
+
+            .calendarBox {
+              display: inline-block;
+              margin-left: 15px;
+            }
+          }
+        }
+
+        &.sec_todayStats {
+          @include secLayout_t2;
+          display: flex;
+          justify-content: space-between;
+
+          .sec_left,
+          .sec_right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+
+          .sec_left {
+            width: 65%;
+          }
+
+          .sec_right {
+            width: calc(35% - 30px);
+            min-width: 560px;
+            margin-left: 30px;
+
+            .sec_salesUserinfo {
+              @include secLayout;
+              display: flex;
+              justify-content: space-between;
+              height: 420px;
+              margin-top: 0;
+            }
+          }
+
+          .box_liveStats {
+            @include secLayout;
+            width: 100%;
+            margin-top: 0;
+
+            .cont {
+              display: inline-flex;
+              justify-content: space-between;
+              width: 100%;
+              flex-wrap: wrap;
+              margin-top: 0;
+
+              >div {
+                &:first-child.graphHeader {
+                  width: 100%;
+
+                  i {
+                    &.live {
+                      @include ftMedium;
+                      position: relative;
+                      display: inline-block;
+                      width: 55px;
+                      height: 25px;
+                      font-size: 15px;
+                      color: #fff;
+                      text-align: center;
+                      line-height: 1.7;
+                      border-radius: 3px;
+                      background-color: $mainColor_abmNamyang;
+                    }
+                  }
+
+                  p {
+                    display: inline-block;
+                    margin-left: 10px;
+                    font-size: 14px;
+                  }
+
+                  button {
+                    @include iLayout;
+                    @include ico_reset;
+                    margin-left: 10px;
+                    padding: 10px;
+                    vertical-align: text-top;
+                  }
+
+                  a {
+                    float: right;
+                    right: 0;
+                    font-size: 14px;
+                    text-decoration: underline;
+
+                    &:after {
+                      content: ">";
+                      display: inline-block;
+                      margin-left: 6px;
+                    }
+                  }
+                }
+
+                &.graphArea {
+                  position: relative;
+                  margin-top: 20px;
+                  width: calc(50% - 10px);
+                  height: 230px;
+                  padding: 30px 30px;
+                  background-color: #fbfbfb;
+
+                  .titBox {
+                    p {
+                      @include ftBold;
+
+                      &:first-child {
+                        font-size: 18px;
+                      }
+
+                      &:nth-child(2) {
+                        margin-top: 10px;
+                        font-size: 25px;
+                      }
+                    }
+                  }
+
+                  .contBox {
+                    display: inline-flex;
+                    margin-top: 10px;
+                  }
+                }
+
+                &:nth-child(2).graphArea {
+                  position: relative;
+                  margin-top: 20px;
+                  height: 230px;
+                  padding: 30px 30px;
+                  background-color: #fbfbfb;
+
+                  .titBox {
+                    p {
+                      @include ftBold;
+
+                      &:first-child {
+                        font-size: 18px;
+                      }
+
+                      &:nth-child(2) {
+                        margin-top: 10px;
+                        font-size: 25px;
+
+                        &:after {
+                          content: "명";
+                          display: inline-block;
+                        }
+                      }
+                    }
+                  }
+
+                  .contBox {
+                    display: inline-flex;
+                    margin-top: 10px;
+                  }
+
+                  .labelBox {
+                    display: inline-block;
+                    width: 60%;
+                    margin-top: 35px;
+
+                    p {
+                      display: inline-block;
+                      width: 90px;
+                      font-size: 14px;
+
+                      &:before {
+                        content: "";
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        margin-right: 8px;
+                      }
+
+                      &:nth-child(1) {
+                        &:before {
+                          background-color: #71c6e6;
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        &:before {
+                          background-color: #fcd78c;
+                        }
+                      }
+
+                      &:nth-child(3) {
+                        margin-top: 15px;
+
+                        &:before {
+                          background-color: #7c88c5;
+                        }
+                      }
+
+                      &:nth-child(4) {
+                        margin-top: 15px;
+
+                        &:before {
+                          background-color: #99d99b;
+                        }
+                      }
+                    }
+                  }
+
+                  .graphBox {
+                    position: absolute;
+                    display: inline-block;
+                    width: 170px;
+                    height: 170px;
+                    top: 30px;
+                    right: 30px;
+                    margin-left: 20px;
+                  }
+                }
+
+                /* 오늘 매출 현황 */
+                &:nth-child(3).graphArea {
+                  .titBox {
+                    p {
+                      &:nth-child(2) {
+                        &:after {
+                          content: "원";
+                          display: inline-block;
+                        }
+                      }
+                    }
+                  }
+
+                  .contBox {
+                    display: block;
+                    margin-top: 10px;
+
+                    .graphBox {
+                      display: flex;
+                      flex-direction: row;
+                      width: 100%;
+                      height: 45px;
+                      margin-top: 20px;
+
+                      .web,
+                      .app {
+                        @include ellipsis;
+                        flex-grow: 1;
+                        color: #fff;
+                        text-align: center;
+                        font-size: 14px;
+                        line-height: 3.3;
+                      }
+
+                      .web {
+                        background-color: #99d99b;
+                        color: #fff;
+                      }
+
+                      .app {
+                        background-color: #62a8e5;
+                      }
+                    }
+
+                    .labelBox {
+                      display: block;
+                      margin-top: 20px;
+
+                      p {
+                        display: inline-block;
+                        width: 90px;
+                        font-size: 14px;
+
+                        &:before {
+                          content: "";
+                          display: inline-block;
+                          width: 10px;
+                          height: 10px;
+                          margin-right: 8px;
+                        }
+
+                        &:nth-child(1) {
+                          &:before {
+                            background-color: #99d99b;
+                          }
+                        }
+
+                        &:nth-child(2) {
+                          &:before {
+                            background-color: #62a8e5;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          /* 매출분석 & 유저정보 공통 */
+          .box_salesAnalysis,
+          .box_userInfoAnalysis {
+            flex-grow: 1;
+            width: calc(50% - 30px);
+            margin-top: 0;
+            min-width: 250px;
+          }
+
+          /* 매출분석 */
+          .box_salesAnalysis {
+            padding-right: 30px;
+
+            .cont {
+              .salesInfo {
+                text-align: center;
+
+                .graphBox {
+                  margin-top: 40px;
+                }
+
+                .txtBox {
+                  display: flex;
+                  margin-top: 30px;
+
+                  p {
+                    position: relative;
+
+                    &:nth-child(1) {
+                      @include ftMedium;
+                      top: 5px;
+                      font-size: 15px;
+                      vertical-align: text-top;
+                    }
+
+                    &:nth-child(2) {
+                      @include ftBold;
+                      margin-left: 10px;
+                      font-size: 25px;
+
+                      &:after {
+                        content: "원";
+                        display: inline-block;
+                      }
+                    }
+                  }
+                }
+
+                .labelBox {
+                  >div {
+                    padding-left: 5px;
+                    text-align: left;
+
+                    &:nth-child(1),
+                    &:nth-child(2) {
+                      margin-top: 5px;
+
+                      p {
+                        display: inline-block;
+                        font-size: 14px;
+                        text-align: left;
+
+                        &:first-child {
+                          width: 60px;
+
+                          &:before {
+                            content: "";
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            margin-right: 8px;
+                          }
+                        }
+
+                        &:nth-child(2) {
+                          margin-top: 10px;
+
+                          &:before {
+                            content: ":";
+                            display: inline-block;
+                            height: 10px;
+                            margin: 0 4px;
+                          }
+                        }
+
+                        &:nth-child(3) {
+                          margin-top: 10px;
+
+                          &:before {
+                            content: ":";
+                            display: inline-block;
+                            height: 10px;
+                            margin: 0 4px;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(1) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #f9935d;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(2) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #ffd563;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          /* 유저정보 */
+          .box_userInfoAnalysis {
+            padding-left: 30px;
+            border-left: 1px solid #eee;
+
+            .cont {
+              .userInfo {
+                text-align: center;
+
+                .graphBox {
+                  margin-top: 40px;
+                }
+
+                .labelBox {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  height: 90px;
+                  margin-top: 30px;
+
+                  >div {
+                    display: flex;
+                    flex: 1;
+
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3),
+                    &:nth-child(4) {
+                      margin-top: 5px;
+
+                      p {
+                        display: inline-block;
+                        font-size: 14px;
+                        text-align: left;
+
+                        &:first-child {
+                          width: 30%;
+                          min-width: 80px;
+
+                          &:before {
+                            content: "";
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            margin-right: 8px;
+                          }
+                        }
+
+                        &:nth-child(2) {
+                          @include ftMedium;
+                          @include ellipsis;
+                          width: 40%;
+
+                          &:before {
+                            content: "";
+                            display: inline-block;
+                            width: 1px;
+                            height: 10px;
+                            margin: 0 10px;
+                            border-left: 1px solid #999;
+                          }
+                        }
+
+                        &:nth-child(3) {
+                          width: 30%;
+
+                          span {
+                            @include ellipsis;
+                            display: inline-block;
+                            width: auto;
+                            max-width: calc(100% - 15px);
+                          }
+
+                          &.up {
+                            color: #f85479;
+
+                            &:before {
+                              content: "(+";
+                              display: inline-block;
+                            }
+                          }
+
+                          &.down {
+                            color: #2e7ce1;
+
+                            &:before {
+                              content: "(-";
+                              display: inline-block;
+                            }
+                          }
+
+                          &:after {
+                            content: ")";
+                            display: inline-block;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(1) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #71c6e6;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(2) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #7f8bcc;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(3) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #fcd78c;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(4) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #99d99b;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .box_summary {
+            @include secLayout;
+            width: 100%;
+            min-height: 560px;
+
+            .cont {
+              margin-top: 0;
+
+              .graphArea {
+                display: inline-flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                width: 100%;
+
+                .graphBlock {
+                  height: 220px;
+                  margin-top: 20px;
+                  margin-left: 15px;
+                  width: calc(25% - 15px);
+                  padding: 20px 30px;
+                  background-color: #fbfbfb;
+
+                  &:first-child,
+                  &:nth-child(5n) {
+                    margin-left: 0;
+                  }
+
+                  .titBox {
+                    p {
+                      font-size: 16px;
+                      color: $subFontColor_abmNamyang;
+
+                      span {
+                        font-size: 13px;
+                        color: #777;
+
+                        &:before {
+                          content: "(";
+                          display: inline-block;
+                        }
+
+                        &:after {
+                          content: ")";
+                          display: inline-block;
+                        }
+                      }
+                    }
+                  }
+
+                  .contBox {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    min-height: 150px;
+                    margin-top: 10px;
+
+                    .txtBox {
+                      p {
+                        &:first-child {
+                          @include ellipsis;
+                          @include ftBold;
+                          font-size: 23px;
+                        }
+
+                        &:nth-child(2) {
+                          margin-top: 10px;
+
+                          &.up {
+                            color: $UpColor_abmNamyang;
+
+                            &:before {
+                              content: "+";
+                              display: inline-block;
+                            }
+                          }
+                        }
+
+                        &.down {
+                          color: $downColor_abmNamyang;
+
+                          &:before {
+                            content: "-";
+                            display: inline-block;
+                          }
+                        }
+                      }
+                    }
+
+                    .graphBox {
+                      width: 100%;
+                      height: 70px;
+                      margin-top: 20px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .box_joinAnalysis {
+            @include secLayout;
+            width: 100%;
+            min-width: 550px;
+            min-height: 450px;
+
+            .cont {
+              .graphArea {
+                .txtBox {
+                  text-align: right;
+
+                  p {
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    &:first-child {
+                      @include ftMedium;
+                      font-size: 15px;
+                    }
+
+                    &:nth-child(2) {
+                      @include ftBold;
+                      margin-left: 10px;
+                      font-size: 25px;
+
+                      &:after {
+                        content: "명";
+                        display: inline-block;
+                      }
+                    }
+                  }
+                }
+
+                .labelBox {
+                  margin-top: 10px;
+                  text-align: right;
+
+                  >div {
+                    display: inline-block;
+                    margin-left: 20px;
+
+                    p {
+                      display: inline-block;
+                      font-size: 14px;
+
+                      &:first-child {
+                        &:before {
+                          content: "";
+                          display: inline-block;
+                          width: 10px;
+                          height: 10px;
+                          margin-right: 8px;
+                        }
+
+                        &:after {
+                          content: ":";
+                          display: inline-block;
+                          margin: 0 2px;
+                        }
+                      }
+                    }
+
+                    &:nth-child(1) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #9f9dd5;
+                          }
+                        }
+                      }
+                    }
+
+                    &:nth-child(2) {
+                      p {
+                        &:first-child {
+                          &:before {
+                            background-color: #e3b0dc;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .graphBox {
+                  display: block;
+                  margin-top: 20px;
+                  height: 300px;
+                }
+              }
+            }
+          }
+        }
+
+        &.sec_dateStats {
+          min-height: 550px;
+
+          .box_dateStats {
+            ::-webkit-scrollbar {
+              @include scrollbar;
+
+            }
+
+            ::-webkit-scrollbar-thumb {
+              @include scrollbar-thumb;
+            }
+
+            .tit {}
+
+            .cont {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 30px;
+
+              .graphArea {
+                flex-grow: 1;
+
+                .graphHeader {
+
+                  .selectBox {
+                    display: inline-block;
+
+                    &:nth-child(2) {
+                      &:before {
+                        @include ftMedium;
+                        content: "VS";
+                        display: inline-block;
+                        margin: 0 4px;
+                      }
+                    }
+                  }
+                }
+
+                .graphBox {
+                  height: 390px;
+                  margin-top: 20px;
+                }
+              }
+
+              .dataList {
+                min-width: 390px;
+                margin-left: 40px;
+                padding: 20px 5px 10px 5px;
+                border: 1px solid #ebebeb;
+                border-radius: 5px;
+
+                .titBox {
+                  display: flex;
+                  justify-content: space-between;
+                  padding: 0 25px;
+
+                  p {
+                    @include titleLayout;
+                  }
+
+                  a {
+                    font-size: 14px;
+                    text-decoration: underline;
+
+                    &:after {
+                      content: ">";
+                      display: inline-block;
+                      margin-left: 8px;
+                    }
+                  }
+                }
+
+                .contBox {
+                  position: relative;
+                  height: 370px;
+                  margin-top: 30px;
+                  padding: 0 30px 0 30px;
+                  overflow-y: auto;
+
+                  .listArea {
+                    height: auto;
+                    min-height: 370px;
+                    border-left: 1px solid #ff745e;
+
+                    >div {
+                      display: flex;
+                      height: 50px;
+                      padding: 6px 0 6px 0px;
+
+                      &.saturday {
+                        p:first-child {
+                          color: #3082ec;
+                        }
+                      }
+
+                      &.sunday {
+                        p:first-child {
+                          color: #e82e2e;
+                        }
+                      }
+
+                      p {
+                        display: inline-block;
+                        width: calc(33% - 30px);
+                        margin-left: 30px;
+                        font-size: 13px;
+                        line-height: 1.5;
+                        white-space: nowrap;
+
+                        &:first-child {
+
+                          &:before {
+                            flex: none;
+                            content: "";
+                            position: relative;
+                            display: inline-block;
+                            width: 10px;
+                            height: 10px;
+                            top: 0px;
+                            left: -35px;
+                            border-radius: 30px;
+                            background-color: #ffc788;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.sec_etcStats {
+          @include secLayout_t2;
+          display: flex;
+          justify-content: space-between;
+
+          .box_genderAge,
+          .box_revisitStats,
+          .box_topCategory {
+            @include secLayout;
+            height: 520px;
+            margin: 0 0 0 30px;
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            .cont {
+              .graphHeader {
+                position: absolute;
+                top: 25px;
+                right: 30px;
+
+                .tabBox {
+                  @include tabBox;
+                }
+              }
+
+              .buttonBox {
+                position: absolute;
+                display: inline-flex;
+                top: 25px;
+                right: 30px;
+
+                button {
+                  display: inline-block;
+                  min-width: 70px;
+                  margin-left: -1px;
+                  height: 25px;
+                  font-size: 12px;
+                  color: #aeaeae;
+                  border: 1px solid #dadada;
+
+                  &.on {
+                    color: #333;
+                    background-color: #fff;
+                  }
+                }
+              }
+            }
+          }
+
+          .box_genderAge {
+            .cont {
+              .graphArea {
+                margin-top: 30px;
+
+                .labelBox {
+                  display: flex;
+                  justify-content: space-between;
+
+                  p {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

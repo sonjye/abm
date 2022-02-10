@@ -1,0 +1,2727 @@
+/*-------------------------------------------------------------------------------------------------------------
+    File   : keywordcenter
+    Date   : 2021.03.08
+/*------------------------------------------------------------------------------------------------------------*/
+/********** keywordcenter_navigation **********/
+.navigation > ul > li > a i.ico_nav_keyword_dashboard {
+  background-image: url("../img/menu/ic_lnb_dashboard_off.png");
+}
+
+.navigation > ul > li > a i.ico_nav_keyword_data {
+  background-image: url("../img/menu/ic_lnb_data_off.png");
+}
+
+.navigation > ul > li > a i.ico_nav_keyword_contents {
+  background-image: url("../img/menu/ic_lnb_contents_off.png");
+}
+
+.navigation > ul > li > a i.ico_nav_keyword_analysis {
+  background-image: url("../img/menu/ic_lnb_analysis_off.png");
+}
+
+.navigation > ul > li > a i.ico_nav_keyword_management {
+  background-image: url("../img/menu/ic_lnb_management_off.png");
+}
+
+.navigation > ul > li > ul {
+  display: none;
+}
+
+.navigation > ul > li > ul.active {
+  display: block;
+}
+
+.navigation > ul > li > ul.active a.on {
+  color: #85b74e;
+}
+
+.navigation > ul > li.active > a i.ico_nav_keyword_dashboard {
+  background-image: url("../img/menu/ic_lnb_dashboard_on.png");
+}
+
+.navigation > ul > li.active > a i.ico_nav_keyword_data {
+  background-image: url("../img/menu/ic_lnb_data_on.png");
+}
+
+.navigation > ul > li.active > a i.ico_nav_keyword_contents {
+  background-image: url("../img/menu/ic_lnb_contents_on.png");
+}
+
+.navigation > ul > li.active > a i.ico_nav_keyword_analysis {
+  background-image: url("../img/menu/ic_lnb_analysis_on.png");
+}
+
+.navigation > ul > li.active > a i.ico_nav_keyword_management {
+  background-image: url("../img/menu/ic_lnb_management_on.png");
+}
+
+/********** keywordcenter_modal **********/
+/* common */
+.keyword_statisticslist_event_serch,
+.keyword_transform_contents,
+.keyword_include_contents,
+.keyword_pack_name,
+.keyword_upload,
+.keyword_pack_create {
+  padding: 0px;
+  margin: auto auto 200px;
+  background-color: #fefefe;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 12px 0 rgba(21, 21, 21, 0.16);
+          box-shadow: 0 0 12px 0 rgba(21, 21, 21, 0.16);
+  z-index: 9999;
+  /* filter */
+}
+
+.keyword_statisticslist_event_serch .modalMainTitle,
+.keyword_transform_contents .modalMainTitle,
+.keyword_include_contents .modalMainTitle,
+.keyword_pack_name .modalMainTitle,
+.keyword_upload .modalMainTitle,
+.keyword_pack_create .modalMainTitle {
+  width: 100%;
+  height: 46px;
+  padding: 12px 0 12px 18px;
+  background: #85b74e;
+  color: #fff;
+  font-family: "NotoSansM";
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.keyword_statisticslist_event_serch .modalMainTitle a.btn_x_white, .keyword_statisticslist_event_serch .modalMainTitle a.btn_x_black,
+.keyword_statisticslist_event_serch .modalMainTitle button.btn_x_white,
+.keyword_statisticslist_event_serch .modalMainTitle button.btn_x_black,
+.keyword_transform_contents .modalMainTitle a.btn_x_white,
+.keyword_transform_contents .modalMainTitle a.btn_x_black,
+.keyword_transform_contents .modalMainTitle button.btn_x_white,
+.keyword_transform_contents .modalMainTitle button.btn_x_black,
+.keyword_include_contents .modalMainTitle a.btn_x_white,
+.keyword_include_contents .modalMainTitle a.btn_x_black,
+.keyword_include_contents .modalMainTitle button.btn_x_white,
+.keyword_include_contents .modalMainTitle button.btn_x_black,
+.keyword_pack_name .modalMainTitle a.btn_x_white,
+.keyword_pack_name .modalMainTitle a.btn_x_black,
+.keyword_pack_name .modalMainTitle button.btn_x_white,
+.keyword_pack_name .modalMainTitle button.btn_x_black,
+.keyword_upload .modalMainTitle a.btn_x_white,
+.keyword_upload .modalMainTitle a.btn_x_black,
+.keyword_upload .modalMainTitle button.btn_x_white,
+.keyword_upload .modalMainTitle button.btn_x_black,
+.keyword_pack_create .modalMainTitle a.btn_x_white,
+.keyword_pack_create .modalMainTitle a.btn_x_black,
+.keyword_pack_create .modalMainTitle button.btn_x_white,
+.keyword_pack_create .modalMainTitle button.btn_x_black {
+  position: relative;
+  float: right;
+  bottom: 5px;
+  padding: 15px;
+}
+
+.keyword_statisticslist_event_serch .modalSection,
+.keyword_transform_contents .modalSection,
+.keyword_include_contents .modalSection,
+.keyword_pack_name .modalSection,
+.keyword_upload .modalSection,
+.keyword_pack_create .modalSection {
+  padding: 30px 30px 20px 30px;
+  margin: 0;
+  font-family: "NanumGothic";
+  font-size: 13px;
+}
+
+.keyword_statisticslist_event_serch .modalFooter,
+.keyword_transform_contents .modalFooter,
+.keyword_include_contents .modalFooter,
+.keyword_pack_name .modalFooter,
+.keyword_upload .modalFooter,
+.keyword_pack_create .modalFooter {
+  width: 564px;
+  border-top: 1px solid #e1e1e1;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.keyword_statisticslist_event_serch .modalFooter button,
+.keyword_transform_contents .modalFooter button,
+.keyword_include_contents .modalFooter button,
+.keyword_pack_name .modalFooter button,
+.keyword_upload .modalFooter button,
+.keyword_pack_create .modalFooter button {
+  width: 120px;
+  height: 40px;
+  background: #85b74e;
+  border-radius: 2px;
+  font-family: "NotoSansR";
+  font-size: 16px;
+  color: #fff;
+}
+
+.keyword_statisticslist_event_serch .modalFooter button.cancel,
+.keyword_transform_contents .modalFooter button.cancel,
+.keyword_include_contents .modalFooter button.cancel,
+.keyword_pack_name .modalFooter button.cancel,
+.keyword_upload .modalFooter button.cancel,
+.keyword_pack_create .modalFooter button.cancel {
+  background: #ddd;
+}
+
+.keyword_statisticslist_event_serch .filterItem,
+.keyword_transform_contents .filterItem,
+.keyword_include_contents .filterItem,
+.keyword_pack_name .filterItem,
+.keyword_upload .filterItem,
+.keyword_pack_create .filterItem {
+  display: none;
+  color: #111;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul,
+.keyword_transform_contents .filterItem ul,
+.keyword_include_contents .filterItem ul,
+.keyword_pack_name .filterItem ul,
+.keyword_upload .filterItem ul,
+.keyword_pack_create .filterItem ul {
+  display: block;
+  width: 98.8%;
+  margin: 10px 4px 10px 16px;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul li,
+.keyword_transform_contents .filterItem ul li,
+.keyword_include_contents .filterItem ul li,
+.keyword_pack_name .filterItem ul li,
+.keyword_upload .filterItem ul li,
+.keyword_pack_create .filterItem ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul li p.itemTitle,
+.keyword_transform_contents .filterItem ul li p.itemTitle,
+.keyword_include_contents .filterItem ul li p.itemTitle,
+.keyword_pack_name .filterItem ul li p.itemTitle,
+.keyword_upload .filterItem ul li p.itemTitle,
+.keyword_pack_create .filterItem ul li p.itemTitle {
+  width: 100px;
+  font-family: "NotoSansB";
+  font-size: 14px;
+  float: left;
+  text-align: left;
+  margin: 10px 4px 10px 16px;
+  line-height: 1.5;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul li ul.itemArea,
+.keyword_transform_contents .filterItem ul li ul.itemArea,
+.keyword_include_contents .filterItem ul li ul.itemArea,
+.keyword_pack_name .filterItem ul li ul.itemArea,
+.keyword_upload .filterItem ul li ul.itemArea,
+.keyword_pack_create .filterItem ul li ul.itemArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "NotoSansR";
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul li ul.itemArea li,
+.keyword_transform_contents .filterItem ul li ul.itemArea li,
+.keyword_include_contents .filterItem ul li ul.itemArea li,
+.keyword_pack_name .filterItem ul li ul.itemArea li,
+.keyword_upload .filterItem ul li ul.itemArea li,
+.keyword_pack_create .filterItem ul li ul.itemArea li {
+  background: #fff;
+  float: left;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul li ul.itemArea li button,
+.keyword_transform_contents .filterItem ul li ul.itemArea li button,
+.keyword_include_contents .filterItem ul li ul.itemArea li button,
+.keyword_pack_name .filterItem ul li ul.itemArea li button,
+.keyword_upload .filterItem ul li ul.itemArea li button,
+.keyword_pack_create .filterItem ul li ul.itemArea li button {
+  padding: 6px 9px;
+}
+
+.keyword_statisticslist_event_serch .filterItem ul li ul.itemArea li.on,
+.keyword_transform_contents .filterItem ul li ul.itemArea li.on,
+.keyword_include_contents .filterItem ul li ul.itemArea li.on,
+.keyword_pack_name .filterItem ul li ul.itemArea li.on,
+.keyword_upload .filterItem ul li ul.itemArea li.on,
+.keyword_pack_create .filterItem ul li ul.itemArea li.on {
+  background: #cae2af;
+}
+
+.keyword_statisticslist_event_serch .filterItem.on,
+.keyword_transform_contents .filterItem.on,
+.keyword_include_contents .filterItem.on,
+.keyword_pack_name .filterItem.on,
+.keyword_upload .filterItem.on,
+.keyword_pack_create .filterItem.on {
+  display: block;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.keyword_statisticslist_event_serch .filterArea,
+.keyword_transform_contents .filterArea,
+.keyword_include_contents .filterArea,
+.keyword_pack_name .filterArea,
+.keyword_upload .filterArea,
+.keyword_pack_create .filterArea {
+  padding: 10px 15px 13px;
+  margin: 0 4px 27px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.keyword_statisticslist_event_serch .filterArea .reset,
+.keyword_statisticslist_event_serch .filterArea .filter,
+.keyword_transform_contents .filterArea .reset,
+.keyword_transform_contents .filterArea .filter,
+.keyword_include_contents .filterArea .reset,
+.keyword_include_contents .filterArea .filter,
+.keyword_pack_name .filterArea .reset,
+.keyword_pack_name .filterArea .filter,
+.keyword_upload .filterArea .reset,
+.keyword_upload .filterArea .filter,
+.keyword_pack_create .filterArea .reset,
+.keyword_pack_create .filterArea .filter {
+  cursor: pointer;
+  font-family: "NotoSansM";
+  color: #111;
+}
+
+.keyword_statisticslist_event_serch .filterArea .reset:after,
+.keyword_transform_contents .filterArea .reset:after,
+.keyword_include_contents .filterArea .reset:after,
+.keyword_pack_name .filterArea .reset:after,
+.keyword_upload .filterArea .reset:after,
+.keyword_pack_create .filterArea .reset:after {
+  content: url("../img/keyword/reset.svg");
+  margin-left: 6px;
+  margin-right: 31px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.keyword_statisticslist_event_serch .filterArea .filter:after,
+.keyword_transform_contents .filterArea .filter:after,
+.keyword_include_contents .filterArea .filter:after,
+.keyword_pack_name .filterArea .filter:after,
+.keyword_upload .filterArea .filter:after,
+.keyword_pack_create .filterArea .filter:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 6px;
+  bottom: 2px;
+  cursor: pointer;
+  margin-left: 8px;
+  background: url("../img/keyword/updown_ar.svg") no-repeat;
+}
+
+.keyword_statisticslist_event_serch .filterArea .filter.on:after,
+.keyword_transform_contents .filterArea .filter.on:after,
+.keyword_include_contents .filterArea .filter.on:after,
+.keyword_pack_name .filterArea .filter.on:after,
+.keyword_upload .filterArea .filter.on:after,
+.keyword_pack_create .filterArea .filter.on:after {
+  content: "";
+  position: relative;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-left: 8px;
+}
+
+.keyword_statisticslist_event_serch .filterArea ul.selectItem,
+.keyword_transform_contents .filterArea ul.selectItem,
+.keyword_include_contents .filterArea ul.selectItem,
+.keyword_pack_name .filterArea ul.selectItem,
+.keyword_upload .filterArea ul.selectItem,
+.keyword_pack_create .filterArea ul.selectItem {
+  display: block;
+  width: 90%;
+}
+
+.keyword_statisticslist_event_serch .filterArea ul.selectItem li,
+.keyword_transform_contents .filterArea ul.selectItem li,
+.keyword_include_contents .filterArea ul.selectItem li,
+.keyword_pack_name .filterArea ul.selectItem li,
+.keyword_upload .filterArea ul.selectItem li,
+.keyword_pack_create .filterArea ul.selectItem li {
+  font-family: "NotoSansR";
+  font-size: 13px;
+  background: #cae2af;
+  border-radius: 4px;
+  text-align: center;
+  float: left;
+  margin: 0 4px 10px 0;
+}
+
+.keyword_statisticslist_event_serch .filterArea ul.selectItem li button,
+.keyword_transform_contents .filterArea ul.selectItem li button,
+.keyword_include_contents .filterArea ul.selectItem li button,
+.keyword_pack_name .filterArea ul.selectItem li button,
+.keyword_upload .filterArea ul.selectItem li button,
+.keyword_pack_create .filterArea ul.selectItem li button {
+  min-height: 26px;
+  padding: 3px 10px 4px;
+}
+
+.keyword_statisticslist_event_serch .filterArea ul.selectItem li button:after,
+.keyword_transform_contents .filterArea ul.selectItem li button:after,
+.keyword_include_contents .filterArea ul.selectItem li button:after,
+.keyword_pack_name .filterArea ul.selectItem li button:after,
+.keyword_upload .filterArea ul.selectItem li button:after,
+.keyword_pack_create .filterArea ul.selectItem li button:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 12px;
+  background: url("../img/btn_x_small_black.svg") center center no-repeat;
+  font-size: 0;
+}
+
+/* modalContent type1 */
+.keyword_statisticslist_event_serch {
+  padding: 0;
+  border-radius: 5px;
+}
+
+.keyword_statisticslist_event_serch .modalMainTitle {
+  padding: 2px 0 2px 6px;
+  background-color: #85b74e;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 12px solid transparent;
+  font-weight: normal;
+  font-family: "NotoSansM";
+  border-radius: 5px 5px 0 0;
+}
+
+.keyword_statisticslist_event_serch .modalSection {
+  margin-top: 20px;
+  padding: 10px 30px 20px;
+  border-radius: 5px 5px 0 0;
+}
+
+.keyword_statisticslist_event_serch .modalFooter {
+  margin: 0 20px;
+  padding: 20px 0;
+  border-top: 1px solid #e1e1e1;
+}
+
+.keyword_statisticslist_event_serch .modalFooter button {
+  min-width: 120px;
+  min-height: 40px;
+  font-size: 16px;
+}
+
+/* each */
+.keyword_statisticslist_event_serch {
+  width: 600px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox {
+  margin-bottom: 15px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li {
+  float: left;
+  padding-right: 10px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li .customSelect {
+  width: 144px;
+  height: 30px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li input[type="text"] {
+  width: 200px;
+  height: 30px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li button {
+  width: 20px;
+  height: 20px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li button.btn_delete {
+  background: url("../img/btn_delete.svg") no-repeat;
+  margin-top: 5px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li button.btn_add {
+  background: url("../img/btn_add.svg");
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li:last-child {
+  padding: 0;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li.percent input[type="text"] {
+  width: 177px;
+  height: 30px;
+}
+
+.keyword_statisticslist_event_serch .modalSection .optionBox li.percent:after {
+  content: "%";
+  float: right;
+  padding: 7px 5px 5px 5px;
+  color: #000;
+}
+
+.keyword_statisticslist_event_serch .modalSection .addBtn {
+  position: relative;
+  display: block;
+  background: url("../img/btn_add.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+  margin: 5px auto 0;
+}
+
+.keyword_transform_contents,
+.keyword_include_contents {
+  width: 860px;
+  padding: 20px;
+}
+
+.keyword_transform_contents .modalMainTitle,
+.keyword_include_contents .modalMainTitle {
+  background: #fff;
+  border: 0;
+  color: #000;
+  font-family: "NotoSansB";
+  font-size: 16px;
+  color: #333;
+  padding: 10px 0 12px 0px;
+}
+
+.keyword_transform_contents .modalMainTitle span,
+.keyword_include_contents .modalMainTitle span {
+  font-weight: normal;
+  font-family: "NotoSansM";
+}
+
+.keyword_transform_contents .modalSection,
+.keyword_include_contents .modalSection {
+  padding: 0;
+}
+
+.keyword_transform_contents .modalSection .tableSection,
+.keyword_include_contents .modalSection .tableSection {
+  position: relative;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 0px;
+  overflow: auto;
+  background-color: #ffffff;
+}
+
+.keyword_transform_contents .modalSection .tableSection div,
+.keyword_include_contents .modalSection .tableSection div {
+  margin-bottom: 10px;
+}
+
+.keyword_transform_contents .modalSection .tableSection div.dataTables_wrapper,
+.keyword_include_contents .modalSection .tableSection div.dataTables_wrapper {
+  margin: 0px auto 28px;
+}
+
+.keyword_transform_contents .modalSection .tableSection table,
+.keyword_include_contents .modalSection .tableSection table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  display: table;
+  border-right: 1px solid #eaeaea;
+  border-left: 1px solid #eaeaea;
+}
+
+.keyword_transform_contents .modalSection .tableSection table > thead,
+.keyword_include_contents .modalSection .tableSection table > thead {
+  color: #3e3e3e;
+  cursor: pointer;
+  background: #cae2af;
+  font-size: 13px;
+}
+
+.keyword_transform_contents .modalSection .tableSection table > thead th,
+.keyword_include_contents .modalSection .tableSection table > thead th {
+  height: 36px;
+}
+
+.keyword_transform_contents .modalSection .tableSection table > tbody tr,
+.keyword_include_contents .modalSection .tableSection table > tbody tr {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.keyword_transform_contents .modalSection .tableSection table > tbody tr td:first-child img,
+.keyword_include_contents .modalSection .tableSection table > tbody tr td:first-child img {
+  width: 103px;
+  height: 103px;
+  margin: 15px 0 15px 0;
+}
+
+.keyword_transform_contents .modalSection .tableSection table th,
+.keyword_transform_contents .modalSection .tableSection table td,
+.keyword_transform_contents .modalSection .tableSection table tfoot,
+.keyword_include_contents .modalSection .tableSection table th,
+.keyword_include_contents .modalSection .tableSection table td,
+.keyword_include_contents .modalSection .tableSection table tfoot {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-collapse: collapse;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.keyword_transform_contents .modalSection .tableSection div.searchArea,
+.keyword_include_contents .modalSection .tableSection div.searchArea {
+  position: absolute;
+  bottom: 13px;
+  right: 0px;
+}
+
+.keyword_transform_contents .modalSection .tableSection div.searchArea span:after,
+.keyword_include_contents .modalSection .tableSection div.searchArea span:after {
+  bottom: 8px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li,
+.keyword_include_contents .modalSection .optionBox li {
+  float: left;
+  padding-right: 10px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li select,
+.keyword_include_contents .modalSection .optionBox li select {
+  width: 145px;
+  height: 30px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li input[type="text"],
+.keyword_include_contents .modalSection .optionBox li input[type="text"] {
+  width: 200px;
+  height: 30px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li button,
+.keyword_include_contents .modalSection .optionBox li button {
+  width: 20px;
+  height: 20px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li button.btn_delete,
+.keyword_include_contents .modalSection .optionBox li button.btn_delete {
+  background: url("../img/btn_delete.svg");
+  margin-top: 5px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li button.btn_add,
+.keyword_include_contents .modalSection .optionBox li button.btn_add {
+  background: url("../img/btn_add.svg");
+}
+
+.keyword_transform_contents .modalSection .optionBox li.percent input[type="text"],
+.keyword_include_contents .modalSection .optionBox li.percent input[type="text"] {
+  width: 177px;
+  height: 30px;
+}
+
+.keyword_transform_contents .modalSection .optionBox li.percent:after,
+.keyword_include_contents .modalSection .optionBox li.percent:after {
+  content: "%";
+  float: right;
+  padding: 7px 5px 5px 5px;
+  color: #000;
+}
+
+.keyword_transform_contents .modalSection .addBtn,
+.keyword_include_contents .modalSection .addBtn {
+  position: relative;
+  display: block;
+  background: url("../img/btn_add.svg");
+  width: 20px;
+  height: 20px;
+  margin: 5px auto 0;
+}
+
+.keyword_transform_contents .modalFooter,
+.keyword_include_contents .modalFooter {
+  width: 564px;
+  border: 0;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.keyword_transform_contents .modalFooter button,
+.keyword_include_contents .modalFooter button {
+  width: 120px;
+  height: 40px;
+  background: #85b74e;
+  border-radius: 2px;
+  font-family: "NotoSansR";
+  font-size: 16px;
+  color: #fff;
+}
+
+.keyword_transform_contents .modalFooter button.cancel,
+.keyword_include_contents .modalFooter button.cancel {
+  background: #bbb;
+}
+
+.keyword_include_contents {
+  width: 420px;
+}
+
+.keyword_include_contents .modalSection .tableSection table {
+  width: 100%;
+}
+
+.keyword_include_contents .modalSection .tableSection div.searchArea {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.keyword_include_contents .modalSection .tableSection div.searchArea span:after {
+  right: 88px;
+}
+
+.keyword_pack_name {
+  width: 760px;
+  padding: 20px;
+}
+
+.keyword_pack_name .modalMainTitle {
+  height: auto;
+  background: #fff;
+  border: 0;
+  color: #000;
+  font-family: "NotoSansM";
+  font-size: 16px;
+  color: #333;
+  padding: 0px;
+  font-weight: 600;
+}
+
+.keyword_pack_name .modalSection {
+  margin-top: 14px;
+  padding: 0;
+}
+
+.keyword_pack_name .modalSection .filterItem.on {
+  border: 0;
+  margin: 0;
+  border-top: 1px solid #f2f2f2;
+}
+
+.keyword_pack_name .modalSection .filterItem.on > ul p {
+  margin-left: 10px;
+}
+
+.keyword_pack_name .modalSection .filterItem.on > ul li button {
+  background-color: transparent;
+}
+
+.keyword_upload,
+.keyword_pack_create {
+  width: 600px;
+  padding: 0;
+}
+
+.keyword_upload .modalMainTitle,
+.keyword_pack_create .modalMainTitle {
+  padding: 2px 6px;
+  background-color: #85b74e;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 12px solid transparent;
+  font-weight: normal;
+  font-family: "NotoSansM";
+  border-radius: 5px 5px 0 0;
+}
+
+.keyword_upload .modalSection,
+.keyword_pack_create .modalSection {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 20px solid transparent;
+}
+
+.keyword_upload .modalSection .keywordNamesetting div,
+.keyword_pack_create .modalSection .keywordNamesetting div {
+  display: table;
+  width: 530px;
+  margin: 0 auto;
+}
+
+.keyword_upload .modalSection .keywordNamesetting div p,
+.keyword_pack_create .modalSection .keywordNamesetting div p {
+  display: table-cell;
+  font-family: "NotoSansR";
+  font-size: 16px;
+  padding-right: 14px;
+  vertical-align: middle;
+}
+
+.keyword_upload .modalSection .keywordNamesetting div input,
+.keyword_pack_create .modalSection .keywordNamesetting div input {
+  width: 293px;
+  margin-right: 14px;
+  border: 1px solid #d0d0d0;
+}
+
+.keyword_upload .modalSection .keywordNamesetting div button,
+.keyword_pack_create .modalSection .keywordNamesetting div button {
+  width: 90px;
+  height: 26px;
+  background: #85b74e;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.keyword_upload .modalSection .keywordNamesetting > p,
+.keyword_pack_create .modalSection .keywordNamesetting > p {
+  display: none;
+  padding: 8px 0 0 132px;
+  font-size: 13px;
+}
+
+.keyword_upload .modalSection .keywordNamesetting > p.on,
+.keyword_pack_create .modalSection .keywordNamesetting > p.on {
+  display: block;
+}
+
+.keyword_upload .modalSection .keywordNamesetting > p.success,
+.keyword_pack_create .modalSection .keywordNamesetting > p.success {
+  color: #62bf62;
+}
+
+.keyword_upload .modalSection .keywordNamesetting > p.fail,
+.keyword_pack_create .modalSection .keywordNamesetting > p.fail {
+  color: #eb1313;
+}
+
+.keyword_upload .modalSection .fileuploadArea,
+.keyword_pack_create .modalSection .fileuploadArea {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.keyword_upload .modalSection .fileuploadArea label,
+.keyword_pack_create .modalSection .fileuploadArea label {
+  display: block;
+  margin: 26px auto 15px;
+  width: 446px;
+  height: 69px;
+  border: 1px dashed #bbb;
+  border-radius: 14px;
+  color: #bbb;
+  line-height: 5;
+}
+
+.keyword_upload .modalSection .fileuploadArea label.on,
+.keyword_pack_create .modalSection .fileuploadArea label.on {
+  border: 1px solid #85b74e;
+  color: #333;
+}
+
+.keyword_upload .modalSection .fileuploadArea button,
+.keyword_pack_create .modalSection .fileuploadArea button {
+  width: 130px;
+  height: 26px;
+  color: #fff;
+  background: #bbb;
+}
+
+.keyword_upload .modalFooter,
+.keyword_pack_create .modalFooter {
+  margin-top: 0;
+  border-top: 1px solid #ddd;
+}
+
+.keyword_pack_create .modalSection {
+  padding-bottom: 0;
+}
+
+.keyword_pack_create .modalFooter {
+  border: 0;
+}
+
+/********** keywordcenter common css ***********/
+.keywordDashboard,
+.keywordStatistics,
+.keywordStatisticslist,
+.keywordTransform,
+.keywordTransformcontents,
+.keywordManagement,
+.keywordManagementcreate,
+.keywordManagementtransform {
+  /* component */
+  /* layout */
+  /* filter */
+  /* table */
+}
+
+.keywordDashboard ::-webkit-scrollbar,
+.keywordStatistics ::-webkit-scrollbar,
+.keywordStatisticslist ::-webkit-scrollbar,
+.keywordTransform ::-webkit-scrollbar,
+.keywordTransformcontents ::-webkit-scrollbar,
+.keywordManagement ::-webkit-scrollbar,
+.keywordManagementcreate ::-webkit-scrollbar,
+.keywordManagementtransform ::-webkit-scrollbar {
+  width: 4px;
+  height: 15px;
+  background: #ebebeb;
+}
+
+.keywordDashboard ::-webkit-scrollbar-thumb,
+.keywordStatistics ::-webkit-scrollbar-thumb,
+.keywordStatisticslist ::-webkit-scrollbar-thumb,
+.keywordTransform ::-webkit-scrollbar-thumb,
+.keywordTransformcontents ::-webkit-scrollbar-thumb,
+.keywordManagement ::-webkit-scrollbar-thumb,
+.keywordManagementcreate ::-webkit-scrollbar-thumb,
+.keywordManagementtransform ::-webkit-scrollbar-thumb {
+  height: 15px;
+  background: #bbbbbb;
+  border-radius: 0px;
+}
+
+.keywordDashboard .optionBox .date > div,
+.keywordStatistics .optionBox .date > div,
+.keywordStatisticslist .optionBox .date > div,
+.keywordTransform .optionBox .date > div,
+.keywordTransformcontents .optionBox .date > div,
+.keywordManagement .optionBox .date > div,
+.keywordManagementcreate .optionBox .date > div,
+.keywordManagementtransform .optionBox .date > div {
+  float: left;
+}
+
+.keywordDashboard .optionBox .date .calendar,
+.keywordStatistics .optionBox .date .calendar,
+.keywordStatisticslist .optionBox .date .calendar,
+.keywordTransform .optionBox .date .calendar,
+.keywordTransformcontents .optionBox .date .calendar,
+.keywordManagement .optionBox .date .calendar,
+.keywordManagementcreate .optionBox .date .calendar,
+.keywordManagementtransform .optionBox .date .calendar {
+  width: 210px;
+  height: 30px;
+  border: 1px solid #d0d0d0;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.keywordDashboard .optionBox .date .calendar input,
+.keywordStatistics .optionBox .date .calendar input,
+.keywordStatisticslist .optionBox .date .calendar input,
+.keywordTransform .optionBox .date .calendar input,
+.keywordTransformcontents .optionBox .date .calendar input,
+.keywordManagement .optionBox .date .calendar input,
+.keywordManagementcreate .optionBox .date .calendar input,
+.keywordManagementtransform .optionBox .date .calendar input {
+  width: 170px;
+  height: 28px;
+  padding: 0 5px;
+  text-align: center;
+  border: none;
+}
+
+.keywordDashboard .optionBox .date .calendar .dateChoice,
+.keywordDashboard .optionBox .date .calendar .icon,
+.keywordStatistics .optionBox .date .calendar .dateChoice,
+.keywordStatistics .optionBox .date .calendar .icon,
+.keywordStatisticslist .optionBox .date .calendar .dateChoice,
+.keywordStatisticslist .optionBox .date .calendar .icon,
+.keywordTransform .optionBox .date .calendar .dateChoice,
+.keywordTransform .optionBox .date .calendar .icon,
+.keywordTransformcontents .optionBox .date .calendar .dateChoice,
+.keywordTransformcontents .optionBox .date .calendar .icon,
+.keywordManagement .optionBox .date .calendar .dateChoice,
+.keywordManagement .optionBox .date .calendar .icon,
+.keywordManagementcreate .optionBox .date .calendar .dateChoice,
+.keywordManagementcreate .optionBox .date .calendar .icon,
+.keywordManagementtransform .optionBox .date .calendar .dateChoice,
+.keywordManagementtransform .optionBox .date .calendar .icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.keywordDashboard .optionBox .date .calendar .icon,
+.keywordStatistics .optionBox .date .calendar .icon,
+.keywordStatisticslist .optionBox .date .calendar .icon,
+.keywordTransform .optionBox .date .calendar .icon,
+.keywordTransformcontents .optionBox .date .calendar .icon,
+.keywordManagement .optionBox .date .calendar .icon,
+.keywordManagementcreate .optionBox .date .calendar .icon,
+.keywordManagementtransform .optionBox .date .calendar .icon {
+  width: 30px;
+  height: 28px;
+  background: url("../img/calendar-alt-light.svg") center center no-repeat;
+  background-size: 16px 18px;
+}
+
+.keywordDashboard .contentSection,
+.keywordStatistics .contentSection,
+.keywordStatisticslist .contentSection,
+.keywordTransform .contentSection,
+.keywordTransformcontents .contentSection,
+.keywordManagement .contentSection,
+.keywordManagementcreate .contentSection,
+.keywordManagementtransform .contentSection {
+  overflow: hidden;
+  padding: 15px;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.keywordDashboard .contentSection h3.contentTitle,
+.keywordStatistics .contentSection h3.contentTitle,
+.keywordStatisticslist .contentSection h3.contentTitle,
+.keywordTransform .contentSection h3.contentTitle,
+.keywordTransformcontents .contentSection h3.contentTitle,
+.keywordManagement .contentSection h3.contentTitle,
+.keywordManagementcreate .contentSection h3.contentTitle,
+.keywordManagementtransform .contentSection h3.contentTitle {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dadada;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+  font-family: "NotoSansM";
+  color: #010101;
+  margin-top: 0;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.keywordDashboard .contentSection a.btnMore,
+.keywordStatistics .contentSection a.btnMore,
+.keywordStatisticslist .contentSection a.btnMore,
+.keywordTransform .contentSection a.btnMore,
+.keywordTransformcontents .contentSection a.btnMore,
+.keywordManagement .contentSection a.btnMore,
+.keywordManagementcreate .contentSection a.btnMore,
+.keywordManagementtransform .contentSection a.btnMore {
+  float: right;
+}
+
+.keywordDashboard .buttonBox,
+.keywordStatistics .buttonBox,
+.keywordStatisticslist .buttonBox,
+.keywordTransform .buttonBox,
+.keywordTransformcontents .buttonBox,
+.keywordManagement .buttonBox,
+.keywordManagementcreate .buttonBox,
+.keywordManagementtransform .buttonBox {
+  font-size: 0;
+}
+
+.keywordDashboard .buttonBox button,
+.keywordStatistics .buttonBox button,
+.keywordStatisticslist .buttonBox button,
+.keywordTransform .buttonBox button,
+.keywordTransformcontents .buttonBox button,
+.keywordManagement .buttonBox button,
+.keywordManagementcreate .buttonBox button,
+.keywordManagementtransform .buttonBox button {
+  background: #85b74e;
+  padding: 7px 20px;
+  display: inline-block;
+  border-radius: 2px;
+  font-family: "NotoSansR";
+  color: #fff;
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+.keywordDashboard .buttonBox button:first-child,
+.keywordStatistics .buttonBox button:first-child,
+.keywordStatisticslist .buttonBox button:first-child,
+.keywordTransform .buttonBox button:first-child,
+.keywordTransformcontents .buttonBox button:first-child,
+.keywordManagement .buttonBox button:first-child,
+.keywordManagementcreate .buttonBox button:first-child,
+.keywordManagementtransform .buttonBox button:first-child {
+  margin-left: 0;
+}
+
+.keywordDashboard .buttonBox button.submit,
+.keywordStatistics .buttonBox button.submit,
+.keywordStatisticslist .buttonBox button.submit,
+.keywordTransform .buttonBox button.submit,
+.keywordTransformcontents .buttonBox button.submit,
+.keywordManagement .buttonBox button.submit,
+.keywordManagementcreate .buttonBox button.submit,
+.keywordManagementtransform .buttonBox button.submit {
+  background-color: #85b74e;
+}
+
+.keywordDashboard .buttonBox button.cancel,
+.keywordStatistics .buttonBox button.cancel,
+.keywordStatisticslist .buttonBox button.cancel,
+.keywordTransform .buttonBox button.cancel,
+.keywordTransformcontents .buttonBox button.cancel,
+.keywordManagement .buttonBox button.cancel,
+.keywordManagementcreate .buttonBox button.cancel,
+.keywordManagementtransform .buttonBox button.cancel {
+  background-color: #bbb;
+}
+
+.keywordDashboard .buttonBox button.search,
+.keywordStatistics .buttonBox button.search,
+.keywordStatisticslist .buttonBox button.search,
+.keywordTransform .buttonBox button.search,
+.keywordTransformcontents .buttonBox button.search,
+.keywordManagement .buttonBox button.search,
+.keywordManagementcreate .buttonBox button.search,
+.keywordManagementtransform .buttonBox button.search {
+  width: 60px;
+  height: 26px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #85b74e;
+  color: #85b74e;
+  background: #fff;
+}
+
+.keywordDashboard .buttonBox button.delete,
+.keywordStatistics .buttonBox button.delete,
+.keywordStatisticslist .buttonBox button.delete,
+.keywordTransform .buttonBox button.delete,
+.keywordTransformcontents .buttonBox button.delete,
+.keywordManagement .buttonBox button.delete,
+.keywordManagementcreate .buttonBox button.delete,
+.keywordManagementtransform .buttonBox button.delete {
+  width: 60px;
+  height: 26px;
+  color: #fff;
+  background: #f86767;
+  padding: 3px;
+}
+
+.keywordDashboard .chartArea ul.threeCharts > li,
+.keywordStatistics .chartArea ul.threeCharts > li,
+.keywordStatisticslist .chartArea ul.threeCharts > li,
+.keywordTransform .chartArea ul.threeCharts > li,
+.keywordTransformcontents .chartArea ul.threeCharts > li,
+.keywordManagement .chartArea ul.threeCharts > li,
+.keywordManagementcreate .chartArea ul.threeCharts > li,
+.keywordManagementtransform .chartArea ul.threeCharts > li {
+  width: 25%;
+}
+
+.keywordDashboard .chartArea ul li,
+.keywordStatistics .chartArea ul li,
+.keywordStatisticslist .chartArea ul li,
+.keywordTransform .chartArea ul li,
+.keywordTransformcontents .chartArea ul li,
+.keywordManagement .chartArea ul li,
+.keywordManagementcreate .chartArea ul li,
+.keywordManagementtransform .chartArea ul li {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.keywordDashboard .extraFeatures,
+.keywordStatistics .extraFeatures,
+.keywordStatisticslist .extraFeatures,
+.keywordTransform .extraFeatures,
+.keywordTransformcontents .extraFeatures,
+.keywordManagement .extraFeatures,
+.keywordManagementcreate .extraFeatures,
+.keywordManagementtransform .extraFeatures {
+  margin-bottom: 10px;
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.keywordDashboard .paging ul li,
+.keywordStatistics .paging ul li,
+.keywordStatisticslist .paging ul li,
+.keywordTransform .paging ul li,
+.keywordTransformcontents .paging ul li,
+.keywordManagement .paging ul li,
+.keywordManagementcreate .paging ul li,
+.keywordManagementtransform .paging ul li {
+  float: left;
+  width: 8px;
+  height: 15px;
+  margin-right: 18px;
+  text-align: center;
+  color: #b3b3b3;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: "NotoSansB";
+}
+
+.keywordDashboard .paging ul li.on a,
+.keywordStatistics .paging ul li.on a,
+.keywordStatisticslist .paging ul li.on a,
+.keywordTransform .paging ul li.on a,
+.keywordTransformcontents .paging ul li.on a,
+.keywordManagement .paging ul li.on a,
+.keywordManagementcreate .paging ul li.on a,
+.keywordManagementtransform .paging ul li.on a {
+  color: #85b74e;
+}
+
+.keywordDashboard .paging ul li.prevTen,
+.keywordStatistics .paging ul li.prevTen,
+.keywordStatisticslist .paging ul li.prevTen,
+.keywordTransform .paging ul li.prevTen,
+.keywordTransformcontents .paging ul li.prevTen,
+.keywordManagement .paging ul li.prevTen,
+.keywordManagementcreate .paging ul li.prevTen,
+.keywordManagementtransform .paging ul li.prevTen {
+  background: url(../img/icon_paging_ten.svg) no-repeat center/10px;
+}
+
+.keywordDashboard .paging ul li.nextTen,
+.keywordStatistics .paging ul li.nextTen,
+.keywordStatisticslist .paging ul li.nextTen,
+.keywordTransform .paging ul li.nextTen,
+.keywordTransformcontents .paging ul li.nextTen,
+.keywordManagement .paging ul li.nextTen,
+.keywordManagementcreate .paging ul li.nextTen,
+.keywordManagementtransform .paging ul li.nextTen {
+  background: url(../img/icon_paging_ten.svg) no-repeat center/10px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.keywordDashboard .paging ul li.prev,
+.keywordStatistics .paging ul li.prev,
+.keywordStatisticslist .paging ul li.prev,
+.keywordTransform .paging ul li.prev,
+.keywordTransformcontents .paging ul li.prev,
+.keywordManagement .paging ul li.prev,
+.keywordManagementcreate .paging ul li.prev,
+.keywordManagementtransform .paging ul li.prev {
+  background: url(../img/icon_paging.svg) no-repeat center/7px;
+}
+
+.keywordDashboard .paging ul li.next,
+.keywordStatistics .paging ul li.next,
+.keywordStatisticslist .paging ul li.next,
+.keywordTransform .paging ul li.next,
+.keywordTransformcontents .paging ul li.next,
+.keywordManagement .paging ul li.next,
+.keywordManagementcreate .paging ul li.next,
+.keywordManagementtransform .paging ul li.next {
+  background: url(../img/icon_paging.svg) no-repeat center/7px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.keywordDashboard .setType label,
+.keywordStatistics .setType label,
+.keywordStatisticslist .setType label,
+.keywordTransform .setType label,
+.keywordTransformcontents .setType label,
+.keywordManagement .setType label,
+.keywordManagementcreate .setType label,
+.keywordManagementtransform .setType label {
+  float: left;
+  margin-right: 10px;
+  line-height: 14px;
+  font-family: "NotoSansR";
+  font-size: 14px;
+}
+
+.keywordDashboard .setType input[type="radio"]:checked + label:before,
+.keywordStatistics .setType input[type="radio"]:checked + label:before,
+.keywordStatisticslist .setType input[type="radio"]:checked + label:before,
+.keywordTransform .setType input[type="radio"]:checked + label:before,
+.keywordTransformcontents .setType input[type="radio"]:checked + label:before,
+.keywordManagement .setType input[type="radio"]:checked + label:before,
+.keywordManagementcreate .setType input[type="radio"]:checked + label:before,
+.keywordManagementtransform .setType input[type="radio"]:checked + label:before {
+  content: "";
+  background: url(../img/keyword/btn_radio_on.png) center/100% no-repeat;
+}
+
+.keywordDashboard .setType input[type="radio"] + label:before,
+.keywordStatistics .setType input[type="radio"] + label:before,
+.keywordStatisticslist .setType input[type="radio"] + label:before,
+.keywordTransform .setType input[type="radio"] + label:before,
+.keywordTransformcontents .setType input[type="radio"] + label:before,
+.keywordManagement .setType input[type="radio"] + label:before,
+.keywordManagementcreate .setType input[type="radio"] + label:before,
+.keywordManagementtransform .setType input[type="radio"] + label:before {
+  float: left;
+  top: 0.25em;
+  left: 0;
+  display: block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  margin: 0 5px 6px 0;
+  background: url(../img/keyword/btn_radio_off.png) center/100% no-repeat;
+}
+
+.keywordDashboard .tableSection,
+.keywordStatistics .tableSection,
+.keywordStatisticslist .tableSection,
+.keywordTransform .tableSection,
+.keywordTransformcontents .tableSection,
+.keywordManagement .tableSection,
+.keywordManagementcreate .tableSection,
+.keywordManagementtransform .tableSection {
+  position: relative;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 20px;
+  overflow: auto;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.keywordDashboard .tableSection div,
+.keywordStatistics .tableSection div,
+.keywordStatisticslist .tableSection div,
+.keywordTransform .tableSection div,
+.keywordTransformcontents .tableSection div,
+.keywordManagement .tableSection div,
+.keywordManagementcreate .tableSection div,
+.keywordManagementtransform .tableSection div {
+  margin-bottom: 10px;
+}
+
+.keywordDashboard .tableSection div.dataTables_wrapper,
+.keywordStatistics .tableSection div.dataTables_wrapper,
+.keywordStatisticslist .tableSection div.dataTables_wrapper,
+.keywordTransform .tableSection div.dataTables_wrapper,
+.keywordTransformcontents .tableSection div.dataTables_wrapper,
+.keywordManagement .tableSection div.dataTables_wrapper,
+.keywordManagementcreate .tableSection div.dataTables_wrapper,
+.keywordManagementtransform .tableSection div.dataTables_wrapper {
+  margin: 20px auto 20px;
+}
+
+.keywordDashboard .tableSection table,
+.keywordStatistics .tableSection table,
+.keywordStatisticslist .tableSection table,
+.keywordTransform .tableSection table,
+.keywordTransformcontents .tableSection table,
+.keywordManagement .tableSection table,
+.keywordManagementcreate .tableSection table,
+.keywordManagementtransform .tableSection table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  display: table;
+}
+
+.keywordDashboard .tableSection table > thead,
+.keywordDashboard .tableSection table > tfoot,
+.keywordStatistics .tableSection table > thead,
+.keywordStatistics .tableSection table > tfoot,
+.keywordStatisticslist .tableSection table > thead,
+.keywordStatisticslist .tableSection table > tfoot,
+.keywordTransform .tableSection table > thead,
+.keywordTransform .tableSection table > tfoot,
+.keywordTransformcontents .tableSection table > thead,
+.keywordTransformcontents .tableSection table > tfoot,
+.keywordManagement .tableSection table > thead,
+.keywordManagement .tableSection table > tfoot,
+.keywordManagementcreate .tableSection table > thead,
+.keywordManagementcreate .tableSection table > tfoot,
+.keywordManagementtransform .tableSection table > thead,
+.keywordManagementtransform .tableSection table > tfoot {
+  background: #f4f4f4;
+  font-size: 13px;
+}
+
+.keywordDashboard .tableSection table > thead,
+.keywordStatistics .tableSection table > thead,
+.keywordStatisticslist .tableSection table > thead,
+.keywordTransform .tableSection table > thead,
+.keywordTransformcontents .tableSection table > thead,
+.keywordManagement .tableSection table > thead,
+.keywordManagementcreate .tableSection table > thead,
+.keywordManagementtransform .tableSection table > thead {
+  color: #3e3e3e;
+  cursor: pointer;
+}
+
+.keywordDashboard .tableSection table > thead th.sorting,
+.keywordStatistics .tableSection table > thead th.sorting,
+.keywordStatisticslist .tableSection table > thead th.sorting,
+.keywordTransform .tableSection table > thead th.sorting,
+.keywordTransformcontents .tableSection table > thead th.sorting,
+.keywordManagement .tableSection table > thead th.sorting,
+.keywordManagementcreate .tableSection table > thead th.sorting,
+.keywordManagementtransform .tableSection table > thead th.sorting {
+  background: url("../img/keyword/icon_ arrow_default.png") no-repeat right/15px;
+  background-position-x: 95%;
+}
+
+.keywordDashboard .tableSection table > thead th.sorting_asc,
+.keywordStatistics .tableSection table > thead th.sorting_asc,
+.keywordStatisticslist .tableSection table > thead th.sorting_asc,
+.keywordTransform .tableSection table > thead th.sorting_asc,
+.keywordTransformcontents .tableSection table > thead th.sorting_asc,
+.keywordManagement .tableSection table > thead th.sorting_asc,
+.keywordManagementcreate .tableSection table > thead th.sorting_asc,
+.keywordManagementtransform .tableSection table > thead th.sorting_asc {
+  background: url("../img/keyword/icon_ arrow_up.png") no-repeat right/15px;
+  background-position-x: 95%;
+}
+
+.keywordDashboard .tableSection table > thead th.sorting_desc,
+.keywordStatistics .tableSection table > thead th.sorting_desc,
+.keywordStatisticslist .tableSection table > thead th.sorting_desc,
+.keywordTransform .tableSection table > thead th.sorting_desc,
+.keywordTransformcontents .tableSection table > thead th.sorting_desc,
+.keywordManagement .tableSection table > thead th.sorting_desc,
+.keywordManagementcreate .tableSection table > thead th.sorting_desc,
+.keywordManagementtransform .tableSection table > thead th.sorting_desc {
+  background: url("../img/keyword/icon_ arrow_down.png") no-repeat right/15px;
+  background-position-x: 95%;
+}
+
+.keywordDashboard .tableSection table th,
+.keywordDashboard .tableSection table td,
+.keywordDashboard .tableSection table tfoot,
+.keywordStatistics .tableSection table th,
+.keywordStatistics .tableSection table td,
+.keywordStatistics .tableSection table tfoot,
+.keywordStatisticslist .tableSection table th,
+.keywordStatisticslist .tableSection table td,
+.keywordStatisticslist .tableSection table tfoot,
+.keywordTransform .tableSection table th,
+.keywordTransform .tableSection table td,
+.keywordTransform .tableSection table tfoot,
+.keywordTransformcontents .tableSection table th,
+.keywordTransformcontents .tableSection table td,
+.keywordTransformcontents .tableSection table tfoot,
+.keywordManagement .tableSection table th,
+.keywordManagement .tableSection table td,
+.keywordManagement .tableSection table tfoot,
+.keywordManagementcreate .tableSection table th,
+.keywordManagementcreate .tableSection table td,
+.keywordManagementcreate .tableSection table tfoot,
+.keywordManagementtransform .tableSection table th,
+.keywordManagementtransform .tableSection table td,
+.keywordManagementtransform .tableSection table tfoot {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-collapse: collapse;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.keywordDashboard .filterItem,
+.keywordStatistics .filterItem,
+.keywordStatisticslist .filterItem,
+.keywordTransform .filterItem,
+.keywordTransformcontents .filterItem,
+.keywordManagement .filterItem,
+.keywordManagementcreate .filterItem,
+.keywordManagementtransform .filterItem {
+  display: none;
+  color: #111;
+}
+
+.keywordDashboard .filterItem ul,
+.keywordStatistics .filterItem ul,
+.keywordStatisticslist .filterItem ul,
+.keywordTransform .filterItem ul,
+.keywordTransformcontents .filterItem ul,
+.keywordManagement .filterItem ul,
+.keywordManagementcreate .filterItem ul,
+.keywordManagementtransform .filterItem ul {
+  display: block;
+  width: 98.8%;
+  margin: 10px 4px 10px 16px;
+}
+
+.keywordDashboard .filterItem ul li,
+.keywordStatistics .filterItem ul li,
+.keywordStatisticslist .filterItem ul li,
+.keywordTransform .filterItem ul li,
+.keywordTransformcontents .filterItem ul li,
+.keywordManagement .filterItem ul li,
+.keywordManagementcreate .filterItem ul li,
+.keywordManagementtransform .filterItem ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.keywordDashboard .filterItem ul li p.itemTitle,
+.keywordStatistics .filterItem ul li p.itemTitle,
+.keywordStatisticslist .filterItem ul li p.itemTitle,
+.keywordTransform .filterItem ul li p.itemTitle,
+.keywordTransformcontents .filterItem ul li p.itemTitle,
+.keywordManagement .filterItem ul li p.itemTitle,
+.keywordManagementcreate .filterItem ul li p.itemTitle,
+.keywordManagementtransform .filterItem ul li p.itemTitle {
+  width: 100px;
+  font-family: "NotoSansB";
+  font-size: 14px;
+  float: left;
+  text-align: left;
+  margin: 10px 4px 10px 16px;
+  line-height: 1.5;
+}
+
+.keywordDashboard .filterItem ul li ul.itemArea,
+.keywordStatistics .filterItem ul li ul.itemArea,
+.keywordStatisticslist .filterItem ul li ul.itemArea,
+.keywordTransform .filterItem ul li ul.itemArea,
+.keywordTransformcontents .filterItem ul li ul.itemArea,
+.keywordManagement .filterItem ul li ul.itemArea,
+.keywordManagementcreate .filterItem ul li ul.itemArea,
+.keywordManagementtransform .filterItem ul li ul.itemArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "NotoSansR";
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.keywordDashboard .filterItem ul li ul.itemArea li,
+.keywordStatistics .filterItem ul li ul.itemArea li,
+.keywordStatisticslist .filterItem ul li ul.itemArea li,
+.keywordTransform .filterItem ul li ul.itemArea li,
+.keywordTransformcontents .filterItem ul li ul.itemArea li,
+.keywordManagement .filterItem ul li ul.itemArea li,
+.keywordManagementcreate .filterItem ul li ul.itemArea li,
+.keywordManagementtransform .filterItem ul li ul.itemArea li {
+  background: #fff;
+  float: left;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.keywordDashboard .filterItem ul li ul.itemArea li button,
+.keywordStatistics .filterItem ul li ul.itemArea li button,
+.keywordStatisticslist .filterItem ul li ul.itemArea li button,
+.keywordTransform .filterItem ul li ul.itemArea li button,
+.keywordTransformcontents .filterItem ul li ul.itemArea li button,
+.keywordManagement .filterItem ul li ul.itemArea li button,
+.keywordManagementcreate .filterItem ul li ul.itemArea li button,
+.keywordManagementtransform .filterItem ul li ul.itemArea li button {
+  padding: 6px 9px;
+}
+
+.keywordDashboard .filterItem ul li ul.itemArea li.on,
+.keywordStatistics .filterItem ul li ul.itemArea li.on,
+.keywordStatisticslist .filterItem ul li ul.itemArea li.on,
+.keywordTransform .filterItem ul li ul.itemArea li.on,
+.keywordTransformcontents .filterItem ul li ul.itemArea li.on,
+.keywordManagement .filterItem ul li ul.itemArea li.on,
+.keywordManagementcreate .filterItem ul li ul.itemArea li.on,
+.keywordManagementtransform .filterItem ul li ul.itemArea li.on {
+  background: #cae2af;
+}
+
+.keywordDashboard .filterItem.on,
+.keywordStatistics .filterItem.on,
+.keywordStatisticslist .filterItem.on,
+.keywordTransform .filterItem.on,
+.keywordTransformcontents .filterItem.on,
+.keywordManagement .filterItem.on,
+.keywordManagementcreate .filterItem.on,
+.keywordManagementtransform .filterItem.on {
+  display: block;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.keywordDashboard .filterArea,
+.keywordStatistics .filterArea,
+.keywordStatisticslist .filterArea,
+.keywordTransform .filterArea,
+.keywordTransformcontents .filterArea,
+.keywordManagement .filterArea,
+.keywordManagementcreate .filterArea,
+.keywordManagementtransform .filterArea {
+  padding: 10px 15px 13px;
+  margin: 0 4px 27px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.keywordDashboard .filterArea .reset,
+.keywordDashboard .filterArea .filter,
+.keywordStatistics .filterArea .reset,
+.keywordStatistics .filterArea .filter,
+.keywordStatisticslist .filterArea .reset,
+.keywordStatisticslist .filterArea .filter,
+.keywordTransform .filterArea .reset,
+.keywordTransform .filterArea .filter,
+.keywordTransformcontents .filterArea .reset,
+.keywordTransformcontents .filterArea .filter,
+.keywordManagement .filterArea .reset,
+.keywordManagement .filterArea .filter,
+.keywordManagementcreate .filterArea .reset,
+.keywordManagementcreate .filterArea .filter,
+.keywordManagementtransform .filterArea .reset,
+.keywordManagementtransform .filterArea .filter {
+  cursor: pointer;
+  font-family: "NotoSansM";
+  color: #111;
+}
+
+.keywordDashboard .filterArea .reset:after,
+.keywordStatistics .filterArea .reset:after,
+.keywordStatisticslist .filterArea .reset:after,
+.keywordTransform .filterArea .reset:after,
+.keywordTransformcontents .filterArea .reset:after,
+.keywordManagement .filterArea .reset:after,
+.keywordManagementcreate .filterArea .reset:after,
+.keywordManagementtransform .filterArea .reset:after {
+  content: url("../img/keyword/reset.svg");
+  margin-left: 6px;
+  margin-right: 31px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.keywordDashboard .filterArea .filter:after,
+.keywordStatistics .filterArea .filter:after,
+.keywordStatisticslist .filterArea .filter:after,
+.keywordTransform .filterArea .filter:after,
+.keywordTransformcontents .filterArea .filter:after,
+.keywordManagement .filterArea .filter:after,
+.keywordManagementcreate .filterArea .filter:after,
+.keywordManagementtransform .filterArea .filter:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 6px;
+  bottom: 2px;
+  cursor: pointer;
+  margin-left: 8px;
+  background: url("../img/keyword/updown_ar.svg") no-repeat;
+}
+
+.keywordDashboard .filterArea .filter.on:after,
+.keywordStatistics .filterArea .filter.on:after,
+.keywordStatisticslist .filterArea .filter.on:after,
+.keywordTransform .filterArea .filter.on:after,
+.keywordTransformcontents .filterArea .filter.on:after,
+.keywordManagement .filterArea .filter.on:after,
+.keywordManagementcreate .filterArea .filter.on:after,
+.keywordManagementtransform .filterArea .filter.on:after {
+  content: "";
+  position: relative;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-left: 8px;
+}
+
+.keywordDashboard .filterArea ul.selectItem,
+.keywordStatistics .filterArea ul.selectItem,
+.keywordStatisticslist .filterArea ul.selectItem,
+.keywordTransform .filterArea ul.selectItem,
+.keywordTransformcontents .filterArea ul.selectItem,
+.keywordManagement .filterArea ul.selectItem,
+.keywordManagementcreate .filterArea ul.selectItem,
+.keywordManagementtransform .filterArea ul.selectItem {
+  display: block;
+  width: 90%;
+}
+
+.keywordDashboard .filterArea ul.selectItem li,
+.keywordStatistics .filterArea ul.selectItem li,
+.keywordStatisticslist .filterArea ul.selectItem li,
+.keywordTransform .filterArea ul.selectItem li,
+.keywordTransformcontents .filterArea ul.selectItem li,
+.keywordManagement .filterArea ul.selectItem li,
+.keywordManagementcreate .filterArea ul.selectItem li,
+.keywordManagementtransform .filterArea ul.selectItem li {
+  font-family: "NotoSansR";
+  font-size: 13px;
+  background: #cae2af;
+  border-radius: 4px;
+  text-align: center;
+  float: left;
+  margin: 0 4px 10px 0;
+}
+
+.keywordDashboard .filterArea ul.selectItem li button,
+.keywordStatistics .filterArea ul.selectItem li button,
+.keywordStatisticslist .filterArea ul.selectItem li button,
+.keywordTransform .filterArea ul.selectItem li button,
+.keywordTransformcontents .filterArea ul.selectItem li button,
+.keywordManagement .filterArea ul.selectItem li button,
+.keywordManagementcreate .filterArea ul.selectItem li button,
+.keywordManagementtransform .filterArea ul.selectItem li button {
+  min-height: 26px;
+  padding: 3px 10px 4px;
+}
+
+.keywordDashboard .filterArea ul.selectItem li button:after,
+.keywordStatistics .filterArea ul.selectItem li button:after,
+.keywordStatisticslist .filterArea ul.selectItem li button:after,
+.keywordTransform .filterArea ul.selectItem li button:after,
+.keywordTransformcontents .filterArea ul.selectItem li button:after,
+.keywordManagement .filterArea ul.selectItem li button:after,
+.keywordManagementcreate .filterArea ul.selectItem li button:after,
+.keywordManagementtransform .filterArea ul.selectItem li button:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 12px;
+  background: url("../img/btn_x_small_black.svg") center center no-repeat;
+  font-size: 0;
+}
+
+.keywordDashboard .dataArea .extraFeatures .rightBox,
+.keywordStatistics .dataArea .extraFeatures .rightBox,
+.keywordStatisticslist .dataArea .extraFeatures .rightBox,
+.keywordTransform .dataArea .extraFeatures .rightBox,
+.keywordTransformcontents .dataArea .extraFeatures .rightBox,
+.keywordManagement .dataArea .extraFeatures .rightBox,
+.keywordManagementcreate .dataArea .extraFeatures .rightBox,
+.keywordManagementtransform .dataArea .extraFeatures .rightBox {
+  margin: 0;
+}
+
+.keywordDashboard .dataArea .extraFeatures .rightBox div,
+.keywordStatistics .dataArea .extraFeatures .rightBox div,
+.keywordStatisticslist .dataArea .extraFeatures .rightBox div,
+.keywordTransform .dataArea .extraFeatures .rightBox div,
+.keywordTransformcontents .dataArea .extraFeatures .rightBox div,
+.keywordManagement .dataArea .extraFeatures .rightBox div,
+.keywordManagementcreate .dataArea .extraFeatures .rightBox div,
+.keywordManagementtransform .dataArea .extraFeatures .rightBox div {
+  float: left;
+  margin-right: 10px;
+}
+
+.keywordDashboard .dataArea .extraFeatures .rightBox a,
+.keywordStatistics .dataArea .extraFeatures .rightBox a,
+.keywordStatisticslist .dataArea .extraFeatures .rightBox a,
+.keywordTransform .dataArea .extraFeatures .rightBox a,
+.keywordTransformcontents .dataArea .extraFeatures .rightBox a,
+.keywordManagement .dataArea .extraFeatures .rightBox a,
+.keywordManagementcreate .dataArea .extraFeatures .rightBox a,
+.keywordManagementtransform .dataArea .extraFeatures .rightBox a {
+  float: left;
+  width: 102px;
+  height: 30px;
+  border: 1px solid #85b74e;
+  text-align: center;
+  line-height: 2;
+  border-radius: 2px;
+}
+
+.keywordDashboard .dataArea .extraFeatures .rightBox a button,
+.keywordStatistics .dataArea .extraFeatures .rightBox a button,
+.keywordStatisticslist .dataArea .extraFeatures .rightBox a button,
+.keywordTransform .dataArea .extraFeatures .rightBox a button,
+.keywordTransformcontents .dataArea .extraFeatures .rightBox a button,
+.keywordManagement .dataArea .extraFeatures .rightBox a button,
+.keywordManagementcreate .dataArea .extraFeatures .rightBox a button,
+.keywordManagementtransform .dataArea .extraFeatures .rightBox a button {
+  color: #85b74e;
+}
+
+.keywordDashboard .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordStatistics .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordStatisticslist .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordTransform .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordTransformcontents .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordManagement .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordManagementcreate .dataArea .extraFeatures .rightBox a button.excelDown,
+.keywordManagementtransform .dataArea .extraFeatures .rightBox a button.excelDown {
+  background-color: #fff;
+}
+
+.keywordDashboard .dataArea .extraFeatures .rightBox a button:before,
+.keywordStatistics .dataArea .extraFeatures .rightBox a button:before,
+.keywordStatisticslist .dataArea .extraFeatures .rightBox a button:before,
+.keywordTransform .dataArea .extraFeatures .rightBox a button:before,
+.keywordTransformcontents .dataArea .extraFeatures .rightBox a button:before,
+.keywordManagement .dataArea .extraFeatures .rightBox a button:before,
+.keywordManagementcreate .dataArea .extraFeatures .rightBox a button:before,
+.keywordManagementtransform .dataArea .extraFeatures .rightBox a button:before {
+  content: url("../img/keyword/-e-icon_exel.svg");
+  position: relative;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  padding-right: 4.2px;
+  margin-top: 2px;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table,
+.keywordStatistics .dataArea .dataTables_wrapper table,
+.keywordStatisticslist .dataArea .dataTables_wrapper table,
+.keywordTransform .dataArea .dataTables_wrapper table,
+.keywordTransformcontents .dataArea .dataTables_wrapper table,
+.keywordManagement .dataArea .dataTables_wrapper table,
+.keywordManagementcreate .dataArea .dataTables_wrapper table,
+.keywordManagementtransform .dataArea .dataTables_wrapper table {
+  width: 100% !important;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table thead,
+.keywordStatistics .dataArea .dataTables_wrapper table thead,
+.keywordStatisticslist .dataArea .dataTables_wrapper table thead,
+.keywordTransform .dataArea .dataTables_wrapper table thead,
+.keywordTransformcontents .dataArea .dataTables_wrapper table thead,
+.keywordManagement .dataArea .dataTables_wrapper table thead,
+.keywordManagementcreate .dataArea .dataTables_wrapper table thead,
+.keywordManagementtransform .dataArea .dataTables_wrapper table thead {
+  background: #cae2af;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table thead th,
+.keywordStatistics .dataArea .dataTables_wrapper table thead th,
+.keywordStatisticslist .dataArea .dataTables_wrapper table thead th,
+.keywordTransform .dataArea .dataTables_wrapper table thead th,
+.keywordTransformcontents .dataArea .dataTables_wrapper table thead th,
+.keywordManagement .dataArea .dataTables_wrapper table thead th,
+.keywordManagementcreate .dataArea .dataTables_wrapper table thead th,
+.keywordManagementtransform .dataArea .dataTables_wrapper table thead th {
+  display: table-cell;
+  height: 36px;
+  font-family: "NotoSansB";
+  font-size: 13px;
+  color: #3e3e3e;
+  border-left: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordStatistics .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordStatisticslist .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordTransform .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordTransformcontents .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordManagement .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordManagementcreate .dataArea .dataTables_wrapper table thead th:last-child,
+.keywordManagementtransform .dataArea .dataTables_wrapper table thead th:last-child {
+  border-right: 1px solid #eaeaea;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table tbody,
+.keywordStatistics .dataArea .dataTables_wrapper table tbody,
+.keywordStatisticslist .dataArea .dataTables_wrapper table tbody,
+.keywordTransform .dataArea .dataTables_wrapper table tbody,
+.keywordTransformcontents .dataArea .dataTables_wrapper table tbody,
+.keywordManagement .dataArea .dataTables_wrapper table tbody,
+.keywordManagementcreate .dataArea .dataTables_wrapper table tbody,
+.keywordManagementtransform .dataArea .dataTables_wrapper table tbody {
+  background: #fff;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table tbody tr,
+.keywordStatistics .dataArea .dataTables_wrapper table tbody tr,
+.keywordStatisticslist .dataArea .dataTables_wrapper table tbody tr,
+.keywordTransform .dataArea .dataTables_wrapper table tbody tr,
+.keywordTransformcontents .dataArea .dataTables_wrapper table tbody tr,
+.keywordManagement .dataArea .dataTables_wrapper table tbody tr,
+.keywordManagementcreate .dataArea .dataTables_wrapper table tbody tr,
+.keywordManagementtransform .dataArea .dataTables_wrapper table tbody tr {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table tbody tr td,
+.keywordStatistics .dataArea .dataTables_wrapper table tbody tr td,
+.keywordStatisticslist .dataArea .dataTables_wrapper table tbody tr td,
+.keywordTransform .dataArea .dataTables_wrapper table tbody tr td,
+.keywordTransformcontents .dataArea .dataTables_wrapper table tbody tr td,
+.keywordManagement .dataArea .dataTables_wrapper table tbody tr td,
+.keywordManagementcreate .dataArea .dataTables_wrapper table tbody tr td,
+.keywordManagementtransform .dataArea .dataTables_wrapper table tbody tr td {
+  font-family: "NotoSansM";
+  font-size: 12px;
+  color: #333;
+  border-left: 1px solid #eaeaea;
+  padding: 15px 0;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordStatistics .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordStatisticslist .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordTransform .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordTransformcontents .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordManagement .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordManagementcreate .dataArea .dataTables_wrapper table tbody tr td a,
+.keywordManagementtransform .dataArea .dataTables_wrapper table tbody tr td a {
+  text-decoration: underline;
+  color: #333;
+}
+
+.keywordDashboard .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordStatistics .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordStatisticslist .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordTransform .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordTransformcontents .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordManagement .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordManagementcreate .dataArea .dataTables_wrapper table tbody tr td:last-child,
+.keywordManagementtransform .dataArea .dataTables_wrapper table tbody tr td:last-child {
+  border-right: 1px solid #eaeaea;
+}
+
+.keywordDashboard .dataArea .pagingArea,
+.keywordStatistics .dataArea .pagingArea,
+.keywordStatisticslist .dataArea .pagingArea,
+.keywordTransform .dataArea .pagingArea,
+.keywordTransformcontents .dataArea .pagingArea,
+.keywordManagement .dataArea .pagingArea,
+.keywordManagementcreate .dataArea .pagingArea,
+.keywordManagementtransform .dataArea .pagingArea {
+  position: relative;
+  text-align: center;
+}
+
+/********** keywordcenter each css ***********/
+/* 01_main */
+.keywordDashboard .optionBox {
+  margin-bottom: 0;
+}
+
+.keywordDashboard .mainTopchart div.red {
+  background: #f85479;
+  margin-left: 70px;
+}
+
+.keywordDashboard .mainTopchart div.blue {
+  background: #2e7ce1;
+  margin-left: 20px;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo {
+  float: left;
+  width: 293px;
+  height: 80px;
+  margin: 15px 0 42px 0;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl {
+  font-size: 10px;
+  font-family: "NotoSansR";
+  color: #fff;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dt {
+  position: relative;
+  margin: 14px 0 0 14px;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dt::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 1.5px;
+  top: 16px;
+  left: 0;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dd > p {
+  float: left;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dd > p:first-child {
+  padding: 6px 8px 0 0;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dd > p:last-child {
+  font-size: 18px;
+  font-family: "NotoSansM";
+  font-weight: 500;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dd {
+  margin: 24px 0 0 14px;
+}
+
+.keywordDashboard .mainTopchart .chartsInfo dl dd:last-child > p:first-child {
+  padding-left: 67px;
+}
+
+.keywordDashboard .mainTopchart .key_chartSection01 .chartBox {
+  clear: both;
+  height: 210px;
+  margin: 0 55px 25px 70px;
+}
+
+.keywordDashboard .keywordTop50 {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  padding: 0 15px;
+  overflow-x: auto;
+}
+
+.keywordDashboard .keywordTop50 > div {
+  width: 20%;
+  min-width: 320px;
+  height: 500px;
+  margin: 15px 15px 35px 15px;
+  background: #fff;
+  border: solid 5px #eee;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  float: left;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordTop {
+  width: 100%;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordTop div,
+.keywordDashboard .keywordTop50 > div .keywordTop a {
+  display: block;
+  float: left;
+  font-family: "NotoSansR";
+  height: 30px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordTop div:first-child {
+  width: 70%;
+  font-family: "NotoSansB";
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -0.8px;
+  padding: 29px 0 29px 27px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordTop a {
+  width: 30%;
+  text-align: right;
+  padding: 35px 13px 29px 0px;
+  color: #010101;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordTop div:nth-child(3),
+.keywordDashboard .keywordTop50 > div .keywordTop div:nth-child(4) {
+  width: 124px;
+  background: #cae2af;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 2;
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  color: #010101;
+  margin: 31px 7px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordTop div:nth-child(3) {
+  margin-left: 22px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordListarea {
+  position: relative;
+  overflow-y: auto;
+  width: 295px;
+  height: 307px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordListarea ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordListarea li {
+  display: block;
+  font-family: "NotoSansR";
+  clear: both;
+  padding-bottom: 31px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordListarea li p {
+  float: left;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordListarea li p:first-child {
+  width: 130px;
+}
+
+.keywordDashboard .keywordTop50 > div .keywordListarea li:before {
+  content: counter(item) "  ";
+  counter-increment: item;
+  font-family: "NotoSansM";
+  width: 25px;
+  padding-left: 54px;
+  float: left;
+}
+
+.keywordDashboard .userRtio {
+  width: 100%;
+  height: 220px;
+  margin: 57px 0;
+}
+
+.keywordDashboard .userRtio li {
+  height: 220px;
+  text-align: center;
+  border: 1px solid #e1e1e1;
+}
+
+/* 02_statistics */
+.keywordStatistics .contentSection {
+  height: 400px;
+  padding: 0;
+}
+
+.keywordStatistics .contentSection div .chartBox {
+  clear: both;
+  height: 400px;
+}
+
+.keywordStatistics .contentSection:nth-child(2) {
+  width: 65%;
+  float: left;
+  margin-right: 22px;
+}
+
+.keywordStatistics .contentSection:nth-child(3) {
+  width: 33.5%;
+}
+
+.keywordStatistics .contentSection:nth-child(5) {
+  height: 772px;
+}
+
+.keywordStatisticslist .cont .optionBox {
+  margin-bottom: 0;
+}
+
+.keywordStatisticslist .cont .tableSection {
+  padding: 15px 15px 0;
+}
+
+.keywordStatisticslist .cont .tableSection.keyword_table .filterItem > ul {
+  margin-left: 1px;
+}
+
+.keywordStatisticslist .cont .tableSection.keyword_table .filterItem.on {
+  margin-left: 15px;
+}
+
+.keywordStatisticslist .cont .tableSection.keyword_table button {
+  color: #111;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.keywordStatisticslist .cont .tableSection.keyword_table .searchArea {
+  right: 16px;
+  bottom: 17px;
+}
+
+.keywordStatisticslist .cont .tableSection.keyword_table .searchArea span:after {
+  bottom: 8px;
+}
+
+.keywordStatisticslist .cont .tableSection .filterArea {
+  padding: 10px 15px;
+  margin: 0 4px 0px 16px;
+}
+
+.keywordStatisticslist .cont .tableSection .filterArea .reset {
+  position: relative;
+  min-width: 100px;
+  top: 2px;
+  margin-right: 16px;
+}
+
+.keywordStatisticslist .cont .tableSection .filterArea .reset:after {
+  position: relative;
+  top: 1px;
+  margin-right: 0;
+}
+
+.keywordStatisticslist .cont .tableSection .filterArea .filter {
+  position: relative;
+  top: 2px;
+  white-space: nowrap;
+}
+
+.keywordStatisticslist .cont .tableSection .dataArea .dataTables_wrapper {
+  margin-top: 27px;
+}
+
+.keywordStatisticslist .cont .tableSection .dataArea .buttonBox button {
+  color: #fff;
+  background-color: #85b74e;
+}
+
+/* 03_transform */
+.keywordTransform .optionBox {
+  margin-bottom: 0;
+}
+
+.keywordTransform .tableSection {
+  padding: 15px 15px 0;
+}
+
+.keywordTransform .tableSection.keyword_table button {
+  color: #111;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.keywordTransform .tableSection .filterArea {
+  padding: 10px 15px 0px;
+  margin: 0 4px 0px 16px;
+  border: 0;
+}
+
+.keywordTransform .tableSection .filterArea .reset {
+  position: relative;
+  min-width: 100px;
+  top: 2px;
+  margin-right: 16px;
+}
+
+.keywordTransform .tableSection .filterArea .reset:after {
+  position: relative;
+  top: 1px;
+  margin-right: 0;
+}
+
+.keywordTransform .tableSection .filterArea .filter {
+  position: relative;
+  top: 2px;
+  white-space: nowrap;
+}
+
+.keywordTransform .contentSection h3.contentTitle {
+  border: 0;
+  padding-top: 9px;
+  margin: 0;
+}
+
+.keywordTransform .contentSection .rightBox > div {
+  display: inline-block;
+}
+
+.keywordTransform .contentSection .rightBox .setType {
+  padding-top: 9px;
+}
+
+.keywordTransform .contentSection .rightBox .buttonBox {
+  padding: 5px 0 0 10px;
+  vertical-align: top;
+}
+
+.keywordTransform .contentSection .keywordTop100 {
+  width: 100%;
+  clear: both;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div {
+  width: 240px;
+  height: 500px;
+  margin: 15px 9px 35px 0;
+  background: #fff;
+  border: solid 1px #eee;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  float: left;
+  overflow: hidden;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordTop {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordTop div:first-child,
+.keywordTransform .contentSection .keywordTop100 > div .keywordTop div:last-child {
+  width: 124px;
+  background: #cae2af;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 2;
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  color: #010101;
+  margin: 20px 20px 13px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordTop div:last-child(3) {
+  margin-left: 22px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordListarea {
+  position: relative;
+  width: 95%;
+  height: 422px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordListarea ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordListarea li {
+  display: block;
+  font-family: "NotoSansR";
+  height: auto;
+  min-height: 30px;
+  clear: both;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  overflow: auto;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordListarea li p {
+  float: left;
+  width: 50%;
+  padding: 5px;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div .keywordListarea li p:hover {
+  width: 50%;
+  text-overflow: normal;
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.5;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.keywordList {
+  width: 15%;
+  min-width: 240px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable {
+  display: none;
+  width: calc(100% - 250px);
+  margin-right: 0;
+  padding: 0 5px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div {
+  height: 463px;
+  overflow-y: scroll;
+  margin-top: 24px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table {
+  display: table;
+  width: 99%;
+  min-width: 1300px;
+  font-family: "NotoSansR";
+  font-size: 12px;
+  text-align: center;
+  font-weight: normal;
+  color: #010101;
+  margin: 0px 5px;
+  padding: 0px 13px;
+  overflow-y: scroll;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table thead tr th {
+  position: -webkit-sticky;
+  position: sticky;
+  display: table-cell;
+  font-weight: normal;
+  line-height: 2.5;
+  top: 0;
+  background: #fff;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table thead tr th.red {
+  color: #eb1313;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table thead tr th:last-child {
+  color: #6eae28;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table thead tr th:last-child:after {
+  content: "-";
+  position: absolute;
+  color: #fff;
+  top: 0px;
+  right: -4px;
+  border-right: 6px solid #fff;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody {
+  width: 100%;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td {
+  height: 32px;
+  line-height: 2.5;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td span {
+  display: inline-block;
+  height: 30px;
+  background: #fff;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td span.color01 {
+  background: #fafff3;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td span.color02 {
+  background: #c8eede;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td span.color03 {
+  background: #8acdce;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td span.color04 {
+  background: #62bed2;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td span.color05 {
+  background: #46aace;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td:first-child {
+  min-width: 100px;
+  max-width: 100px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td:first-child:hover {
+  min-width: 100px;
+  max-width: 100px;
+  text-overflow: normal;
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.5;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr td:last-child {
+  border-left: solid 3px #85b74e;
+  border-right: solid 3px #85b74e;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr:first-child td:last-child {
+  border-top: solid 3px #85b74e;
+  border-left: solid 3px #85b74e;
+  border-right: solid 3px #85b74e;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable div table tbody tr:last-child td:last-child {
+  border-bottom: solid 3px #85b74e;
+  border-left: solid 3px #85b74e;
+  border-right: solid 3px #85b74e;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableM table thead tr th:first-child {
+  width: 65px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableM table thead tr th:last-child {
+  width: 50px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableM table tbody tr td {
+  height: 32px;
+  line-height: 2.5;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableM table tbody tr td span {
+  width: 35px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableW table thead tr th:first-child {
+  width: 90px;
+  height: 36px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableW table thead tr th:last-child {
+  width: 160px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableW table thead tr th:last-child:after {
+  height: 35px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableW table tbody tr td span {
+  width: 95%;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableW table tbody tr td:last-child {
+  border-left: solid 3px #85b74e;
+  border-right: solid 3px #85b74e;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.datatableW table tbody tr td:last-child span {
+  width: 140px;
+}
+
+.keywordTransform .contentSection .keywordTop100 > div.dataTable.on {
+  display: block;
+}
+
+.keywordTransformcontents .optionBox {
+  margin-bottom: 0;
+}
+
+.keywordTransformcontents .cont .keyword_table .searchArea {
+  top: -10px;
+}
+
+.keywordTransformcontents .cont .keyword_table .searchArea span:after {
+  bottom: -4px;
+}
+
+/* 05_management */
+.keywordManagement .secTit {
+  width: 50% !important;
+}
+
+.keywordManagement .buttonBox button {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+}
+
+.keywordManagement .cont {
+  clear: both;
+}
+
+.keywordManagement .cont .pagingArea .searchArea {
+  right: 16px;
+  margin-bottom: 0;
+}
+
+.keywordManagement .cont .pagingArea .searchArea span:after {
+  bottom: 8px;
+}
+
+.keywordManagementcreate .cont .optionBox {
+  margin-bottom: 0;
+}
+
+.keywordManagementcreate .cont .optionBox .buttonBox {
+  font-size: 0;
+}
+
+.keywordManagementcreate .cont .optionBox .buttonBox button {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+}
+
+.keywordManagementcreate .cont .tableSection {
+  padding: 15px 15px 0;
+}
+
+.keywordManagementcreate .cont .tableSection.keyword_table .filterItem > ul {
+  margin-left: 1px;
+}
+
+.keywordManagementcreate .cont .tableSection.keyword_table .filterItem.on {
+  margin-left: 15px;
+}
+
+.keywordManagementcreate .cont .tableSection.keyword_table button {
+  color: #111;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.keywordManagementcreate .cont .tableSection.keyword_table .searchArea {
+  top: -11px;
+}
+
+.keywordManagementcreate .cont .tableSection.keyword_table .searchArea span:after {
+  top: 10px;
+}
+
+.keywordManagementcreate .cont .tableSection .filterArea {
+  padding: 10px 15px;
+  margin: 0 4px 0px 16px;
+}
+
+.keywordManagementcreate .cont .tableSection .filterArea .reset {
+  position: relative;
+  min-width: 100px;
+  top: 2px;
+  margin-right: 16px;
+}
+
+.keywordManagementcreate .cont .tableSection .filterArea .reset:after {
+  position: relative;
+  top: 1px;
+  margin-right: 0;
+}
+
+.keywordManagementcreate .cont .tableSection .filterArea .filter {
+  position: relative;
+  top: 2px;
+  white-space: nowrap;
+}
+
+.keywordManagementcreate .cont .tableSection .dataArea .dataTables_wrapper {
+  margin-top: 27px;
+}
+
+.keywordManagementcreate .cont .tableSection .dataArea .buttonBox button {
+  color: #fff;
+  background-color: #85b74e;
+}
+
+.keywordManagementtransform .secTit {
+  width: 50% !important;
+}
+
+.keywordManagementtransform .buttonBox button {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+}
+
+.keywordManagementtransform .cont {
+  clear: both;
+}
+
+.keywordManagementtransform .cont h4 {
+  font-family: "NotoSansM";
+  font-size: 16px;
+  color: #010101;
+  margin-bottom: 14px;
+}
+
+.keywordManagementtransform .cont .keyword_table .filterItem.on {
+  margin-bottom: 25px;
+}
+
+.keywordManagementtransform .cont .keyword_table .itemArea button {
+  background-color: transparent;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .dataTables_wrapper {
+  height: 220px;
+  overflow-y: auto;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .dataTables_wrapper table thead tr th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #cae2af;
+  border-top: 0px;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .dataTables_wrapper table thead tr th.sorting {
+  background: #cae2af url("../img/keyword/icon_ arrow_default.png") no-repeat right/15px;
+  background-position-x: 95%;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .dataTables_wrapper table thead tr th.sorting_asc {
+  background: #cae2af url("../img/keyword/icon_ arrow_up.png") no-repeat right/15px;
+  background-position-x: 95%;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .dataTables_wrapper table thead tr th.sorting_desc {
+  background: #cae2af url("../img/keyword/icon_ arrow_down.png") no-repeat right/15px;
+  background-position-x: 95%;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .searchArea {
+  bottom: -15px;
+}
+
+.keywordManagementtransform .cont .keyword_table .dataArea .searchArea span:after {
+  bottom: 8px;
+}
+
+.keywordManagementtransform .cont ul.selectItem {
+  width: 100%;
+  height: 48px;
+  overflow-y: auto;
+  border: 1px solid #eaeaea;
+}
+
+.keywordManagementtransform .cont ul.selectItem li {
+  font-family: "NotoSansR";
+  font-size: 13px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  text-align: center;
+  float: left;
+  margin: 11px 5px;
+}
+
+.keywordManagementtransform .cont ul.selectItem li button {
+  min-height: 26px;
+  padding: 3px 10px 4px;
+  color: #67b710;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+.keywordManagementtransform .cont ul.selectItem li button:after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  top: 2px;
+  margin-left: 12px;
+  background: url("../img/btn_x.png") center center no-repeat;
+}

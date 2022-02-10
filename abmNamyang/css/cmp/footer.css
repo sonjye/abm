@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+#iBotSiteFooter{min-width:320px;background-color:#1c1c1c;color:#fff;}
+#iBotSiteFooter .iBot-inner{position:relative;width:100%;max-width:1300px;padding:45px 20px 45px 170px;background-image: url(../images/mogile-iBot-logo.png);background-position:20px 50%;background-repeat:no-repeat;background-size:auto 22px}
+
+#iBotSiteFooter .footer-information-link{margin-bottom:30px;font-size:0;}
+#iBotSiteFooter .footer-information-link li{display:inline-block;vertical-align:top;}
+#iBotSiteFooter .footer-information-link li:after{content:'';display:inline-block;width:1px;height:8px;margin:6px 15px;background-color:#fff;vertical-align:top;}
+#iBotSiteFooter .footer-information-link li:last-child:after{display:none;}
+#iBotSiteFooter .footer-information-link li a{display:inline-block;height:20px;font-size:14px;line-height:20px;}
+
+#iBotSiteFooter .footer-information-details{margin-bottom:30px;}
+#iBotSiteFooter .footer-information-details .footer-address{margin-bottom:8px;font-size:14px;line-height:1.3;}
+#iBotSiteFooter .footer-information-details .footer-details-list{font-size:0;}
+#iBotSiteFooter .footer-information-details .footer-details-list li{display:inline-block;margin-right:40px;font-size:14px;line-height:1.5;vertical-align:top;}
+#iBotSiteFooter .footer-information-details .footer-details-list li:last-child{margin-right:0;}
+
+#iBotSiteFooter .footer-copy{font-size:14px;line-height:1.3;}
+
+#iBotSiteFooter .iBot-familySite{overflow:hidden;position:absolute;right:20px;top:45px;width:258px;border:1px solid #d5d5d5;border-radius:10px;}
+#iBotSiteFooter .btn-iBot-familySite{display:block;position:relative;width:100%;height:38px;padding:0 10px;color:#fff;text-align:left;transition:0.3s;}
+#iBotSiteFooter .btn-iBot-familySite:after{content:'';position:absolute;right:20px;top:calc( 50% - 6px );width:7px;height:7px;border-top:2px solid #616161;border-right:2px solid #616161;transform:rotate(135deg);transition:transform 0.3s;}
+#iBotSiteFooter .iBot-familySite-link{width:100%;height:0;opacity:0;transition:opacity 0.3s ease-in-out;}
+#iBotSiteFooter .iBot-familySite-link li a{display:block;padding:6px 10px;font-size:13px;}
+
+#iBotSiteFooter .iBot-familySite:hover .iBot-familySite-link{height:auto;opacity:1;}
+#iBotSiteFooter .iBot-familySite:hover .btn-iBot-familySite:after{top:calc( 50% - 3px);transform:rotate(315deg);}
+
+/* Mobile Family Site */
+#iBotSiteFooter .mobile-iBot-familySite-wrap{display:none;position:absolute;right:20px;top:45px;}
+#iBotSiteFooter .mobile-iBot-familySite-wrap:after{content:'';position:absolute;right:20px;top:calc( 50% - 6px );width:7px;height:7px;border-top:2px solid #616161;border-right:2px solid #616161;transform:rotate(135deg);transition:transform 0.3s;}
+#iBotSiteFooter .mobile-iBot-familySite{width:180px;height:40px;padding:0 10px;background-color:transparent;border:1px solid #d5d5d5;border-radius:10px;-webkit-appearance:none;-moz-appearance:none;appearance:none;}
+#iBotSiteFooter .mobile-iBot-familySite option{color:#000;}
+
+@media screen and (min-width: 0) {
+  .iBot-inner{max-width:90%;}
+  #iBotSiteHeader .global-navigation-bar ul li a:hover{color:#ffd110;}
+}

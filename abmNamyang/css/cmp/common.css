@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+span.v-bar { padding: 0 5px; }
+span.v-bar:after { content:"|"; font-size: 12px; }
+
+a.txt-lnk {font-size: 13px; font-weight: 400; color: #666;}
+
+.profile-register__box-ex .btn-blue-102 { height: 38px; }
+
+button:disabled {background-color: #ccc;}
+input[readonly] {background-color: #eee !important;}
+input::placeholder {color: #ccc; font-style: italic;}
+
+.login_link{
+	color:#fff !important;
+}
+/* 등록페이지에서만 사용하는 스타일 2021-02-03 jgchoi  */
+/********************* start **********************/
+
+ul.reg {
+  list-style-type: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f4e2a2;
+}
+
+li.reg {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+li.reg:last-child {
+  border-right: none;
+}
+
+li.reg a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.reg a:hover {
+  background-color: #3b86ff;
+}
+.regactive {
+  background-color: #3b86ff;
+}
+
+
+
+/* 등록페이지에서만 사용하는 스타일 2021-02-03 jgchoi  */
+/********************* end **********************/

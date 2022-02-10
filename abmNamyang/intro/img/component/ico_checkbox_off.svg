@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g data-name="사각형 1641" style="fill:#fff;stroke:#dbdbdb">
+        <rect width="20" height="20" rx="3" style="stroke:none"/>
+        <rect x=".5" y=".5" width="19" height="19" rx="2.5" style="fill:none"/>
+    </g>
+    <path d="m39 80.051-7.483 7.479-2.748-2.748a.341.341 0 0 0-.483 0l-.8.8a.341.341 0 0 0 0 .483l3.793 3.793a.341.341 0 0 0 .483 0l8.524-8.524a.341.341 0 0 0 0-.483l-.8-.8a.341.341 0 0 0-.486 0z" transform="translate(-23.591 -75.287)" style="fill:#dbdbdb"/>
+</svg>

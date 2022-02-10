@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.828" height="20.829" viewBox="0 0 20.828 20.829">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#707070;stroke-linecap:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="btn_pop_cl" transform="translate(-852.502 -181.479)">
+        <path id="Line_40" d="M0 0L25.455 0.001" class="cls-1" transform="rotate(45 206.187 1122.216)"/>
+        <path id="Line_41" d="M0 0.001L25.455 0" class="cls-1" transform="rotate(135 398.08 272.027)"/>
+    </g>
+</svg>

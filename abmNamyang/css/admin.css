@@ -1,0 +1,27 @@
+/*-------------------------------------------------------------------------------------------------------------
+    File   : admin
+    Date   : 2021.08.03
+/*------------------------------------------------------------------------------------------------------------*/
+/********** admin common css **********/
+/********** admin each css **********/
+.moblab {
+  /* moblab_notice */
+}
+
+.moblab.moblab_notice .secCont article.notice .tit {
+  display: none;
+}
+
+.moblab.moblab_notice .secCont article.notice .cont .box_table table thead th:first-child, .moblab.moblab_notice .secCont article.notice .cont .box_table table thead th:nth-child(3) {
+  width: 210px;
+}
+
+.moblab.moblab_notice .secCont article.notice .cont .box_table table tbody td:first-child {
+  color: #999;
+}
+
+.moblab.moblab_notice .secCont article.notice .cont .box_table table tbody td:nth-child(2) {
+  text-align: left;
+}
+
+/***** 01.menu - userAdmin *****/
