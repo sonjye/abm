@@ -1,0 +1,11 @@
+
+# Site Settings
+locale                   : "UTF-8"
+title                    : "SONJYE"
+title_separator          : "-"
+subtitle                 : # portfolio test
+name                     : "SONJYE"
+description              : "An amazing website."
+url                      : # "https://https://sonjye.github.io/abm"
+baseurl                  : # ""
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
